@@ -1,4 +1,4 @@
-Users:
+## Users:
 
 | name            | data type | details                   |
 |-----------------|-----------|---------------------------|
@@ -13,7 +13,7 @@ Users:
 add index `username, unique: true`  
 add index `session_token, unique: true`
 
-Boards: 
+## Boards: 
 
 | name       | data type | details                        |
 |------------|-----------|--------------------------------|
@@ -26,7 +26,7 @@ Boards:
 `author_id` references `users`  
 add index `author_id`
 
-Pins:
+## Pins:
 
 | name       | data type | details               |
 |------------|-----------|-----------------------|
@@ -39,7 +39,7 @@ Pins:
 `author_id` references `users`  
 add index `author_id`
 
-PinnedBoards:
+## PinnedBoards:
 
 | name       | data type | details                        |
 |------------|-----------|--------------------------------|
@@ -54,7 +54,7 @@ PinnedBoards:
 add index `board_id`  
 add index `pin_id`
 
-Follows:
+## Follows:
 
 | name        | data type | details               |
 |-------------|-----------|-----------------------|
