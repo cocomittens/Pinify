@@ -11,6 +11,7 @@ Users:
 | updated_at      | datetime  | not_null                  |
 
 add_index username, unique: true
+
 add_index session_token, unique: true
 
 Boards: 
@@ -24,6 +25,7 @@ Boards:
 | updated_at | datetime  | not_null                       |
 
 author_id references users
+
 add_index author_id
 
 Pins:
@@ -37,6 +39,7 @@ Pins:
 | updated_at | datetime  | not_null              |
 
 author_id references users
+
 add_index author_id
 
 PinnedBoards:
@@ -50,8 +53,11 @@ PinnedBoards:
 | updated_at | datetime  | not_null                       |
 
 add_index board_id
+
 board_id references boards
+
 add_index pin_id
+
 pin_id references pins
 
 Follows:
@@ -65,6 +71,9 @@ Follows:
 | updated_at  | datetime  | not_null              |
 
 follower_id references users
+
 followed_id references users
+
 add_index follower_id, unique: true
+
 add_index followed_id, unique: true
