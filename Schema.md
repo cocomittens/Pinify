@@ -10,8 +10,8 @@
 | created_at      | datetime  | not_null                  |
 | updated_at      | datetime  | not_null                  |
 
-add index `username, unique: true`  
-add index `session_token, unique: true`
+index `username, unique: true`  
+index `session_token, unique: true`
 
 ## Boards: 
 
@@ -24,7 +24,7 @@ add index `session_token, unique: true`
 | updated_at | datetime  | not_null                       |
 
 `author_id` references `users`  
-add index `author_id`
+index `author_id`
 
 ## Pins:
 
@@ -37,7 +37,7 @@ add index `author_id`
 | updated_at | datetime  | not_null              |
 
 `author_id` references `users`  
-add index `author_id`
+index `author_id`
 
 ## PinnedBoards:
 
@@ -51,8 +51,8 @@ add index `author_id`
 
 `board_id` references `boards`  
 `pin_id` references `pins`  
-add index `board_id`  
-add index `pin_id`
+index `board_id`  
+index `pin_id`
 
 ## Follows:
 
@@ -66,5 +66,19 @@ add index `pin_id`
 
 `follower_id` references `users`  
 `followed_id` references `users`  
-add index `follower_id, unique: true`  
-add index `followed_id, unique: true`
+index `follower_id, unique: true`  
+index `followed_id, unique: true`
+
+## Likes:
+| name        | data type | details                        |
+|-------------|-----------|--------------------------------|
+| id          | integer   | not_null, primary key          |
+| user_id     | integer   | not_null, indexed, foreign key |
+| pin_id      | integer   | not_null, indexed, foreign key |
+| created_at  | datetime  | not_null                       |
+| updated_at  | datetime  | not_null                       |
+
+ `user_id` references `users`  
+ `pin_id` references `pins`  
+ index `[:pin_id, :user_id], unique: true`  
+ index `:user_id, unique: true`
