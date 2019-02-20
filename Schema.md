@@ -49,10 +49,10 @@ PinnedBoards:
 | created_at | datetime  | not_null                       |
 | updated_at | datetime  | not_null                       |
 
-add_index board_id  
 board_id references boards  
-add_index pin_id  
-pin_id references pins
+pin_id references pins  
+add_index board_id  
+add_index pin_id
 
 Follows:
 
