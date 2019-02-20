@@ -10,8 +10,8 @@ Users:
 | created_at      | datetime  | not_null                  |
 | updated_at      | datetime  | not_null                  |
 
-add_index username, unique: true  
-add_index session_token, unique: true
+add index `username, unique: true`  
+add index `session_token, unique: true`
 
 Boards: 
 
@@ -23,8 +23,8 @@ Boards:
 | created_at | datetime  | not_null                       |
 | updated_at | datetime  | not_null                       |
 
-author_id references users  
-add_index author_id
+`author_id` references `users`  
+add index `author_id`
 
 Pins:
 
@@ -36,8 +36,8 @@ Pins:
 | created_at | datetime  | not_null              |
 | updated_at | datetime  | not_null              |
 
-author_id references users  
-add_index author_id
+`author_id` references `users`  
+add index `author_id`
 
 PinnedBoards:
 
@@ -49,10 +49,10 @@ PinnedBoards:
 | created_at | datetime  | not_null                       |
 | updated_at | datetime  | not_null                       |
 
-board_id references boards  
-pin_id references pins  
-add_index board_id  
-add_index pin_id
+`board_id` references `boards`  
+`pin_id` references `pins`  
+add index `board_id`  
+add index `pin_id`
 
 Follows:
 
@@ -64,7 +64,7 @@ Follows:
 | created_at  | datetime  | not_null              |
 | updated_at  | datetime  | not_null              |
 
-follower_id references users  
-followed_id references users  
-add_index follower_id, unique: true  
-add_index followed_id, unique: true
+`follower_id` references `users`  
+`followed_id` references `users`  
+add index `follower_id, unique: true`  
+add index `followed_id, unique: true`
