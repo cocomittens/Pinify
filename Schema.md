@@ -10,7 +10,7 @@ Users:
 | created_at      | datetime  | not_null                  |
 | updated_at      | datetime  | not_null                  |
 
-add_index username, unique: true
+add_index username, unique: true  
 add_index session_token, unique: true
 
 Boards: 
@@ -23,7 +23,7 @@ Boards:
 | created_at | datetime  | not_null                       |
 | updated_at | datetime  | not_null                       |
 
-author_id references users
+author_id references users  
 add_index author_id
 
 Pins:
