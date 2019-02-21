@@ -20,51 +20,56 @@
     boards: {  
       1: {  
         id: 1,  
-        title: ,  
+        title: 'Kittens',  
         authorId: 23,  
-        pinsIds: []
+        pinIds: [2, 3]
       },  
       2: {  
         id: 2,  
-        title: ,  
+        title: 'Bunnies',  
         authorId: 5,  
-        pinsIds: []
+        pinIds: [3]
       },  
       3: {  
         id: 3,  
-        linkId: ,  
+        linkId: 'Puppers',  
         authorId: 17,  
-        pinIds: []
+        pinIds: [1]
       }  
     },  
     pinnedBoards: {  
       1: {  
         id: 1,  
-        pinId:  ,
-        boardId: 
+        pinId: 1,
+        boardId: 3
       },  
       2: {  
         id: 2,  
-        pinId:  ,
-        boardId: 
+        pinId: 2 ,
+        boardId: 1
       },  
       3: {  
         id: 3,  
-        pinId:  ,
-        boardId: 
+        pinId: 3 ,
+        boardId: 1
+      }  
+      4: {  
+        id: 4,  
+        pinId: 3 ,
+        boardId: 2
       }  
     },  
     users: {  
       17: {  
         id: 17,  
-        username: 'Serena van der Woodsen,  
+        username: 'Serena van der Woodsen',  
         authoredPinIds: [1], 
         authoredBoardIds: [],
       },  
       23: {  
         id: 23,  
         username: 'Dan Humphrey',  
-        authoredPinIds: [], 
+        authoredPinIds: [2], 
         authoredBoardIds: [],
       },  
       5: {  
@@ -76,17 +81,21 @@
      },  
      follows: 
         1: {
-        id: 1 ,  
-        followedId: 5,  
-        followerId: 23   
+          id: 1 ,  
+          followedId: 5,  
+          followerId: 23  
+        }
      }
-   },  
-   
- ui: {  
+ },  
  
+ ui: {  
+   loading: true/false  
  },  
  errors: {  
- 
- }  
+   login: ["Invalid credentials"]  
+ },  
+ session: {
+   currentUserId: 23  
+ }
 
 } 
