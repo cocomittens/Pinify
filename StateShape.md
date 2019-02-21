@@ -4,17 +4,17 @@
     pins: {  
       1: {  
         id: 1,  
-        linkUrl: ,  
+        linkUrl: 'http://babyanimals.com/cute_pupper',  
         author_id: 17  
       },  
       2: {  
         id: 2,  
-        linkUrl: ,  
+        linkUrl: 'http://babyanimals.com/cute_kitten',  
         author_id: 23  
       },  
       3: {  
         id: 3,  
-        linkUrl: ,  
+        linkUrl: 'http://babyanimals.com/cute_kitten_and_bunny',  
         author_id: 5  
       }  
     },  
@@ -65,19 +65,19 @@
         id: 17,  
         username: 'Serena van der Woodsen',  
         authoredPinIds: [1], 
-        authoredBoardIds: [],
+        authoredBoardIds: [3],
       },  
       23: {  
         id: 23,  
         username: 'Dan Humphrey',  
         authoredPinIds: [2], 
-        authoredBoardIds: [],
+        authoredBoardIds: [1],
       },  
       5: {  
         id: 5,  
         username: 'Blair Waldorf',  
         authoredPinIds: [3], 
-        authoredBoardIds: [],
+        authoredBoardIds: [2],
       }  
      },  
      follows: 
