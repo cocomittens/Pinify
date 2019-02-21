@@ -1,6 +1,6 @@
 {  
-  entities: {  
-    pins: {  
+  entities: {  
+    pins: {  
       1: {  
         id: 1  
       },
