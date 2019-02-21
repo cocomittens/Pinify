@@ -1,4 +1,4 @@
-{  
+```{  
   entities: {  
     pins: {  
       1: {  
@@ -98,4 +98,4 @@
    currentUserId: 23  
  }
 
-} 
+} ```
