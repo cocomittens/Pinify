@@ -3,21 +3,18 @@
     pins: {  
       1: {  
         id: 1,  
-        title: ,  
-        author_id: 17,  
-        likerIds: [7, 22]
+        linkUrl: ,  
+        author_id: 17  
       },  
       2: {  
         id: 2,  
-        title: ,  
-        author_id: 23,  
-        likerIds: [2, 25, 35]
+        linkUrl: ,  
+        author_id: 23  
       },  
       3: {  
         id: 3,  
-        title: ,  
-        author_id: 5,  
-        likerIds: [7]
+        linkUrl: ,  
+        author_id: 5  
       }  
     },  
     boards: {  
@@ -35,7 +32,7 @@
       },  
       3: {  
         id: 3,  
-        title: ,  
+        linkId: ,  
         authorId: 17,  
         pinIds: []
       }  
@@ -60,19 +57,19 @@
     users: {  
       17: {  
         id: 17,  
-        username: ,  
+        username: 'Serena van der Woodsen,  
         authoredPinIds: [1], 
         authoredBoardIds: [],
       },  
       23: {  
         id: 23,  
-        username: ,  
+        username: 'Dan Humphrey',  
         authoredPinIds: [], 
         authoredBoardIds: [],
       },  
       5: {  
         id: 5,  
-        username: ,  
+        username: 'Blair Waldorf',  
         authoredPinIds: [3], 
         authoredBoardIds: [],
       }  
@@ -80,8 +77,8 @@
      follows: 
         1: {
         id: 1 ,  
-        followedId: ,  
-        followerId:   
+        followedId: 5,  
+        followerId: 23   
      }
    },  
    
