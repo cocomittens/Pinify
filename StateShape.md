@@ -1,4 +1,5 @@
-```{  
+```js 
+ {  
   entities: {  
     pins: {  
       1: {  
