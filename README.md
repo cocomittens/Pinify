@@ -1,4 +1,4 @@
-# PinterestFullstack
+# Pinify
 
 Hi, this is the readme for my Pinterest fullstack project.
 
