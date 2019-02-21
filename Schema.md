@@ -31,7 +31,7 @@ index `author_id`
 | name       | data type | details               |
 |------------|-----------|-----------------------|
 | id         | integer   | not_null, primary key |
-| title      | string    | not_null              |
+| link_url   | string    | not_null              |
 | author_id  | integer   | not_null, foreign key |
 | created_at | datetime  | not_null              |
 | updated_at | datetime  | not_null              |
