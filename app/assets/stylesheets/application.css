@@ -195,6 +195,7 @@
 #editProfileContainer .formContainer {
     width: 700px;
     background-color: #fff;
+    align-items: flex-start;
 }
 
 #editProfileContainer .headingsContainer {
@@ -207,13 +208,17 @@
 #editProfileContainer #headings {
     text-align: left;
     width: 300px;
+    margin-left: 0;
 }
 
-.buttonsContainer {
+#editProfileContainer .buttonsContainer {
     width: 100px;
 }
 
-
+#editForm {
+    display: flex;
+    justify-content: flex-start;
+}
 
 #editProfileContainer input {
     margin: 10px;
