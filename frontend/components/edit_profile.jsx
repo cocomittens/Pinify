@@ -26,16 +26,22 @@ class EditProfile extends React.Component {
     render() {
         
         return (
-            <div>
+            <div id="editProfileContainer">
             <GreetingContainer />
             <div className="containerContainer">
                 
                 <div className="formContainer">
                     <div className="headingsContainer">
-                        <h1>Edit Profile</h1>
-                        <h2>People on Pinterest will get to know you with the info below</h2>
-                        
+                    <div id="headings">
+                                <h1>Edit Profile</h1>
+                                <h2>People on Pinterest will get to know you with the info below</h2>
+
                     </div>
+                            <div className="buttonsContainer">
+                                <button type="submit">Done</button>
+                            </div>
+                    </div>
+                    
                     <form onSubmit={this.handleSubmit}>
                         <input
                             value={this.state.first_name}
@@ -49,9 +55,7 @@ class EditProfile extends React.Component {
                             onChange={this.updateLastname.bind(this)}
                             placeholder="Ex. Smith"
                         />
-                        <div className="buttonsContainer">
-                            <button type="submit">Edit Profile</button>
-                        </div>
+                        
                     </form>
                 </div>
             </div>
