@@ -35,8 +35,11 @@ class SessionForm extends React.Component {
             demo = (<button onClick={this.demoLogin.bind(this)} type="submit">Demo</button>)
         }
         return (
-            <div>
+            <div id="containerContainer">
+            <div id="formContainer">
+            
                 <h1>{this.props.formType}</h1>
+ 
                 <form onSubmit={this.handleSubmit}>
                     <label>Username:
                         <input value={this.state.username} type="text" onChange={this.updateUsername.bind(this)}></input>
@@ -47,6 +50,7 @@ class SessionForm extends React.Component {
                     <button type="submit">{this.props.formType}!</button>
                     {demo}
                 </form>
+                </div>
             </div>
         )
     }

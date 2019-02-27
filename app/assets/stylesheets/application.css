@@ -96,3 +96,24 @@ color: red;
     margin-right: 10px;
 }
 
+#formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 300px;
+    background:red;
+    flex-direction: column;
+    
+}
+
+#formContainer * {
+    margin: 10px;
+}
+
+
+#containerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
