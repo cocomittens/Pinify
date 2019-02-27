@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'rubysl-securerandom'
+gem "non-stupid-digest-assets"
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
