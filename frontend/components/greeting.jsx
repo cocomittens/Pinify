@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class Greeting extends React.Component {
     constructor(props) {
@@ -18,6 +18,10 @@ class Greeting extends React.Component {
     render() {
         let user = this.props.currentUser;
         return (
+            <header>
+            <div id="leftnav">
+                <Link to="/"><i className="fab fa-pinterest logo fa-2x"></i></Link>
+            </div>
             <div id="rightnav">
                 <h1>{user.username}</h1><br></br>
                 <div className="dropdown">
@@ -25,12 +29,14 @@ class Greeting extends React.Component {
                     {this.state.active
                     ? (
                         <ul className='dropdown-content'>
+                                <Link to="/edit">Edit settings</Link>
                                 <a onClick={this.props.logout}>Logout</a>
-                        
+                                
                     </ul>
                     ) : (null)}
                 </div>
             </div>
+            </header>
         )    
     }
 }

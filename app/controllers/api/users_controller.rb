@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
     def create
-        @user = Api::User.new(user_params)
+        @user = User.new(user_params)
         if @user.save
             login!(@user)
             render :show
@@ -10,15 +10,21 @@ class Api::UsersController < ApplicationController
     end
 
     def new
-        @user = Api::User.new
+        @user = User.new
     end
 
     def show
-        @user = Api::User.find(params[:id])
+        @user = User.find(params[:id])
     end
 
     def update
-
+        @user = User.find(params[:id])
+        
+        if @user.update(user_params)
+            render :show
+        else
+            render json: @user.errors.full_messages
+        end
     end
 
     def edit
@@ -27,6 +33,6 @@ class Api::UsersController < ApplicationController
 
     private
     def user_params
-        params.fetch(:user, {}).permit(:username, :email, :password)
+        params.fetch(:user, {}).permit(:username, :email, :password, :first_name, :last_name)
     end
 end

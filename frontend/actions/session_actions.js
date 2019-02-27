@@ -32,3 +32,8 @@ export const signup = user => dispatch => (
     APIUtil.signup(user)
         .then(user => dispatch(receiveCurrentUser(user)), errors => dispatch(receiveErrors(errors)))
 );
+
+export const updateUser = user => dispatch => (
+    APIUtil.updateUser(user)
+        .then(user => dispatch(receiveCurrentUser(user)), errors => dispatch(receiveErrors(errors)))
+);

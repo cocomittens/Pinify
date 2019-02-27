@@ -23,6 +23,10 @@
      border-bottom: 1px solid #ccc;
  }
 
+ header *:hover {
+     cursor: pointer;
+ }
+
 .logo {
     color: red;
     padding: 10px;
@@ -31,7 +35,7 @@
     border-radius: 50%;
 }
 
-#leftnav:hover .logo {
+#leftnav:hover .logo, #rightnav h1:hover {
   background-color: #f1f1f1;
 }
 
@@ -39,6 +43,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+#rightnav h1 {
+    padding: 12px;
+    border-radius: 20px;
 }
 
 #rightnav > * {

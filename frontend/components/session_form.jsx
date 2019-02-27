@@ -6,7 +6,10 @@ class SessionForm extends React.Component {
         super(props);
         this.state = {
             username: "",
-            password: ""
+            email: "",
+            password: "",
+            first_name: "",
+            last_name: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.switchFormType = this.switchFormType.bind(this);
@@ -53,7 +56,7 @@ class SessionForm extends React.Component {
             <div className="containerContainer">
                 <div className="formContainer">
                     <div className="headingsContainer">
-                        <i className="fab fa-product-hunt logo fa-3x"></i>
+                        <i className="fab fa-pinterest logo fa-3x"></i>
                         <h1>{this.props.formType} to see more</h1>
                         <h2>Access Pinterest's best ideas with a free account</h2>
                     </div>

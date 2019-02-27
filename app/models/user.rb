@@ -11,7 +11,7 @@
 #  updated_at      :datetime         not null
 #
 
-class Api::User < ApplicationRecord
+class User < ApplicationRecord
     validates :username, :email, :session_token, presence: true
     validates :password, length: { minimum: 6, allow_nil: true }
     before_validation :ensure_session_token
@@ -19,7 +19,7 @@ class Api::User < ApplicationRecord
     attr_reader :password
 
     def self.find_by_credentials(username, password)
-        user = Api::User.find_by(username: username)
+        user = User.find_by(username: username)
         user && user.is_password?(password) ? user : nil
     end
 
