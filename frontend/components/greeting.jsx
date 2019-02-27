@@ -11,7 +11,7 @@ class Greeting extends React.Component {
                         <h1>{user.username}</h1><br></br>
 
                         <div class="dropdown">
-                            <i class="dropbtn fas fa-ellipsis-h"></i>
+                            <i class="dropbtn fas fa-ellipsis-h fa-lg"></i>
                             <ul class="dropdown-content">
                                 <a onClick={this.props.logout}>Logout</a>
                             </ul>
