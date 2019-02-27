@@ -14,11 +14,7 @@
  *= require_self
  */
 
-.logo {
-    color: red;
-
-}
-
+ /* Greeting Container */
  header {
      padding: 5px;
      display: flex;
@@ -27,63 +23,16 @@
      border-bottom: 1px solid #ccc;
  }
 
- #pins {
-     margin: 20px;
- }
-
 .logo {
-color: red;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-/* Style The Dropdown Button */
-.dropbtn {
-  color: #999;
-  padding: 16px;
-  border: none;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  position: absolute;
-  border-radius: 5px;
-  left: -135px;
-  background-color: #f9f9f9;
-  width: 200px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  font-weight: bold;
-}
-
-
-.dropdown-content a:hover {background-color: #f1f1f1;
+    color: red;
+    padding: 10px;
+    border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 50%;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn, #leftnav:hover .logo {
+#leftnav:hover .logo {
   background-color: #f1f1f1;
-  
 }
 
 #rightnav {
@@ -96,46 +45,119 @@ color: red;
     margin-right: 10px;
 }
 
-#formContainer {
+/* Dropdown Menu */
+.dropbtn {
+  color: #999;
+  padding: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #f1f1f1;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  position: absolute;
+  border-radius: 5px;
+  left: -135px;
+  background-color: #f9f9f9;
+  width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Login/ Signup Forms */
+.containerContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 550px;
-    width: 400px;
-    background:#ccc;
-    flex-direction: column;
-    border-radius: 5px;
+    background-color: #999;
+    height: 100vh;
 }
 
-#formContainer * {
+.headingsContainer {
+    width: 300px;
+    text-align: center;
+}
+
+.headingsContainer .logo {
+    margin: 0;
+}
+
+.headingsContainer h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.headingsContainer h2 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    background:#f1f1f1;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 20px 0;
+}
+
+.formContainer * {
     margin: 10px;
 }
 
-#formContainer h1 {
-    font-size: 30px;
-}
-
-#formContainer form input {
-    width:270px;
+.formContainer form input {
+    width:253px;
     height: 30px;
     border-radius: 5px;
-    border: 1px solid #666;
+    border: 1px solid #999;
+    font-size: 16px;
+    padding: 3px 10px;
+    font-weight: lighter;
+    margin: 5px 0;
 } 
 
-#formContainer form {
+.formContainer form {
     display:flex;
     flex-wrap:wrap;
     justify-content: center;
 }
 
-#buttons {
+.buttonsContainer {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-#buttons button{
+.buttonsContainer a {
+    margin: 0;
+}
+
+.buttonsContainer button{
     width: 275px;
     background-color: red;
     padding: 10px 20px;
@@ -143,14 +165,13 @@ color: red;
     color: #f1f1f1;
     border-radius: 5px;
     font-size: 14px;
+    margin: 5px 0;
 }
-#buttons button:hover {
+.buttonsContainer button:hover {
     background-color: darkred;
 }
 
-
-#containerContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Pins */
+#pins {
+    margin: 20px;
 }

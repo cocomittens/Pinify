@@ -1,12 +1,14 @@
 import SessionForm from './session_form';
 import { connect } from 'react-redux';
 import { login } from '../actions/session_actions';
+import { withRouter } from 'react-router-dom';
 
 
-const msp = state => {
+const msp = (state, ownProps) => {
     return {
         errors: state.errors,
-        formType: 'Log in'
+        formType: 'Log in',
+        path: ownProps.location.pathname
     }
 }
 
@@ -16,4 +18,4 @@ const mdp = dispatch => {
     }
 }
 
-export default connect(msp, mdp)(SessionForm);
+export default withRouter(connect(msp, mdp)(SessionForm));
