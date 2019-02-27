@@ -100,15 +100,52 @@ color: red;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px;
-    width: 300px;
-    background:red;
+    height: 550px;
+    width: 400px;
+    background:#ccc;
     flex-direction: column;
-    
+    border-radius: 5px;
 }
 
 #formContainer * {
     margin: 10px;
+}
+
+#formContainer h1 {
+    font-size: 30px;
+}
+
+#formContainer form input {
+    width:270px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #666;
+} 
+
+#formContainer form {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+#buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#buttons button{
+    width: 275px;
+    background-color: red;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #f1f1f1;
+    border-radius: 5px;
+    font-size: 14px;
+}
+#buttons button:hover {
+    background-color: darkred;
 }
 
 
