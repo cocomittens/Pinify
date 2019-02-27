@@ -28,8 +28,8 @@ class Greeting extends React.Component {
                             {this.state.active
                             ? (
                                 <ul className='dropdown-content'>
-
-                                <a onClick={this.props.logout}>Logout</a>
+                                        <a onClick={this.props.logout}>Logout</a>
+                                
                             </ul>
                             ) : (null)}
                             
