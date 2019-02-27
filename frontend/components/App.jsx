@@ -9,7 +9,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = () => (
     <div>
         <header>
-            <i class="fab fa-product-hunt logo fa-3x"></i>
+            <i className="fab fa-product-hunt logo fa-3x"></i>
 
             <GreetingContainer />
         </header>
