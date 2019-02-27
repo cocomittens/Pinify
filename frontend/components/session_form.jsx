@@ -31,7 +31,7 @@ class SessionForm extends React.Component {
 
     render() {
         let demo;
-        if (this.props.formType === "Log In") {
+        if (this.props.formType === "Log in") {
             demo = (<button onClick={this.demoLogin.bind(this)} type="submit">Demo</button>)
         }
         return (
