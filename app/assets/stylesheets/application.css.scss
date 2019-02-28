@@ -100,11 +100,14 @@
 }
 
 /* Login/ Signup Forms */
+#sessionForm {
+    background-image: image-url('background-image.png')
+}
+
 .containerContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: image-url('background-image.png');
     height: 100vh;
 }
 

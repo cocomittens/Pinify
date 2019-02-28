@@ -29,6 +29,10 @@ class SessionForm extends React.Component {
         this.setState({ password: e.target.value })
     }
 
+    updateEmail(e) {
+        this.setState({ email: e.target.value })
+    }
+
     demoLogin() {
         this.setState({username: 'mittens', password: '123456'});  
     }
@@ -49,10 +53,11 @@ class SessionForm extends React.Component {
         let demo;
         if (this.props.formType === "Log in") {
             demo = (<button onClick={this.demoLogin.bind(this)} type="submit">Demo</button>)
-        }
+        } 
 
         let switchForm = this.switchFormType();
         return (
+            <div id="sessionForm">
             <div className="containerContainer">
                 <div className="formContainer">
                     <div className="headingsContainer">
@@ -65,6 +70,12 @@ class SessionForm extends React.Component {
                             value={this.state.username} 
                             type="text" 
                             onChange={this.updateUsername.bind(this)}
+                            placeholder="Username"
+                        />
+                        <input
+                            value={this.state.email}
+                            type="text"
+                            onChange={this.updateEmail.bind(this)}
                             placeholder="Email"
                         />
                         <input 
@@ -80,6 +91,7 @@ class SessionForm extends React.Component {
                         </div>
                     </form>
                 </div>
+            </div>
             </div>
         )
     }
