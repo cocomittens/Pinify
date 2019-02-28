@@ -42,11 +42,11 @@ class EditProfile extends React.Component {
 
                     </div>
                         <div className="buttonsContainer">
-                            <button type="submit">Done</button>
+                            <button onClick={this.handleSubmit}>Done</button>
                         </div>
                     </div>
                     
-                    <form onSubmit={this.handleSubmit} id="editForm">
+                    <form id="editForm">
                     <label>First name<br></br>
                         <input
                             value={this.state.first_name}

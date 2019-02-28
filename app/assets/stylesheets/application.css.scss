@@ -39,8 +39,17 @@
     border-radius: 50%;
 }
 
-#leftnav:hover .logo, #rightnav h1:hover {
+#leftnav:hover .logo, #nameContainer:hover, #rightnav h1:hover {
   background-color: #f1f1f1;
+
+}
+
+#rightnav > *:hover {
+    border-radius: 20px;
+}
+
+#rightnav .active {
+    color: black;
 }
 
 #rightnav {
@@ -58,9 +67,15 @@
     margin-right: 10px;
 }
 
+#rightnav .profilePic{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
 /* Dropdown Menu */
 .dropbtn {
-  color: #999;
+  color: #8E8E8E;
   padding: 16px;
   border: none;
   cursor: pointer;
@@ -189,7 +204,28 @@
     justify-content: center;
 }
 
+#rightNav #nameContainer {
+    width: 120px;
+    
+}
 
+#rightnav a {
+    text-decoration: none;
+}
+
+#rightnav h1 {
+    color: #8E8E8E;
+    
+}
+.circle{
+    padding: 6px 8px;
+    background: #8E8E8E;
+    color: #fff;
+    margin-right: 7px;
+    border-radius: 50%;
+    font-weight: normal;
+    font-size: 12px;
+}
 
 .buttonsContainer {
     width: 100%;
@@ -283,7 +319,7 @@
     font-size: 16px;
     padding: 0;
     background: #ededed;
-    color: #777;
+    color: #8E8E8E;
     font-weight: 500;
 }
 

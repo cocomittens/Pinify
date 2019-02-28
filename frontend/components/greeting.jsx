@@ -17,13 +17,20 @@ class Greeting extends React.Component {
 
     render() {
         let user = this.props.currentUser;
+        let name;
+        name = (user.first_name.length > 0) ? user.first_name : user.username;
+    
         return (
             <header>
             <div id="leftnav">
                 <Link to="/"><i className="fab fa-pinterest logo fa-2x"></i></Link>
             </div>
             <div id="rightnav">
-                <h1>{user.username}</h1><br></br>
+                    <Link to="/"><h1 className="active">Home</h1></Link>
+                <div id="nameContainer">
+                    <h1><span className="circle">{name.slice(0,1).toUpperCase()}</span>{name}</h1>
+                </div>
+                
                 <div className="dropdown">
                     <i onClick={this.toggleClass} className="dropbtn fas fa-ellipsis-h fa-lg"></i>
                     {this.state.active

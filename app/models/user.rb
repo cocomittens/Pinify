@@ -11,6 +11,7 @@
 #  updated_at      :datetime         not null
 #  first_name      :string
 #  last_name       :string
+#  img_url         :string
 #
 
 class User < ApplicationRecord
