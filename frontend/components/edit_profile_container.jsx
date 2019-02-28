@@ -7,13 +7,7 @@ const msp = state => {
     
     return ({
         errors: state.errors,
-        user_info: {
-            id: user.id,
-            username: user.username,
-            email: user.email,
-            first_name: "",
-            last_name: ""
-        }
+        user_info: user
     })
 }
 

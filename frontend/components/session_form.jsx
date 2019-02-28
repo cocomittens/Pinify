@@ -35,7 +35,7 @@ class SessionForm extends React.Component {
     }
 
     demoLogin() {
-        this.setState({username: 'mittens', password: '123456'});  
+        this.setState({ email: 'mittens@mittens.com', password: '123456'});  
     }
 
     switchFormType() {
