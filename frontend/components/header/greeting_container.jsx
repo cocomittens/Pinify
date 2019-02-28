@@ -1,4 +1,4 @@
-import { logout } from '../actions/session_actions';
+import { logout } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import Greeting from './greeting';
 import { withRouter } from 'react-router-dom';
@@ -16,4 +16,5 @@ const mdp = dispatch => {
     }
 }
 
-export default withRouter(connect(msp, mdp)(Greeting));
+const GreetingContainer = withRouter(connect(msp, mdp)(Greeting));
+export default GreetingContainer;

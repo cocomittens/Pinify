@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updateUser } from '../actions/session_actions';
+import { updateUser } from '../../actions/session_actions';
 import EditProfile from './edit_profile';
 
 const msp = state => {
@@ -17,4 +17,5 @@ const mdp = dispatch => {
     }
 }
 
-export default connect(msp, mdp)(EditProfile)
+const EditProfileContainer = connect(msp, mdp)(EditProfile);
+export default EditProfileContainer;

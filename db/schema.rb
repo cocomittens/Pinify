@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_28_035218) do
+ActiveRecord::Schema.define(version: 2019_02_28_193747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,32 @@ ActiveRecord::Schema.define(version: 2019_02_28_035218) do
     t.index ["email"], name: "index_api_users_on_email", unique: true
     t.index ["session_token"], name: "index_api_users_on_session_token"
     t.index ["username"], name: "index_api_users_on_username", unique: true
+  end
+
+  create_table "boards", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_boards_on_author_id"
+  end
+
+  create_table "pinnedboards", force: :cascade do |t|
+    t.integer "board_id", null: false
+    t.integer "pin_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_pinnedboards_on_board_id", unique: true
+    t.index ["pin_id", "board_id"], name: "index_pinnedboards_on_pin_id_and_board_id", unique: true
+  end
+
+  create_table "pins", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.string "title"
+    t.string "link_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_pins_on_author_id"
   end
 
   create_table "users", force: :cascade do |t|

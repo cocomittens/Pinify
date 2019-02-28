@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
         !!current_user
     end
 
-       config.after_initialize do |app|
+    config.after_initialize do |app|
       app.routes.append{ match '*a', :to => 'application#render_404' } unless config.consider_all_requests_local
     end
 

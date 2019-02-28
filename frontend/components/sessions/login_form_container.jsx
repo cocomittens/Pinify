@@ -1,6 +1,6 @@
 import SessionForm from './session_form';
 import { connect } from 'react-redux';
-import { login, clearErrors } from '../actions/session_actions';
+import { login, clearErrors } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom';
 
 const msp = (state, ownProps) => {
@@ -18,4 +18,5 @@ const mdp = dispatch => {
     }
 }
 
-export default withRouter(connect(msp, mdp)(SessionForm));
+const LoginFormContainer = withRouter(connect(msp, mdp)(SessionForm));
+export default LoginFormContainer;

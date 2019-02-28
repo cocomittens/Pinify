@@ -1,6 +1,6 @@
 import SessionForm from './session_form';
 import { connect } from 'react-redux';
-import { signup, clearErrors } from '../actions/session_actions';
+import { signup, clearErrors } from '../../actions/session_actions';
 
 const msp = (state, ownProps) => {
     return {
@@ -17,4 +17,5 @@ const mdp = dispatch => {
     }
 }
 
-export default connect(msp, mdp)(SessionForm);
+const SignupFormContainer = connect(msp, mdp)(SessionForm);
+export default SignupFormContainer;

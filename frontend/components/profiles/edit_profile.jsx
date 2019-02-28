@@ -1,5 +1,5 @@
 import React from 'react';
-import GreetingContainer from './greeting_container';
+import GreetingContainer from '../header/greeting_container';
 
 class EditProfile extends React.Component {
 
