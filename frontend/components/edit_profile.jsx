@@ -15,6 +15,10 @@ class EditProfile extends React.Component {
         this.props.updateUser(user);
     }
 
+    updateUsername(e) {
+        this.setState({ username: e.target.value })
+    }
+
     updateFirstname(e) {
         this.setState({ first_name: e.target.value })
     }
@@ -43,18 +47,28 @@ class EditProfile extends React.Component {
                     </div>
                     
                     <form onSubmit={this.handleSubmit} id="editForm">
+                    <label>First name<br></br>
                         <input
                             value={this.state.first_name}
                             type="text"
                             onChange={this.updateFirstname.bind(this)}
                             placeholder="Ex. Jane"
-                        />
+                                /></label>
+                            <label>Last name<br></br>
                         <input
                             value={this.state.last_name}
                             type="text"
                             onChange={this.updateLastname.bind(this)}
                             placeholder="Ex. Smith"
-                        />
+                                /></label>
+                            <label id="editUsername">Username<br></br>
+                            www.pinify-app.herokuapp.com/
+                                <input
+                                    value={this.state.username}
+                                    type="text"
+                                    onChange={this.updateUsername.bind(this)}
+                                
+                                /></label>
                         
                     </form>
                 </div>

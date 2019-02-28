@@ -135,7 +135,7 @@
     justify-content: center;
     align-items: center;
     width: 400px;
-    background:#f1f1f1;
+    background:#fff;
     flex-direction: column;
     border-radius: 5px;
     padding: 20px 0;
@@ -161,6 +161,8 @@
     flex-wrap:wrap;
     justify-content: center;
 }
+
+
 
 .buttonsContainer {
     width: 100%;
@@ -196,7 +198,7 @@
 }
 
 #editProfileContainer .formContainer {
-    width: 650px;
+    width: 670px;
     background-color: #fff;
     align-items: flex-start;
 }
@@ -208,6 +210,10 @@
     width: 650px;
 }
 
+#editProfileContainer label {
+    font-weight: lighter;
+}
+
 #headings, #headings > * {
     text-align: left;
     width: 300px;
@@ -216,6 +222,12 @@
 
 #editProfileContainer .buttonsContainer {
     width: 100px;
+    
+}
+
+#editProfileContainer #editUsername input{
+    margin-left: 5px;
+    width: 150px;
 }
 
 #editForm {
@@ -225,15 +237,23 @@
 }
 
 #editProfileContainer input {
-    margin-left: 10px;
     width: 290px;
 }
 
 #editProfileContainer button {
-    width: 100px;
-    height: 40px;
+    width: 70px;
+    height: 35px;
+    font-size: 16px;
+    padding: 0;
+    background: #ededed;
+    color: #777;
+    font-weight: 500;
 }
 
+#editProfileContainer button:hover {
+    background: red;
+    color: #fff;
+}
 /* Pins */
 #pins {
     margin: 20px;
