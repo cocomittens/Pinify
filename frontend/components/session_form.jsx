@@ -41,11 +41,13 @@ class SessionForm extends React.Component {
     switchFormType() {
         if (this.props.path === '/login') {
             return (
-                <Link to="/signup" ><button className="switchBtn">Sign Up</button ></Link >
+                <Link to="/signup">
+                    <button onClick={this.props.clearErrors} className="switchBtn">Sign Up</button>
+                </Link>
             )
         } else {
             return (
-                <Link to="/login"> <button className="switchBtn"> Log In</button></Link >
+                <Link to="/login"> <button onClick={this.props.clearErrors} className="switchBtn"> Log In</button></Link >
             )
         }
     }
@@ -70,14 +72,16 @@ class SessionForm extends React.Component {
                 <div className="containerContainer">
                     {switchForm}
                     <div className="formContainer">
+                        {this.state.errors}
                         <div className="headingsContainer">
                             <i className="fab fa-pinterest logo fa-3x"></i>
                             <h1>{this.props.formType} to see more</h1>
                             <h2>Access Pinify's best ideas with a free account</h2>
+                            
                         </div>
+                        <span className="sessionErrors">{this.props.errors}</span>
 
                         <form onSubmit={this.handleSubmit}>
-                     
                         {username}
                         <input
                             value={this.state.email}

@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
             login!(@user)
             render :show
         else
-            render json: @user.errors.full_messages
+            render json: {errors: "Invalid entry"}, status: :not_found
         end
     end
 
