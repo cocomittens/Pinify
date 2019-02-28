@@ -32,7 +32,7 @@
  }
 
 .logo {
-    color: red;
+    color: #E60023;
     padding: 10px;
     border: none;
     cursor: pointer;
@@ -100,14 +100,41 @@
 }
 
 /* Login/ Signup Forms */
-#sessionForm {
-    background-image: image-url('background-image.png')
+.switchBtn {
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 5px;
+    color: #333;
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    font-weight: bold;
+}
+
+.switchBtn:hover {
+    background-color: #f1f1f1;
+}
+
+
+
+#sessionForm .containerContainer {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6), 
+      rgba(0, 0, 0, 0.6)
+    ),
+    image-url('background-image.png')
+}
+
+#sessionForm .formContainer {
+    box-shadow: 5px 5px 10px -5px rgba(0,0,0,0.62);
 }
 
 .containerContainer {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
 }
 
@@ -177,7 +204,7 @@
 
 .buttonsContainer button{
     width: 275px;
-    background-color: red;
+    background-color: #E60023;
     padding: 10px 20px;
     font-weight: bold;
     color: #f1f1f1;
@@ -186,7 +213,7 @@
     margin: 5px 0;
 }
 .buttonsContainer button:hover {
-    background-color: darkred;
+    background-color: #AD081B;
 }
 
 /* Edit Profile Form */
@@ -251,7 +278,7 @@
 }
 
 #editProfileContainer button:hover {
-    background: red;
+    background: #AD081B;
     color: #fff;
 }
 /* Pins */

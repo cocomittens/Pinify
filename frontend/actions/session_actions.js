@@ -18,6 +18,11 @@ export const receiveErrors = (errors) => ({
     errors
 });
 
+export const receiveSessionErrors = (errors) => ({
+    type: RECEIVE_SESSION_ERRORS,
+    errors
+});
+
 export const login = user => dispatch => (
     APIUtil.login(user)
         .then(user => dispatch(receiveCurrentUser(user)), errors => dispatch(receiveErrors(errors)))
