@@ -1,4 +1,8 @@
 const path = require('path');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
     context: __dirname,
@@ -24,5 +28,12 @@ module.exports = {
             }
         ]
     },
-    devtool: 'inline-source-map'
+    devtool: 'inline-source-map',
+    plugins: [
+        new CopyWebpackPlugin([
+            { from: './app/assets/images/logo.png' },
+        ],
+        new FaviconsWebpackPlugin('logo.png')),
+        new HtmlWebpackPlugin()
+    ]
 };
