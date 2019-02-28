@@ -163,13 +163,13 @@
 }
 
 .headingsContainer h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
+    font-size: 35px;
+    margin-bottom: 10px;
 }
 
 .headingsContainer h2 {
     font-size: 16px;
-    font-weight: normal;
+    font-weight: lighter;
 }
 
 .formContainer {
@@ -300,7 +300,8 @@
 }
 
 #editProfileContainer .buttonsContainer {
-    width: 100px;
+    width: 70px;
+    margin: 0;
     
 }
 
@@ -321,12 +322,14 @@
 
 #editProfileContainer button {
     width: 70px;
-    height: 35px;
+    height: 40px;
     font-size: 16px;
     padding: 0;
     background: #ededed;
     color: #8E8E8E;
     font-weight: 500;
+    border: none;
+    margin-top: 30px;
 }
 
 #editProfileContainer button:hover {
