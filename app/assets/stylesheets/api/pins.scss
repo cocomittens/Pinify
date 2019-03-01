@@ -47,3 +47,37 @@
   .grid { column-gap: 0px; }
   .grid figure { width: 100%; }
 }
+
+.addPinBtn {
+  background: none;
+  font-size: 28px;
+  border: none;
+}
+
+.addPinBtnContainer {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  color: #333;
+  border-radius: 50%;
+-webkit-box-shadow: 0px 1px 3px 1px rgba(204,204,204,1);
+-moz-box-shadow: 0px 1px 3px 1px rgba(204,204,204,1);
+box-shadow: 0px 1px 3px 1px rgba(204,204,204,1);
+}
+
+.addPinBtnContainer:hover{
+  background-color: #eee;
+}
+
+.pinFormContainer .containerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+    background-color: #fff;
+}

@@ -29,6 +29,7 @@ class Pin extends React.Component {
         return (
             <div>
             <GreetingContainer />
+            <div className="pinFormContainer">
             <div className="containerContainer">
 
                 <div className="formContainer">
@@ -61,14 +62,14 @@ class Pin extends React.Component {
                                     onChange={this.updateImage.bind(this)}
                                     placeholder="www.imgur.com/6rgnj3"
                                 /></label>
-                            <div className="buttonContainer">
+                            <div className="buttonsContainer">
                                 <button onClick={this.handleSubmit}>{this.props.formType}!</button>
                             </div>
                         
                     </form>
                 </div>
             </div>
-        </div>
+                </div></div>
         )
     }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import GreetingContainer from '../header/greeting_container';
+import { Link } from 'react-router-dom';
 
 class Splash extends React.Component {
     componentDidMount() {
@@ -16,13 +17,16 @@ class Splash extends React.Component {
                         </figure>
                     )
                 })}
-            </div>)
+            </div>
+            )
         
         return (
             <div>   
                     <GreetingContainer />
-                
                     {list}
+                    
+                <Link to="/pin/new"><div className="addPinBtnContainer"><button className="addPinBtn">+</button></div></Link>
+                    
             </div>
         )
     }
