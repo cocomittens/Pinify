@@ -4,7 +4,8 @@ import { fetchPins } from '../../actions/board_pin_actions';
 
 const msp = state => {
     return {
-        pins: Object.values(state.entities.pins)
+        pins: Object.values(state.entities.pins),
+        userId: Object.values(state.entities.users)[0].id
     }
 }
 

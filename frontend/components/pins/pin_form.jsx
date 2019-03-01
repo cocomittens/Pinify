@@ -11,6 +11,8 @@ class Pin extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.action(this.state);
+        let path = `/`;
+        this.props.history.push(path);
     }
 
     updateTitle(e) {
@@ -55,13 +57,7 @@ class Pin extends React.Component {
                                 onChange={this.updateLink.bind(this)}
                                 placeholder="www.google.com"
                             /></label>
-                            <label>Image URL<br></br>
-                                <input
-                                    value={this.state.image_url}
-                                    type="text"
-                                    onChange={this.updateImage.bind(this)}
-                                    placeholder="www.imgur.com/6rgnj3"
-                                /></label>
+                            
                             <div className="buttonsContainer">
                                 <button onClick={this.handleSubmit}>{this.props.formType}!</button>
                             </div>
@@ -74,4 +70,4 @@ class Pin extends React.Component {
     }
 }
 
-export default Pin;
+export default withRouter(Pin);

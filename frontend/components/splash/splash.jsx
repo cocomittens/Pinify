@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class Splash extends React.Component {
     componentDidMount() {
-        this.props.fetchPins(5)
+        this.props.fetchPins(this.props.userId)
     }
 
     render() {
