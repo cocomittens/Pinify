@@ -12,19 +12,27 @@
 	margin: 50px auto;
 }
 
-.grid figure:hover {
-	background: #fefefe;
+.pinWrapper:hover {
 	border: 2px solid #fcfcfc;
 	margin: 0 2px 15px;
-	padding: 15px;
+	padding: 10px;
 	padding-bottom: 10px;
 	transition: opacity .4s ease-in-out;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 10px;
+  opacity: .8;
+  background: #eee;
 }
 
-.grid figure {
-  
+.pinText {
+  display: none;
+}
+
+.pinWrapper:hover .pinText {
+  display: block;
+}
+
+.pinWrapper {
 	margin: 0 2px 15px;
 	padding: 15px;
 	padding-bottom: 10px;
@@ -33,21 +41,22 @@
   border-radius: 5px;
 }
 
-.grid figure img {
+.pinWrapper img {
 	width: 100%; height: auto;
   margin-bottom: 5px;
-  border-radius: 5px;
-}
-
-.grid:hover figure:not(:hover) {
-	opacity: 0.8;
+  border-radius: 10px;
+  margin: 0 auto;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
 }
 
 @media screen and (max-width: 750px) { 
   .grid { column-gap: 0px; }
-  .grid figure { width: 100%; }
+  .pinWrapper{ width: 100%; }
 }
 
+/* Add pin button */
 .addPinBtn {
   background: none;
   font-size: 28px;
@@ -65,9 +74,9 @@
   right: 40px;
   color: #333;
   border-radius: 50%;
--webkit-box-shadow: 0px 1px 3px 1px rgba(204,204,204,1);
--moz-box-shadow: 0px 1px 3px 1px rgba(204,204,204,1);
-box-shadow: 0px 1px 3px 1px rgba(204,204,204,1);
+  -webkit-box-shadow: 0px 1px 3px 1px rgba(204,204,204,1);
+  -moz-box-shadow: 0px 1px 3px 1px rgba(204,204,204,1);
+  box-shadow: 0px 1px 3px 1px rgba(204,204,204,1);
 }
 
 .addPinBtnContainer:hover{

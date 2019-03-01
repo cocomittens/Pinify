@@ -12,9 +12,10 @@ class Splash extends React.Component {
         let list = (<div className="grid" data-masonry='{ "columnWidth": 80, "itemSelector": ".grid-item" }'>
                 {this.props.pins.map(pin => {
                     return (
-                        <figure>
-                        <img className="pin" key={pin.id}  src={pin.link_url} />
-                        </figure>
+                        <div className="pinWrapper">
+                            <img className="pin" key={pin.id}  src={pin.link_url} />
+                            <div className="pinText">{pin.title}</div>
+                        </div>
                     )
                 })}
             </div>
