@@ -13,7 +13,7 @@ class Splash extends React.Component {
                 {this.props.pins.map(pin => {
                     return (
                         <div className="pinWrapper">
-                            <img className="pin" key={pin.id}  src={pin.link_url} />
+                            <div className="pinImgWrapper"><img className="pin" key={pin.id}  src={pin.link_url} /></div>
                             <div className="pinText">{pin.title}</div>
                         </div>
                     )
