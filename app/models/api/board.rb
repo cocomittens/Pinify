@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: api_boards
+# Table name: boards
 #
 #  id         :bigint(8)        not null, primary key
 #  author_id  :integer          not null

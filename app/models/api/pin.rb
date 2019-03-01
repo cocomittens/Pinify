@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: api_pins
+# Table name: pins
 #
 #  id         :bigint(8)        not null, primary key
 #  author_id  :integer          not null
@@ -8,6 +8,7 @@
 #  link_url   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  image_url  :string
 #
 
 class Pin < ApplicationRecord

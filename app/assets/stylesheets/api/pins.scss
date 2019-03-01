@@ -1,3 +1,49 @@
 // Place all the styles related to the Api::Pins controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Pins */
+
+.grid {
+	column-width: 320px;
+	column-gap: 15px;
+  width: 90%;
+	max-width: 1100px;
+	margin: 50px auto;
+}
+
+.grid figure:hover {
+	background: #fefefe;
+	border: 2px solid #fcfcfc;
+	margin: 0 2px 15px;
+	padding: 15px;
+	padding-bottom: 10px;
+	transition: opacity .4s ease-in-out;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.grid figure {
+  
+	margin: 0 2px 15px;
+	padding: 15px;
+	padding-bottom: 10px;
+	transition: opacity .4s ease-in-out;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.grid figure img {
+	width: 100%; height: auto;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.grid:hover figure:not(:hover) {
+	opacity: 0.8;
+}
+
+@media screen and (max-width: 750px) { 
+  .grid { column-gap: 0px; }
+  .grid figure { width: 100%; }
+}

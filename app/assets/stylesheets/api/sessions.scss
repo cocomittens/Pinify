@@ -3,73 +3,49 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
- html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var,
-b, i,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video, a {
-    margin:0;
-    padding:0;
-    border:0;
-    outline:0;
-    font-size:100%;
-    vertical-align:baseline;
-    background:transparent;
+
+
+/* Login/ Signup Forms */
+.switchBtn {
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+    border-radius: 5px;
+    color: #333;
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    font-weight: bold;
 }
 
-body {
-    line-height:1;
+.switchBtn:hover {
+    background-color: #f1f1f1;
 }
 
-article,aside,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section { 
-    display:block;
+#sessionForm .containerContainer {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6), 
+      rgba(0, 0, 0, 0.6)
+    ),
+    image-url('background-image.png')
 }
 
-nav ul {
-    list-style:none;
+#sessionForm .formContainer {
+    box-shadow: 5px 5px 10px -5px rgba(0,0,0,0.62);
 }
 
-blockquote, q {
-    quotes:none;
+#sessionForm .containerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content:'';
-    content:none;
+#demo {
+    background-color: #4285F4;
 }
 
-a {
-    margin:0;
-    padding:0;
-    font-size:100%;
-    vertical-align:baseline;
-    background:transparent;
-}
-
-
-/* change border colour to suit your needs */
-hr {
-    display:block;
-    height:1px;
-    border:0;   
-    border-top:1px solid #cccccc;
-    margin:1em 0;
-    padding:0;
-}
-
-input, select {
-    vertical-align:middle;
-}
-
-* {
-    font-family: helvetica, sans-serif;
+#demo:hover {
+    background-color: #4267B2;
 }

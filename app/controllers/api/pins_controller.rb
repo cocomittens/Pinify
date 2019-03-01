@@ -1,4 +1,8 @@
 class Api::PinsController < ApplicationController
+    def index
+        @pins = Pin.all
+    end
+
     def create
         @pin = Pin.new(pin_params)
         if @pin.save
@@ -31,6 +35,6 @@ class Api::PinsController < ApplicationController
 
     private
     def pin_params
-        params.fetch(:pin, {}).permit(:author_id, :title, :link_url, board_ids: [])
+        params.fetch(:pin, {}).permit(:author_id, :title, :link_url, :image_url, board_ids: [])
     end
 end

@@ -56,3 +56,5 @@ export const updateBoard = board => {
         data: { board }
     })
 }
+
+window.updatePin = updatePin

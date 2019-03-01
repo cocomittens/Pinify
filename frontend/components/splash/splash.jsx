@@ -3,21 +3,25 @@ import GreetingContainer from '../header/greeting_container';
 
 class Splash extends React.Component {
     componentDidMount() {
-        this.props.fetchPins(1)
+        this.props.fetchPins(5)
     }
 
-
-
     render() {
-        let list = (<ul id="pins">
+
+        let list = (<div className="grid" data-masonry='{ "columnWidth": 80, "itemSelector": ".grid-item" }'>
                 {this.props.pins.map(pin => {
-                    return (<li key={pin.id}>{pin.title}</li>)
+                    return (
+                        <figure>
+                        <img className="pin" key={pin.id}  src={pin.link_url} />
+                        </figure>
+                    )
                 })}
-            </ul>)
+            </div>)
         
         return (
             <div>   
                     <GreetingContainer />
+                
                     {list}
             </div>
         )

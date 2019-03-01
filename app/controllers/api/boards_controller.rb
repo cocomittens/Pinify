@@ -1,4 +1,8 @@
 class Api::BoardsController < ApplicationController
+    def index
+        @boards = Board.all
+    end
+
     def create
         @board = Board.new(board_params)
         if @board.save
