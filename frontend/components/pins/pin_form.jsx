@@ -70,4 +70,4 @@ class Pin extends React.Component {
     }
 }
 
-export default withRouter(Pin);
+export default Pin;
