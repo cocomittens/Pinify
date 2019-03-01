@@ -16,7 +16,7 @@
 	border: 2px solid #fcfcfc;
 	margin: 0 2px 15px;
 	padding: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 	transition: opacity .4s ease-in-out;
   display: inline-block;
   border-radius: 10px;
@@ -25,11 +25,8 @@
 }
 
 .pinText {
-  display: none;
-}
-
-.pinWrapper:hover .pinText {
-  display: block;
+  font-weight: bold;
+  margin: 4px;
 }
 
 .pinWrapper {
