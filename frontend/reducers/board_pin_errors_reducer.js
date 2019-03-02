@@ -4,7 +4,7 @@ const boardPinErrorsReducer = (state = [], action) => {
     Object.freeze(state);
     switch(action.type) {
         case RECEIVE_BP_ERRORS:
-            return Object.values(action.errors.responseJSON);
+            return Object.values(action.errors.responseText);
         default:
             return state;
     }

@@ -16,10 +16,10 @@ class Pin extends React.Component {
         fd.append('pin[title]', this.state.title);
         fd.append('pin[link_url]', this.state.link_url);
         fd.append('pin[photo]', this.state.photoFile);
+        fd.append('pin[board_id]', this.state.board_id)
         this.props.action(fd);
-        debugger
-        // let path = `/boards/${this.props.board_id}`;
-        // this.props.history.push(path);
+        let path = `/`;
+        this.props.history.push(path);
     }
 
     handleFile(e) {

@@ -6,10 +6,11 @@ class Api::PinsController < ApplicationController
     def create
         @pin = Pin.new(pin_params)
         if @pin.save
-            
+            @pb = PinsBoard.new({board_id: @pin.board_id, pin_id: @pin.id})
+            @pb.save!
             render :show
         else
-            render json: @pin.errors.full_messages, status: :unprocessable_entity
+            render json: @pin.errors, status: :unprocessable_entity
         end
     end
 
@@ -36,6 +37,6 @@ class Api::PinsController < ApplicationController
 
     private
     def pin_params
-        params.fetch(:pin, {}).permit(:author_id, :title, :link_url, :photo)
+        params.fetch(:pin, {}).permit(:author_id, :title, :link_url, :photo, :board_id)
     end
 end

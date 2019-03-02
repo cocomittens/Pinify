@@ -20,6 +20,7 @@ export const fetchPin = id => {
 }
 
 export const fetchBoard = id => {
+    
     return $.ajax({
         method: 'GET',
         url: `api/boards/${id}`
@@ -58,13 +59,5 @@ export const updateBoard = board => {
         method: 'PATCH',
         url: `api/boards/${board.id}`,
         data: { board }
-    })
-}
-
-
-export const createPinnedBoard = pb => {
-    return $.ajax({
-        method: 'POST',
-        url: 'api/pinnedboards'
     })
 }

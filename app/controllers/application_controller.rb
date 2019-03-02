@@ -19,6 +19,12 @@ class ApplicationController < ActionController::Base
         !!current_user
     end
 
+    def makePinBoards(pins)
+        pins.each do |pin|
+            PinsBoard.new(pin.board_id, pin.id)
+        end
+    end
+
     config.after_initialize do |app|
       app.routes.append{ match '*a', :to => 'application#render_404' } unless config.consider_all_requests_local
     end

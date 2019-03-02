@@ -1,17 +1,19 @@
 import Splash from './splash'
 import { connect } from 'react-redux';
-import { fetchPins } from '../../actions/board_pin_actions';
+import { fetchPins, fetchBoards } from '../../actions/board_pin_actions';
 
 const msp = state => {
+    debugger
     return {
-        pins: Object.values(state.entities.pins),
-        userId: Object.values(state.entities.users)[0].id
+        userId: Object.values(state.entities.users)[0].id,
+        pins: Object.values(state.entities.pins)
     }
 }
 
 const mdp = dispatch => {
     return {
-        fetchPins: boardId => dispatch(fetchPins(boardId))
+        fetchPins: id => dispatch(fetchPins(id)),
+        fetchBoards: userId => dispatch(fetchBoards(userId))
     }
 }
 

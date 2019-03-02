@@ -28,12 +28,5 @@ module.exports = {
             }
         ]
     },
-    devtool: 'inline-source-map',
-    plugins: [
-        new CopyWebpackPlugin([
-            { from: './app/assets/images/logo.png' },
-        ],
-        new FaviconsWebpackPlugin('logo.png')),
-        new HtmlWebpackPlugin()
-    ]
+    devtool: 'inline-source-map'
 };
