@@ -1,6 +1,8 @@
 class Api::PinsController < ApplicationController
     def index
         @pins = Pin.all
+        
+        
     end
 
     def create
