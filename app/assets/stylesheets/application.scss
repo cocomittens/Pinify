@@ -14,14 +14,16 @@
  *= require_self
  */
 
- /* Greeting Container */
-
-@import url('./reset.scss');
-@import url('./header.scss');
-@import url('./edit_profile.scss');
-@import url('./api/*');
+@import 'reset.scss';
+@import 'api/*';
 
 
 
+@import 'edit_profile.scss';
+@import 'form.scss';
+
+
+
+@import 'header.scss';
 
 
