@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'rubysl-securerandom'
 gem "non-stupid-digest-assets"
+gem "aws-sdk-s3"
 
 
 # Use ActiveStorage variant

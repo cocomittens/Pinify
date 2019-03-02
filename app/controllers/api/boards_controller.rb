@@ -8,7 +8,7 @@ class Api::BoardsController < ApplicationController
         if @board.save
             render :show
         else
-            render json: {errors: "Invalid entry"}, status: :not_found
+            render json: @board.errors.full_messages, status: :unprocessable_entity
         end
     end
 
@@ -25,7 +25,7 @@ class Api::BoardsController < ApplicationController
         if @board.update(board_params)
             render :show
         else
-            render json: {errors: "Invalid entry"}, status: :not_found
+            render json: @board.errors.full_messages, status: :unprocessable_entity
         end
     end
 

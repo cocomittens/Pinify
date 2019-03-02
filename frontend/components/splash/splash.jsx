@@ -4,17 +4,19 @@ import { Link } from 'react-router-dom';
 
 class Splash extends React.Component {
     componentDidMount() {
-        this.props.fetchPins(this.props.userId)
+        this.props.fetchPins(1)
+        debugger
     }
 
     render() {
-
-        let list = (<div className="grid" data-masonry='{ "columnWidth": 80, "itemSelector": ".grid-item" }'>
+        
+        let list = (<div className="grid">
                 {this.props.pins.map(pin => {
+                    let title = pin.title ? pin.title : null;
                     return (
                         <div className="pinWrapper">
-                            <div className="pinImgWrapper"><img className="pin" key={pin.id}  src={pin.link_url} /></div>
-                            <div className="pinText">{pin.title}</div>
+                            <div className="pinImgWrapper"><img src={pin.photoUrl}></img></div>
+                            <div className="pinText">{title}</div>
                         </div>
                     )
                 })}

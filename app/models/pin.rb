@@ -13,6 +13,7 @@
 
 class Pin < ApplicationRecord
     validates :author_id, presence: true
-    has_many :pinned_boards
-    has_many :boards, through: :pinned_boards
+    has_many :pins_boards
+    has_many :boards, :through => :pins_boards
+    has_one_attached :photo
 end

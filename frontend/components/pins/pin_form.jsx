@@ -6,25 +6,39 @@ class Pin extends React.Component {
         super(props);
         this.state = props.pin;
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFile = this.handleFile.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.action(this.state);
-        let path = `/`;
-        this.props.history.push(path);
+        const fd = new FormData();
+        fd.append('pin[author_id]', this.state.author_id);
+        fd.append('pin[title]', this.state.title);
+        fd.append('pin[link_url]', this.state.link_url);
+        fd.append('pin[photo]', this.state.photoFile);
+        this.props.action(fd);
+        debugger
+        // let path = `/boards/${this.props.board_id}`;
+        // this.props.history.push(path);
     }
 
+    handleFile(e) {
+        e.preventDefault();
+        const file = e.currentTarget.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            this.setState({ photoFile: file, photoUrl: fileReader.result });
+        };
+        if (file) {
+            fileReader.readAsDataURL(file);
+        }
+    }
     updateTitle(e) {
         this.setState({title: e.target.value});
     }
 
     updateLink(e) {
         this.setState({link_url: e.target.value})
-    }
-
-    updateImage(e) {
-        this.setState({ image_url: e.target.value })
     }
 
     render() {
@@ -57,6 +71,8 @@ class Pin extends React.Component {
                                 onChange={this.updateLink.bind(this)}
                                 placeholder="www.google.com"
                             /></label>
+
+                                <input type="file" onChange={this.handleFile}></input>
                             
                             <div className="buttonsContainer">
                                 <button onClick={this.handleSubmit}>{this.props.formType}!</button>

@@ -11,6 +11,6 @@
 
 class Board < ApplicationRecord
     validates :author_id, :title, presence: true
-    has_many :pinned_boards
-    has_many :pins, through: :pinned_boards
+    has_many :pins_boards
+    has_many :pins, :through => :pins_boards
 end

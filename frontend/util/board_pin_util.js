@@ -25,11 +25,13 @@ export const fetchBoard = id => {
         url: `api/boards/${id}`
     })
 }
-export const createPin = pin => {
+export const createPin = formData => {
     return $.ajax({
         method: 'POST',
         url: 'api/pins',
-        data: { pin }
+        data: formData,
+        contentType: false,
+        processData: false
     })
 }
 
@@ -41,11 +43,13 @@ export const createBoard = board => {
     })
 }
 
-export const updatePin = pin => {
+export const updatePin = formData => {
     return $.ajax({
         method: 'PATCH',
         url: `api/pins/${pin.id}`,
-        data: { pin }
+        data: formData,
+        contentType: false,
+        processData: false
     })
 }
 
@@ -57,4 +61,10 @@ export const updateBoard = board => {
     })
 }
 
-window.updatePin = updatePin
+
+export const createPinnedBoard = pb => {
+    return $.ajax({
+        method: 'POST',
+        url: 'api/pinnedboards'
+    })
+}
