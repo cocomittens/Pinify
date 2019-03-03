@@ -1,6 +1,7 @@
-.headingsContainer {
-    width: 300px;
+.formContainer .headingsContainer {
+    width: 320px;
     text-align: center;
+
 }
 
 .headingsContainer .logo {
@@ -8,13 +9,14 @@
 }
 
 .headingsContainer h1 {
-    font-size: 35px;
-    margin-bottom: 10px;
+    font-size: 30px;
+    margin-bottom: 15px;
 }
 
 .headingsContainer h2 {
     font-size: 16px;
     font-weight: lighter;
+    margin-bottom: 5px;
 }
 
 .formContainer {
@@ -52,11 +54,25 @@
 
 
 .sessionErrors {
-    color: orange;
+    color: #E3780C;
     margin: 0;
     padding: 0;
+    width: 300px;
+ 
+
 }
 
+.sessionErrors li {
+    font-weight: lighter;
+    margin: 5px;
+    text-align: center;
+    list-style: none;
+}
+
+.sessionErrors li:first-child {
+    margin-top: 0;
+
+}
 
 
 .buttonsContainer {

@@ -79,7 +79,9 @@ class SessionForm extends React.Component {
                             <h2>Access Pinify's best ideas with a free account</h2>
                             
                         </div>
-                        <span className="sessionErrors">{this.props.errors}</span>
+                        <ul className="sessionErrors">{this.props.errors.map((error, idx) => {
+                            return (<li key={idx}>{error}</li>)
+                        })}</ul>
 
                         <form onSubmit={this.handleSubmit}>
                         {username}

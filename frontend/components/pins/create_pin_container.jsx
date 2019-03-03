@@ -7,7 +7,7 @@ const msp = state => {
     let userId = Object.values(state.entities.users)[0].id;
     
     return {
-        pin: {title: "", link_url: "", author_id: userId, board_id: 2, photoFile: null, photoUrl: null},
+        pin: {title: "", link_url: "", author_id: userId, board_id: 1, photoFile: null, photoUrl: null},
         formType: 'Create Pin',
     }
 }

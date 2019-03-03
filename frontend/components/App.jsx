@@ -5,6 +5,7 @@ import SplashContainer from './splash/splash_container';
 import EditProfileContainer from './profiles/edit_profile_container';
 import CreatePinContainer from './pins/create_pin_container';
 import EditPinContainer from './pins/edit_pin_container';
+import UserProfileContainer from './profiles/user_profile_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch, Redirect } from 'react-router-dom'
 
@@ -17,6 +18,7 @@ const App = () => (
         <ProtectedRoute exact path="/edit" component={EditProfileContainer} />
         <ProtectedRoute exact path="/pin/new" component={CreatePinContainer} />
         <ProtectedRoute path="/pin/:pinId/edit" component={EditPinContainer} />
+        <ProtectedRoute path="/users/:username" component={UserProfileContainer} />
         <Redirect to="/" />
     </Switch>
 );

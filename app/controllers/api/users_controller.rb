@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
             login!(@user)
             render :show
         else
-            render json: {errors: "Invalid entry"}, status: :not_found
+            render json: @user.errors.full_messages, status: :not_found
         end
     end
 
@@ -28,6 +28,6 @@ class Api::UsersController < ApplicationController
 
     private
     def user_params
-        params.fetch(:user, {}).permit(:username, :email, :password, :first_name, :last_name)
+        params.fetch(:user, {}).permit(:username, :email, :password, :first_name, :last_name, boards: [])
     end
 end
