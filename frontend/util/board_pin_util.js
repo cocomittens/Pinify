@@ -20,7 +20,6 @@ export const fetchPin = id => {
 }
 
 export const fetchBoard = id => {
-    
     return $.ajax({
         method: 'GET',
         url: `api/boards/${id}`
