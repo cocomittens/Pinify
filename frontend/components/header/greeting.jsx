@@ -26,9 +26,9 @@ class Greeting extends React.Component {
                 <Link to="/"><i className="fab fa-pinterest logo fa-2x"></i></Link>
             </div>
             <div id="rightnav">
-                    <Link to="/"><h1 className="active">Home</h1></Link>
+                    <Link to="/"><h1 className="home active">Home</h1></Link>
                 <div id="nameContainer">
-                    <h1><span className="circle">{name.slice(0,1).toUpperCase()}</span>{name}</h1>
+                        <h1><span className="circle">{name.slice(0,1).toUpperCase()}</span>{name}</h1>
                 </div>
                 
                 <div className="dropdown">

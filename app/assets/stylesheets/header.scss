@@ -4,6 +4,7 @@ header {
      justify-content: space-between;
      align-items: center;
      border-bottom: 1px solid #ededed;
+     height: 54px;
  }
 
  header *:hover {
@@ -20,15 +21,26 @@ button:hover {
     border: none;
     cursor: pointer;
     border-radius: 50%;
+    font-size: 29px;
+    margin-left: 10px;
 }
 
-#leftnav:hover .logo, #nameContainer:hover, #rightnav h1:hover {
+#leftnav:hover .logo, #nameContainer h1:hover, .home:hover {
   background-color: #f1f1f1;
+height: 30px;
 
 }
 
-#rightnav > *:hover {
+#nameContainer h1 {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.home:hover, #nameContainer h1:hover {
     border-radius: 20px;
+    height: 25px;
+    
 }
 
 #rightnav .active {
@@ -41,20 +53,25 @@ button:hover {
     align-items: center;
 }
 
-#rightnav h1 {
-    padding: 12px;
+.home{
+    padding: 10px;
     border-radius: 20px;
+    color: #8E8E8E;
+    display: flex;
+    align-items: center;
+}
+
+#rightnav a {
+    text-decoration: none;
 }
 
 #rightnav > * {
-    margin-right: 10px;
+    color: #8E8E8E;
 }
 
-#rightnav .profilePic{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
+
+
+
 
 /* Dropdown Menu */
 .dropbtn {
@@ -97,14 +114,32 @@ button:hover {
     border-radius: 5px;
 }
 
-#rightNav #nameContainer {
-    width: 120px;
+
+
+.circle {
+    display:inline-block;
+    background: #8E8E8E;
+    color: #fff;
+    border-radius:50%;
+    border:2px solid;
+    margin-right: 7px;
+    font-size:10px;
+    font-weight: lighter;
 }
 
-#rightnav a {
-    text-decoration: none;
+.circle:before,
+.circle:after {
+    content:'\200B';
+    display:inline-block;
+    line-height:0px;
+
+    padding-top:50%;
+    padding-bottom:50%;
 }
 
-#rightnav h1 {
-    color: #8E8E8E;
+.circle:before {
+    padding-left:7px;
+}
+.circle:after {
+    padding-right:7px;
 }

@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 class Splash extends React.Component {
 
     componentDidMount() {
-        this.props.fetchPins(1);
+        this.props.fetchPins(2);
         
     }
 
     render() {
-        this.props.fetchPins(1);
         
         let pins = (this.props.pins) ? this.props.pins : []; 
         

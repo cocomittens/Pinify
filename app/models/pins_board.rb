@@ -10,6 +10,7 @@
 #
 
 class PinsBoard < ApplicationRecord
+    validates :pin_id, :board_id, presence: true
     belongs_to :pin
     belongs_to :board
 end
