@@ -9,6 +9,8 @@ const msp = (state, ownProps) => {
         errors: state.errors,
         username: ownProps.match.params.username,
         id: user.id,
+        firstName: user.first_name,
+        lastName: user.last_name,
         boards: Object.values(state.entities.boards)
     })
 }

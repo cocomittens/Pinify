@@ -2,3 +2,76 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.userProfileContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #333;
+}
+
+.profileHeader {
+    height: 250px;
+    width: 800px;
+    display: flex;
+    align-items: space-between;
+    flex-wrap: wrap;
+}
+
+.profileHeader div{
+    width: 100%;
+}
+
+.profileHeader h1{
+    font-size: 32px;
+    
+}
+
+.profileContent {
+    width: 1000px;
+}
+
+.boardTitle{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 3px;
+}
+
+.numPins{
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+.profileHeaderTop {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.profileHeaderTop .dropdown {
+    width: 50px;
+    height: 50px;
+}
+
+.profileHeaderBottom .headerLinkText {
+ padding: 10px 15px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    color: #8E8E8E;
+    display: flex;
+    align-items: center;
+    width: 50px;
+    display: inline;
+    font-weight: bold;
+}
+
+.profileHeaderBottom .headerLinkText:hover {
+    border-radius: 20px;
+    width: 50px;
+     background-color: #f1f1f1;
+}
+
+
+.profileHeader .active {
+    color: #333;
+}
