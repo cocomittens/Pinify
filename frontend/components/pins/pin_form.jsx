@@ -21,7 +21,7 @@ class Pin extends React.Component {
         let path = `/`;
         this.props.history.push(path);
     }
-
+ 
     handleFile(e) {
         e.preventDefault();
         const file = e.currentTarget.files[0];
@@ -49,21 +49,30 @@ class Pin extends React.Component {
             <div className="containerContainer">
 
                 <div className="formContainer">
-                    <div className="headingsContainer">
-                        <div id="headings">
-                            <h1>{this.props.formType}</h1>
-                            <h2>Pins are kinda like the point of this site, make one here !</h2>
-                        </div>
+                    <form id="createPinForm">
+                    <div id="leftCreateForm">
+                    <div class="fileContainer">
+                        <input type="file" onChange={this.handleFile}></input>
+                                    </div>
                     </div>
 
-                    <form id="createPinForm">
-                        <label>Title<br></br>
-                            <input
-                                value={this.state.title}
-                                type="text"
-                                onChange={this.updateTitle.bind(this)}
-                                placeholder="Cool stuff"
-                            /></label>
+                    <div id="rightCreateForm">
+                        <div id="rightTopCreateForm">
+                        <div className="buttonsContainer">
+                            <button onClick={this.handleSubmit}>Save!</button>
+                        </div>
+                        
+                        <input
+                            id="createTitle"
+                            value={this.state.title}
+                            type="text"
+                            onChange={this.updateTitle.bind(this)}
+                            placeholder="Add a title"
+                                        />
+
+                        <textarea
+                            placeholder="Say more about this pin"></textarea>
+                        </div>
                         <label>Link URL<br></br>
                             <input
                                 value={this.state.link_url}
@@ -71,17 +80,13 @@ class Pin extends React.Component {
                                 onChange={this.updateLink.bind(this)}
                                 placeholder="www.google.com"
                             /></label>
-
-                                <input type="file" onChange={this.handleFile}></input>
-                            
-                            <div className="buttonsContainer">
-                                <button onClick={this.handleSubmit}>{this.props.formType}!</button>
-                            </div>
+                        </div>  
                         
                     </form>
+                    </div>
                 </div>
             </div>
-                </div></div>
+        </div>
         )
     }
 }
