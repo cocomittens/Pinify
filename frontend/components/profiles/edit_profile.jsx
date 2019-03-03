@@ -1,5 +1,6 @@
 import React from 'react';
 import GreetingContainer from '../header/greeting_container';
+import { Link } from 'react-router-dom';
 
 class EditProfile extends React.Component {
 
@@ -38,11 +39,11 @@ class EditProfile extends React.Component {
                     <div className="headingsContainer">
                     <div id="headings">
                         <h1>Edit profile</h1>
-                        <h2>People on Pinterest will get to know you with the info below</h2>
+                        <h2>People on Pinify will get to know you with the info below</h2>
 
                     </div>
                         <div className="buttonsContainer">
-                            <button onClick={this.handleSubmit}>Done</button>
+                            <button id="doneBtn" onClick={this.handleSubmit}>Done</button>
                         </div>
                     </div>
                     
@@ -69,10 +70,22 @@ class EditProfile extends React.Component {
                                     onChange={this.updateUsername.bind(this)}
                                 
                                 /></label>
-                        
+                            
+                            <label>About your profile<br></br>
+                                <textarea
+
+                                    placeholder="Write a little about yourself here"
+                                /></label>
+                            <label id="editLocation">Location<br></br>
+                                <input
+                                type="text"
+                                placeholder ="E.g. San Francisco, CA"
+                                /></label>
                     </form>
                 </div>
+
             </div>
+                <Link to="/pin/new"><div className="addPinBtnContainer"><button className="addPinBtn"><span>+</span></button></div></Link>
             </div>
         )
     }

@@ -25,6 +25,7 @@
 .pinWrapper:hover, .pinText {
   opacity: 1;
   border-radius: 10px;
+  
 }
 
 
@@ -74,10 +75,18 @@
   background: none;
   font-size: 28px;
   border: none;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addPinBtn span {
+  margin-bottom: 4px;
+  color: #454545;
 }
 
 .addPinBtnContainer {
-  display:flex;
+   display:flex;
   justify-content: center;
   align-items: center;
   width: 40px;
@@ -85,11 +94,11 @@
   position: fixed;
   bottom: 40px;
   right: 40px;
-  color: #333;
+
   border-radius: 50%;
-  -webkit-box-shadow: 0px 1px 3px 1px rgba(204,204,204,1);
-  -moz-box-shadow: 0px 1px 3px 1px rgba(204,204,204,1);
-  box-shadow: 0px 1px 3px 1px rgba(204,204,204,1);
+  -webkit-box-shadow: 0px 1px 0px 1px rgba(204,204,204,.8);
+  -moz-box-shadow: 0px 1px 0px 1px rgba(204,204,204,.8);
+  box-shadow: 0px 1px 0px 1px rgba(204,204,204,.8);
 }
 
 .addPinBtnContainer:hover{

@@ -39,7 +39,7 @@ class Splash extends React.Component {
                     {list}
                 
                     
-                <Link to="/pin/new"><div className="addPinBtnContainer"><button className="addPinBtn">+</button></div></Link>
+                <Link to="/pin/new"><div className="addPinBtnContainer"><button className="addPinBtn"><span>+</span></button></div></Link>
                     
             </div>
         )

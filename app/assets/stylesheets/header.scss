@@ -31,11 +31,17 @@ height: 30px;
 
 }
 
+
+
+
 #nameContainer h1 {
-    display: flex;
+padding: 10px;
+ display: flex;
+    justify-content: flex-start;
     align-items: center;
-    padding: 10px;
 }
+
+
 
 .home:hover, #nameContainer h1:hover {
     border-radius: 20px;
@@ -44,7 +50,7 @@ height: 30px;
 }
 
 #rightnav .active {
-    color: black;
+    color: #333;
 }
 
 #rightnav {
@@ -54,7 +60,7 @@ height: 30px;
 }
 
 .home{
-    padding: 10px;
+    padding: 10px 15px;
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
     border-bottom-left-radius: 50%;

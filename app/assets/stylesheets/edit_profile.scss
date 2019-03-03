@@ -34,6 +34,7 @@
 #editProfileContainer .buttonsContainer {
     width: 70px;
     margin: 0;
+    margin-right: 60px;
 }
 
 #editProfileContainer #editUsername input{
@@ -47,11 +48,16 @@
     margin: 0;
 }
 
-#editProfileContainer input {
-    width: 290px;
+#editForm label {
+    margin:10px 4px;
 }
 
-#editProfileContainer button {
+#editProfileContainer input {
+    width: 270px;
+    
+}
+
+#doneBtn {
     width: 70px;
     height: 40px;
     font-size: 16px;
@@ -63,7 +69,24 @@
     margin-top: 30px;
 }
 
-#editProfileContainer button:hover {
+#doneBtn:hover {
     background: #AD081B;
     color: #fff;
+}
+
+#editLocation input {
+    width: 565px;
+}
+
+#editProfileContainer textarea {
+    width: 565px;
+    height: 92px;
+    border-radius: 5px;
+    margin-left: 0;
+    font-size: 16px;
+    font-family: Helvetica;
+    font-weight: lighter;
+    padding-left: 15px;
+    padding-top: 15px;
+    border: 1px solid  #8E8E8E;
 }
