@@ -1,3 +1,76 @@
 // Place all the styles related to the Api::Boards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#boardForm .containerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.6), 
+      rgba(0, 0, 0, 0.6)
+    ),
+}
+
+#boardForm button {
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: normal;
+    margin-right: 10px;
+}
+
+#boardForm h1 {
+    font-size: 24px;
+    font-weight: normal;
+    padding: 10px;
+    font-weight: bold;
+    
+}
+
+#boardForm .formContainer {
+    padding: 0;
+    width: 540px;
+}
+
+#boardForm label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+    margin: 0;
+    padding: 20px 10px;
+}
+
+#boardForm label span{
+    font-size: 14px;
+}
+
+#boardForm input {
+    width: 350px;
+}
+
+#boardForm .headingsContainer {
+    width: 100%;
+    border-bottom: 1px solid #efefef;
+    margin-bottom: 0;
+}
+
+#boardForm form {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#boardForm .buttonsContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#boardForm {
+    color: #333;
+}

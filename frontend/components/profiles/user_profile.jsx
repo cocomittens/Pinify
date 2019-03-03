@@ -22,7 +22,23 @@ class UserProfile extends React.Component {
 
     render() {
         let boards = (this.props.boards) ? this.props.boards : []; 
-        
+        let list = (<div className="grid">{
+            boards.map(board => {
+                return (
+                    <div className="boardWrapper">
+                        <img className="boardImg" />
+                        <div className="boardText"></div>
+                        <div className="boardTitle">
+                            {board.title}
+                        </div>
+                        <div className="numPins">
+                            {board.pins.length} Pins
+                         </div>
+                    </div>
+                )
+            })
+        }
+        </div>)
         return (
             <div>
                 <GreetingContainer />
@@ -30,51 +46,40 @@ class UserProfile extends React.Component {
                 <div className="profileHeader">
                 <div className="profileHeaderTop">
                 <div className="dropdown">
-                                <i onClick={this.toggleClass} className="dropbtn fas fa-plus fa-lg"></i>
+                    <i onClick={this.toggleClass} className="dropbtn fas fa-plus fa-lg"></i>
 
-                                {this.state.active
-                                    ? (
-                                        <ul className='dropdown-content'>
-                                            <Link to="/pin/new">Create pin</Link>
+                    {this.state.active
+                        ? (
+                            <ul className='dropdown-content'>
+                                <Link to="/pin/new">Create pin</Link>
+                                <Link to="/board/new">Create board</Link>
+                            </ul>
+                        ) : (null)}
+                    </div>
+        
+                    <div className="dropdown">
+                        <Link to="/edit">
+                        <i className="dropbtn fas fa-edit fa-lg"></i>
+                        </Link>
 
-                                        </ul>
-                                    ) : (null)}
-                            </div>
-             
-                            <div className="dropdown">
-
-                                <i className="dropbtn fas fa-edit fa-lg"></i>
-
-
-                            </div>
-                        
+                    </div>
+                            
                     </div>
 
                 <div className="profileHeaderMid">
-                <h1>{this.props.firstName} {this.props.lastName}</h1>
+                    <h1>{this.props.firstName} {this.props.lastName}</h1>
                 </div>
 
                 <div className="profileHeaderBottom">
-                            <span className="headerLinkText active">Boards</span>
-                            <span className="headerLinkText">Pins</span>
+                    <span className="headerLinkText active">Boards</span>
+                    <span className="headerLinkText">Pins</span>
 
                 
                 </div>
                     </div>
                 <div className="profileContent">
                 
-                {boards.map(board => {
-                    return (
-                    <div className="boardInfo">
-                    <p class="boardTitle">
-                        {board.title}
-                    </p>
-                    <p class="numPins">
-                        {board.pins.length} Pins
-                    </p>
-                        </div>
-                    )
-                })}
+                            {list}
                 
                     </div>
                 </div>

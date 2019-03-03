@@ -8,7 +8,7 @@ class Splash extends React.Component {
         this.props.fetchPins(2);
         
     }
-
+ 
     render() {
         
         let pins = (this.props.pins) ? this.props.pins : []; 
