@@ -28,7 +28,7 @@ class Greeting extends React.Component {
             <div id="rightnav">
                     <Link to="/"><h1 className="home active">Home</h1></Link>
                 <div id="nameContainer">
-                        <Link to={`/users/${user.username}`}><h1><span className="circle">{name.slice(0, 1).toUpperCase()}</span><span>{name}</span></h1></Link>
+                        <Link to={`/users/${user.username}`}><h1><span className="circle">{name.slice(0, 1).toUpperCase()}</span><span class="headerLinkText">{name}</span></h1></Link>
                 </div>
                 
                 <div className="dropdown">
