@@ -14,18 +14,32 @@
 
 .pinWrapper {
 	margin: 0 2px 5px;
-	padding: 8px;
-	padding-bottom: 5px;
-
+  padding: 5px;
+  padding-bottom: 10px;
   display: inline-block;
   border-radius: 10px;
   cursor: pointer;
   position:relative;
 }
 
+.pinWrapper:hover, .pinText {
+  opacity: 1;
+  border-radius: 10px;
+}
 
 
-.pinWrapper:hover:after {
+
+.pinImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+
+
+.pinWrapper:hover .pinText {
   content: '';
   top: 0;
   left: 0;
@@ -35,22 +49,17 @@
   display: block;
   position: absolute;
   background: #aaa;
-  opacity: 0.2;
+  opacity: 0.4;
   border-radius: 10px;
-
-
+    transition: .5s ease;
 }
 
-.pinText {
+.pinTitle {
+  margin-top: 5px;
+   margin-left: 10px;
   font-weight: bold;
-  margin: 4px;
-}
-.pinWrapper img {
-	width: 100%; height: auto;
-  margin-bottom: 5px;
-  border-radius: 10px;
-  margin: 0 auto;
-
+  display: flex;
+  justify-content: space-between;
 }
 
 

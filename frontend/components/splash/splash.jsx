@@ -16,12 +16,17 @@ class Splash extends React.Component {
         let list = (<div className="grid">
                 {pins.map(pin => {
                     
-                    let title = pin.title ? pin.title : null;
+                let title = pin.title ? pin.title : null;
                     return (
+                    
                         <div className="pinWrapper" key={pin.id}>
-                            <div className="pinImgWrapper"><img src={pin.photoUrl}></img></div>
-                            <div className="pinText">{title}</div>
-                        </div>
+                            <img src={pin.photoUrl} className="pinImg" />
+                            <div className="pinText"></div>
+                                <div className="pinTitle">
+                                <span>{title}</span>
+                                <span>...</span>
+                                </div>
+                            </div>
                     )
                 })}
             </div>

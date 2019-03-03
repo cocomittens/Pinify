@@ -39,7 +39,7 @@ height: 30px;
 
 .home:hover, #nameContainer h1:hover {
     border-radius: 20px;
-    height: 25px;
+    height: 20px;
     
 }
 
@@ -55,7 +55,10 @@ height: 30px;
 
 .home{
     padding: 10px;
-    border-radius: 20px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-left-radius: 50%;
     color: #8E8E8E;
     display: flex;
     align-items: center;
