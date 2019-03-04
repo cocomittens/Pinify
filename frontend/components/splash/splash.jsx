@@ -23,7 +23,6 @@ class Splash extends React.Component {
                         <div className="pinText"></div>
                             <div className="pinTitle">
                             <span>{title}</span>
-                            <span>...</span>
                             </div>
                         </div>
                     )
