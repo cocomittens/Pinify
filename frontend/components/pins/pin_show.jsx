@@ -16,6 +16,7 @@ class PinShow extends React.Component {
     render() {
         let photo = (this.props.pin) ? ( <img src={this.props.pin.photoUrl} /> ) : null;
         let redirect = (this.state.deleted) ? (<Redirect to="/" /> ): null;
+        this.props.fetchPin(this.props.pinId);
         return (
             <div className="pinShowPage">
                 <GreetingContainer />
