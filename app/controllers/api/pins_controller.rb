@@ -34,7 +34,12 @@ class Api::PinsController < ApplicationController
     end
 
     def destroy
-        
+        @pin = Pin.find(params[:id])
+        if @pin.destroy
+            redirect_to '/'
+        else
+            render json: {errors: "Cannot delete pin"}, status: :unprocessable_entity
+        end
     end
 
     private

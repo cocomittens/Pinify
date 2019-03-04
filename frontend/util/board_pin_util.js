@@ -60,3 +60,4 @@ export const updateBoard = board => {
         data: { board }
     })
 }
+

@@ -30,7 +30,12 @@ class Api::BoardsController < ApplicationController
     end
 
     def destroy
-        
+        @board = Board.find(params[:id])
+        if @board.destroy
+            redirect_to '/'
+        else
+            render json: {errors: "Cannot delete board"}, status: :unprocessable_entity
+        end
     end
 
     private
