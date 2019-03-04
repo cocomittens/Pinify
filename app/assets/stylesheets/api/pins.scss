@@ -155,16 +155,23 @@
   
 }
 
-#rightCreateForm input, #rightCreateForm textarea {
+#rightCreateForm input, 
+#rightCreateForm textarea {
   color: #8E8E8E;
   width: 395px;
- 
 }
+
+#rightCreateForm input::placeholder,
+#rightCreateForm textarea::placeholder{
+   color: #8E8E8E;
+}
+
 
 #createPinForm textarea {
   border: none;
   font-size: 18px;
   font-weight: lighter;
+  height: 200px;
 }
 
 #rightCreateForm {
@@ -212,10 +219,10 @@
 }
 
 #leftCreateForm .previewImg {
-  max-width: 300px;
+  max-width: 340px;
   height: auto;
   align-self: flex-start;
-  margin-top: 60px;
+  margin-top: 70px;
   border-radius: 10px;
 }
 
@@ -228,6 +235,9 @@
 	z-index: -1;
 }
 
+.fileTextContainer .fileText {
+  color: #454545;
+}
 
 .inputfile + label {
   cursor: pointer; /* "hand" cursor */
@@ -251,5 +261,6 @@
   width: 200px;
 }
 
-
-
+#rightCreateForm #chooseBoard::placeholder {
+  color: #333;
+}
