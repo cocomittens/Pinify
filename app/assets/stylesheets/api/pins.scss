@@ -106,36 +106,44 @@
 
 /* Create Pin Form */
 
-.pinFormContainer .containerContainer {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 50px;
-    background-color: #fff;
+.pinFormContainer {
+  background: #EFEFEF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .pinFormContainer .containerContainer {
   background: #EFEFEF;
-  height: 100vh;
+  height: 600px;
   padding: 17px;
+  display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .pinFormContainer .formContainer  {
   width: 880px;
   height: 600px;
   padding: 0;
+  border-radius: 10px;
 }
 
 .pinFormContainer .buttonsContainer {
   justify-content: flex-end;
-  margin: 0;
+
+  margin-top: 15px;
+  margin-left: 7px;
   margin-bottom: 20px;
 }
 
 .pinFormContainer .buttonsContainer button {
   width: 80px;
   height: 40px;
-  
+  color: #FFF;
+  font-size: 16px;
+  font-weight: normal;
 }
 
 #createPinForm {
@@ -148,7 +156,8 @@
 
 #rightCreateForm input, #rightCreateForm textarea {
   color: #8E8E8E;
-  width: 350px;
+  width: 395px;
+ 
 }
 
 #createPinForm textarea {
@@ -160,7 +169,7 @@
 #rightCreateForm {
   display: flex;
   flex-wrap: wrap;
-   width: 400px;
+   width: 430px;
   height: 100%;
   justify-content: flex-start;
   align-content: space-between;
@@ -168,8 +177,9 @@
 }
 
 #rightTopCreateForm {
-  width: 400px;
-  
+  width: 100%;
+  margin: 0;
+
 }
 
 #createTitle {
@@ -187,7 +197,7 @@
 #leftCreateForm .fileContainer {
   background: #EFEFEF;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 #leftCreateForm input {
@@ -198,7 +208,10 @@
   margin: 0;
 }
 
-.previewImg {
+#leftCreateForm .previewImg {
   max-width: 300px;
   height: auto;
+  align-self: flex-start;
+  margin-top: 60px;
+  border-radius: 10px;
 }

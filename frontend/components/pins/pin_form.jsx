@@ -82,7 +82,7 @@ class Pin extends React.Component {
                     <div id="rightCreateForm">
                         <div id="rightTopCreateForm">
                         <div className="buttonsContainer">
-                            <button onClick={this.handleSubmit}>Save!</button>
+                            <button onClick={this.handleSubmit}>Save</button>
                         </div>
                         
                         <input
