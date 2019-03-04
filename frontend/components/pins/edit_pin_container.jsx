@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import GreetingContainer from '../header/greeting_container';
 import { updatePin, fetchPin, fetchBoards, deletePin } from '../../actions/board_pin_actions';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 const msp = (state, ownParams) => {
     let userId = Object.values(state.entities.users)[0].id;
@@ -31,7 +31,7 @@ class EditPinForm extends React.Component {
     }
 
     handleDelete() {
-        this.props.deletePin(this.props.pinId);
+        this.props.deletePin(this.props.pin.id);
         this.setState({ deleted: true })
     }
 
@@ -45,7 +45,7 @@ class EditPinForm extends React.Component {
                 
                 <div className="editPinContent">
                 {photo}
-                <div className="buttonsContainer"><button onClick={this.handleDelete}>Delete</button></div>
+                        <div className="buttonsContainer"><Link to="/"><button onClick={this.handleDelete}>Delete</button></Link></div>
                 </div>
             </div>
             </div>
