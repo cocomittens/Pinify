@@ -264,3 +264,15 @@
 #rightCreateForm #chooseBoard::placeholder {
   color: #333;
 }
+
+.pinShowPhoto {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.pinShowPhoto img{
+  width: 80vw;
+  height: auto;
+  max-height: 80vh;
+}

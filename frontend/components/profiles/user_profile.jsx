@@ -34,7 +34,6 @@ class UserProfile extends React.Component {
     getImages(board) {
        return (<div className="pinWrapperContainer">
             {board.pins.map(pin => {
-
                 return (
                     <div className="pinWrapper" key={pin.id}>
                         <img src={pin} className="pinImg" />
@@ -44,7 +43,7 @@ class UserProfile extends React.Component {
             })}
         </div>
         )
-    } 
+    }
 
     render() {
         let boards = (this.props.boards) ? this.props.boards : []; 
@@ -64,8 +63,6 @@ class UserProfile extends React.Component {
                     </div>
                 )
               }))
-                
-
             })
             }
         </div>
@@ -76,6 +73,7 @@ class UserProfile extends React.Component {
                 return (
                     
                     <div className="grid">
+                    <Link to={`/board/${board.id}`}>
                     <div className="boardWrapper">
                         <div className="boardImg" >
                             <span>{this.getImages(board)}</span>
@@ -87,7 +85,7 @@ class UserProfile extends React.Component {
                         <div className="numPins">
                             {board.pins.length} Pins
                          </div>
-                    </div></div>
+                            </div></Link></div>
                 )
             })
         }</div>)
@@ -133,9 +131,7 @@ class UserProfile extends React.Component {
                 </div>
                     </div>
                 <div className="profileContent">
-                      
                             {content}
-                
                     </div>
                 </div>
             </div>

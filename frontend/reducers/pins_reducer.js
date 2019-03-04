@@ -7,7 +7,7 @@ const pinsReducer = (state = {}, action) => {
         case RECEIVE_PINS:
             return action.pins;
         case RECEIVE_PIN:
-            return merge({}, state, action.pin)
+            return action.pin;
         default:
             return state;
     }
