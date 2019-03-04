@@ -1,8 +1,22 @@
-.profileContent .grid {
+.profileContent .gridContainer .grid {
 	column-width: 95px;
     width: 320px;
     height: auto;
     margin: 0;
+}
+
+.profileContent {
+    display: flex;
+    justify-content: center;
+}
+
+#userPinGrid {
+   
+	column-width: 260px;
+    width: 90%;
+    height: auto;
+    margin: 0;
+
 }
 
 .gridContainer {

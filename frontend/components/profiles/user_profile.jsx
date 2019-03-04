@@ -14,6 +14,7 @@ class UserProfile extends React.Component {
         this.toggleClass = this.toggleClass.bind(this);
         this.state = {
             active: false,
+            currentPage: 'boards'
         };
     }
 
@@ -21,6 +22,14 @@ class UserProfile extends React.Component {
         const currentState = this.state.active;
         this.setState({ active: !currentState });
     };
+
+    showBoards() {
+        this.setState({currentPage: 'boards'})
+    }
+
+    showPins() {
+        this.setState({currentPage: 'pins'})
+    }
 
     getImages(board) {
        return (<div className="pinWrapperContainer">
@@ -35,20 +44,40 @@ class UserProfile extends React.Component {
             })}
         </div>
         )
-    }
+    } 
+
+  
 
     render() {
-
         let boards = (this.props.boards) ? this.props.boards : []; 
-        
-        
+        let pinList = (<div className="grid" id="userPinGrid">
+            {
+                boards.map(board =>  {
+                return (board.pins.map(pin => {
+                    
+                let title = pin.title ? pin.title : null;
+                return (
+                    <div className="pinWrapper" key={pin.id}>
+                        <img src={pin} className="pinImg" />
+                        <div className="pinText"></div>
+                        <div className="pinTitle">
+                            <span>{title}</span>
+                            <span>...</span>
+                        </div>
+                    </div>
+                )
+              }))
+                
 
-        
-        
-        let list = (<div class="gridContainer">{
+            })
+            }
+        </div>
+    );
+        let boardList = (<div class="gridContainer">{
             boards.map(board => {
 
                 return (
+                    
                     <div className="grid">
                     <div className="boardWrapper">
                         <div className="boardImg" >
@@ -65,6 +94,8 @@ class UserProfile extends React.Component {
                 )
             })
         }</div>)
+        let content = (this.state.currentPage === 'boards') ? boardList : pinList;
+
         
         return (
             <div>
@@ -98,15 +129,15 @@ class UserProfile extends React.Component {
                 </div>
 
                 <div className="profileHeaderBottom">
-                    <span className="headerLinkText active">Boards</span>
-                    <span className="headerLinkText">Pins</span>
+                    <span onClick={this.showBoards.bind(this)}className="headerLinkText active">Boards</span>
+                    <span onClick={this.showPins.bind(this)}className="headerLinkText">Pins</span>
 
                 
                 </div>
                     </div>
                 <div className="profileContent">
                       
-                            {list}
+                            {content}
                 
                     </div>
                 </div>
