@@ -8,19 +8,20 @@ class Pin extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = props.pin;
+        this.state = {pin: props.pin, showBoardList: false};
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
+        
     }
 
     handleSubmit(e) {
         e.preventDefault();
         const fd = new FormData();
-        fd.append('pin[author_id]', this.state.author_id);
-        fd.append('pin[title]', this.state.title);
-        fd.append('pin[link_url]', this.state.link_url);
-        fd.append('pin[photo]', this.state.photoFile);
-        fd.append('pin[board_id]', this.state.board_id)
+        fd.append('pin[author_id]', this.state.pin.author_id);
+        fd.append('pin[title]', this.state.pin.title);
+        fd.append('pin[link_url]', this.state.pin.link_url);
+        fd.append('pin[photo]', this.state.pin.photoFile);
+        fd.append('pin[board_id]', this.state.pin.board_id)
         this.props.action(fd);
         let path = `/`;
         this.props.history.push(path);
@@ -52,20 +53,70 @@ class Pin extends React.Component {
         this.setState({link_url: e.target.value})
     }
 
+    toggleBoardList() {
+        let status = !this.state.showBoardList;
+        this.setState({showBoardList: status})
+        
+    }
+
     render() {
-        let boardNames = this.props.boards.map(board => {
-            return board.title
-        })
+        let boardNames = (
+        <ul>
+        {this.props.boards.map(board => {
+            return <li>{board.title}</li>
+        })}
+            </ul>)
+        
 
         let previewImg;
-        if (this.state.imageFile) {
-            previewImg = <img class="previewImg" src={`${this.state.imageUrl}`}/>
+        if (this.state.pinimageFile) {
+            previewImg = <img className="previewImg" src={`${this.state.pinimageUrl}`}/>
         } else {
             previewImg =(<div className="fileContainer">
                 <input type="file" onChange={this.handleFile}></input>
             </div>)
         }
 
+        let pinForm = (
+            
+
+                <div id="rightCreateForm">
+                    <div id="rightTopCreateForm">
+                        <div className="buttonsContainer">
+                            <button onClick={this.handleSubmit}>Save</button>
+                        </div>
+
+                        <input
+                            id="createTitle"
+                            value={this.state.pin.title}
+                            type="text"
+                            onChange={this.updateTitle.bind(this)}
+                            placeholder="Add a title"
+                        />
+
+                        <textarea
+                            placeholder="Say more about this pin"></textarea>
+                    </div>
+                    <div>
+
+                        <input
+                            value={this.state.pin.link_url}
+                            type="text"
+                            onChange={this.updateLink.bind(this)}
+                            placeholder="Add the URL this pin links to"
+                        />
+                        <input
+                            className="chooseBoard"
+                            type="text"
+                            onClick={this.toggleBoardList.bind(this)}
+                            placeholder="Choose a board (required)"
+                        />
+                    </div>  </div>
+
+          
+        )
+
+        let content = (this.state.showBoardList) ? boardNames : pinForm
         
         return (
             <div>
@@ -74,40 +125,12 @@ class Pin extends React.Component {
             <div className="containerContainer">
  
                 <div className="formContainer">
-                    <form id="createPinForm">
-                    <div id="leftCreateForm">
-                        {previewImg}
-                    </div>
-
-                    <div id="rightCreateForm">
-                        <div id="rightTopCreateForm">
-                        <div className="buttonsContainer">
-                            <button onClick={this.handleSubmit}>Save</button>
-                        </div>
-                        
-                        <input
-                            id="createTitle"
-                            value={this.state.title}
-                            type="text"
-                            onChange={this.updateTitle.bind(this)}
-                            placeholder="Add a title"
-                                        />
-
-                        <textarea
-                            placeholder="Say more about this pin"></textarea>
-                        </div>
-                            <label>Link URL<br></br>
-                            <input
-                                value={this.state.link_url}
-                                type="text"
-                                onChange={this.updateLink.bind(this)}
-                                placeholder="www.google.com"
-                            /></label>
-                        </div>  
-                    
-                    </form>
-                    
-                    </div>
+                            <form id="createPinForm">
+                                <div id="leftCreateForm">
+                                    {previewImg}
+                                </div>
+                    {content}
+                            </form>  </div>
                 </div>
             </div>
         </div>
