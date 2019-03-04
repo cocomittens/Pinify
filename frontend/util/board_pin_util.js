@@ -61,3 +61,16 @@ export const updateBoard = board => {
     })
 }
 
+export const deletePin = pinId => {
+    return $.ajax({
+        method: 'DELETE',
+        url: `api/pins/${pinId}`
+    })
+}
+
+export const deleteBoard = boardId => {
+    return $.ajax({
+        method: 'DELETE',
+        url: `api/boards/${boardId}`
+    })
+}

@@ -3,6 +3,7 @@ import GreetingContainer from '../header/greeting_container';
 
 class Pin extends React.Component {
     componentWillMount() {
+        
         this.props.fetchBoards(this.props.userId)
     }
 

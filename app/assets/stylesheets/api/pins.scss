@@ -279,3 +279,30 @@
 .grid a {
   color: #333;
 }
+
+.editPinContent {
+  width: 600px;
+  height: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.editPinForm {
+  display: flex;
+  justify-content: center;
+}
+
+.editPinForm button {
+  width: 40px;
+  height: 40px;
+}
+
+.editPinImg {
+  width: 600px;
+  height: auto;
+}
+
+.editPinImgContainer {
+  margin-bottom: 30px;
+}

@@ -1,36 +1,54 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PinForm from './pin_form';
-import { updatePin, fetchPin } from '../../actions/board_pin_actions';
+import GreetingContainer from '../header/greeting_container';
+import { updatePin, fetchPin, fetchBoards, deletePin } from '../../actions/board_pin_actions';
 import { withRouter } from 'react-router-dom';
 
 const msp = (state, ownParams) => {
+    let userId = Object.values(state.entities.users)[0].id;
     return {
         pin: state.entities.pins[ownParams.match.params.pinId],
-        formType: 'Edit Pin'
+        formType: 'Edit Pin',
+        boards: Object.values(state.entities.boards),
+        userId
     }
 }
 
 const mdp = dispatch => {
     return {
         fetchPin: id => dispatch(fetchPin(id)),
-        action: pin => dispatch(updatePin(pin))
+        action: pin => dispatch(updatePin(pin)),
+        fetchBoards: userId => dispatch(fetchBoards(userId)),
+        deletePin: pinId => dispatch(deletePin(pinId)) 
     }
 }
 
 class EditPinForm extends React.Component {
     componentDidMount() {
         this.props.fetchPin(this.props.match.params.pinId)
-    
+        this.props.fetchBoards(this.props.userId);
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+
+    handleDelete() {
+        this.props.deletePin(this.props.pinId);
+        this.setState({ deleted: true })
     }
 
     render() {
-        const { action, pin, formType } = this.props;
+        let photo = (this.props.pin) ? (<div className="editPinImgContainer"><img class="editPinImg" src={this.props.pin.photoUrl} /></div>) : null;
         return (
-            <PinForm
-                action={action}
-                pin={pin}
-                formType={formType} />
+            <div>
+                <GreetingContainer />
+            
+            <div className="editPinForm">
+                
+                <div className="editPinContent">
+                {photo}
+                <div className="buttonsContainer"><button onClick={this.handleDelete}>Delete</button></div>
+                </div>
+            </div>
+            </div>
         );
     }
 }

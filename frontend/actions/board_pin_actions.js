@@ -4,6 +4,8 @@ export const RECEIVE_PINS = 'RECEIVE_PINS';
 export const RECEIVE_BOARDS = 'RECEIVE_BOARDS';
 export const RECEIVE_PIN = 'RECEIVE_PIN';
 export const RECEIVE_BOARD = 'RECEIVE_BOARD';
+export const REMOVE_PIN = 'REMOVE_PIN';
+export const REMOVE_BOARD = 'REMOVE_BOARD';
 export const RECEIVE_PIN_BOARD = 'RECEIVE_PIN_BOARD';
 export const RECEIVE_BP_ERRORS = 'RECEIVE_BP_ERRORS';
 
@@ -28,10 +30,23 @@ const receivePin = pin => {
 }
 
 const receiveBoard = board => {
-    
     return {
         type: RECEIVE_BOARD,
         board
+    }
+}
+
+const removePin = pinId => {
+    return {
+        type: REMOVE_PIN,
+        pinId
+    }
+}
+
+const removeBoard = boardId => {
+    return {
+        type: REMOVE_BOARD,
+        boardId
     }
 }
 
@@ -59,7 +74,6 @@ export const fetchPin = id => dispatch => {
 }
 
 export const fetchBoard = id => dispatch => {
-    
     return BPApiUtil.fetchBoard(id)
         .then(board => dispatch(receiveBoard(board)), errors => dispatch(receiveBPErrors(errors)))
 }
@@ -82,4 +96,14 @@ export const updatePin = pin => dispatch => {
 export const updateBoard = board => dispatch => {
     return BPApiUtil.updateBoard(board)
         .then(board => dispatch(receiveBoard(board)), errors => dispatch(receiveBPErrors(errors)))
+}
+
+export const deleteBoard = boardId => dispatch => {
+    return BPApiUtil.deleteBoard(boardId)
+        .then(boardId => dispatch(removeBoard(boardId)), errors => dispatch(receiveBPErrors(errors)))
+}
+
+export const deletePin = pinId => dispatch => {
+    return BPApiUtil.deletePin(pinId)
+        .then(pinId => dispatch(removePin(pinId)), errors => dispatch(receiveBPErrors(errors)))
 }
