@@ -72,8 +72,8 @@ class UserProfile extends React.Component {
 
                 return (
                     
-                    <div className="grid" key={board.id}>
-                    <Link to={`/board/${board.id}`} key={board.id}>
+                    <div className="grid">
+                    <Link to={`/board/${board.id}`}>
                     <div className="boardWrapper">
                         <div className="boardImg" >
                             <span>{this.getImages(board)}</span>
