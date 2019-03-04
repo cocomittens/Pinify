@@ -73,7 +73,19 @@ class Pin extends React.Component {
             previewImg = <img className="previewImg" src={`${this.state.pinimageUrl}`}/>
         } else {
             previewImg =(<div className="fileContainer">
-                <input type="file" onChange={this.handleFile}></input>
+                <input 
+                    type="file" 
+                    id="file" 
+                    name="file"
+                    class="inputfile"
+                    onChange={this.handleFile}>
+                </input>
+                
+                <label for="file"><div class="fileTextContainer">
+                    <i class="fas fa-cloud-upload-alt fa-2x"></i>
+                    <p class="fileText">Drag and drop or click to upload</p>
+                </div></label>
+                
             </div>)
         }
 

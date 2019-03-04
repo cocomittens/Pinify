@@ -42,12 +42,12 @@ class SessionForm extends React.Component {
         if (this.props.path === '/login') {
             return (
                 <Link to="/signup">
-                    <button onClick={this.props.clearErrors} className="switchBtn">Sign Up</button>
+                    <button onClick={this.props.clearErrors} className="switchBtn">Sign up</button>
                 </Link>
             )
         } else {
             return (
-                <Link to="/login"> <button onClick={this.props.clearErrors} className="switchBtn"> Log In</button></Link >
+                <Link to="/login"> <button onClick={this.props.clearErrors} className="switchBtn"> Log in</button></Link >
             )
         }
     }
