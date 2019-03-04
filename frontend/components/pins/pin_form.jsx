@@ -2,6 +2,10 @@ import React from 'react';
 import GreetingContainer from '../header/greeting_container';
 
 class Pin extends React.Component {
+    componentWillMount() {
+        this.props.fetchBoards(this.props.userId)
+    }
+
     constructor(props) {
         super(props);
         this.state = props.pin;
@@ -24,13 +28,20 @@ class Pin extends React.Component {
  
     handleFile(e) {
         e.preventDefault();
+        
         const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
+        
+
         fileReader.onloadend = () => {
-            this.setState({ photoFile: file, photoUrl: fileReader.result });
+            this.setState({ photoFile: file, photoUrl: fileReader.result,
+                imageUrl: fileReader.result, imageFile: file
+             });
         };
         if (file) {
             fileReader.readAsDataURL(file);
+        } else {
+            this.setState({ imageUrl: "", imageFile: null });
         }
     }
     updateTitle(e) {
@@ -42,18 +53,30 @@ class Pin extends React.Component {
     }
 
     render() {
+        let boardNames = this.props.boards.map(board => {
+            return board.title
+        })
+
+        let previewImg;
+        if (this.state.imageFile) {
+            previewImg = <img class="previewImg" src={`${this.state.imageUrl}`}/>
+        } else {
+            previewImg =(<div className="fileContainer">
+                <input type="file" onChange={this.handleFile}></input>
+            </div>)
+        }
+
+        
         return (
             <div>
             <GreetingContainer />
             <div className="pinFormContainer">
             <div className="containerContainer">
-
+ 
                 <div className="formContainer">
                     <form id="createPinForm">
                     <div id="leftCreateForm">
-                    <div class="fileContainer">
-                        <input type="file" onChange={this.handleFile}></input>
-                                    </div>
+                        {previewImg}
                     </div>
 
                     <div id="rightCreateForm">
@@ -73,7 +96,7 @@ class Pin extends React.Component {
                         <textarea
                             placeholder="Say more about this pin"></textarea>
                         </div>
-                        <label>Link URL<br></br>
+                            <label>Link URL<br></br>
                             <input
                                 value={this.state.link_url}
                                 type="text"
@@ -81,8 +104,9 @@ class Pin extends React.Component {
                                 placeholder="www.google.com"
                             /></label>
                         </div>  
-                        
+                    
                     </form>
+                    
                     </div>
                 </div>
             </div>

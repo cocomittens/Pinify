@@ -1,20 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PinForm from './pin_form';
-import { createPin, createPinBoard, fetchPins } from '../../actions/board_pin_actions';
+import { createPin, fetchBoards } from '../../actions/board_pin_actions';
 
 const msp = state => {
     let userId = Object.values(state.entities.users)[0].id;
     
     return {
-        pin: {title: "", link_url: "", author_id: userId, board_id: 1, photoFile: null, photoUrl: null},
+        pin: {title: "", link_url: "", author_id: userId, board_id: 1, photoFile: null, photoUrl: null, 
+            imageUrl: null, imageFile: null},
         formType: 'Create Pin',
+        boards: Object.values(state.entities.boards),
+        userId
     }
 }
 
 const mdp = dispatch => {
     return {
         action: pin => dispatch(createPin(pin)),
+        fetchBoards: userId => dispatch(fetchBoards(userId))
     }
 }
 

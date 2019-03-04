@@ -139,7 +139,7 @@
 }
 
 #createPinForm {
-  justify-content: space-between;
+  justify-content: center;
   width: 880px;
   height: 100%;
   align-content: flex-start;
@@ -196,4 +196,9 @@
   background: #EFEFEF;
   border: 3px dashed #DADADA;
   margin: 0;
+}
+
+.previewImg {
+  max-width: 300px;
+  height: auto;
 }

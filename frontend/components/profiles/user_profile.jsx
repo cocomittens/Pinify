@@ -6,7 +6,7 @@ class UserProfile extends React.Component {
     componentDidMount(){
         this.props.fetchPins(1);
         this.props.fetchBoards(this.props.id);
-
+        this.getImages = this.getImages.bind(this);
     }
 
     constructor(props) {
@@ -22,14 +22,9 @@ class UserProfile extends React.Component {
         this.setState({ active: !currentState });
     };
 
-    render() {
-
-        let boards = (this.props.boards) ? this.props.boards : []; 
-        
-      
-        let firstBoardPins = boards[0] ? boards[0].pins : [];
-        let boardImg = (<div class="pinWrapperContainer">
-            {firstBoardPins.map(pin => {
+    getImages(board) {
+       return (<div className="pinWrapperContainer">
+            {board.pins.map(pin => {
 
                 return (
                     <div className="pinWrapper" key={pin.id}>
@@ -40,6 +35,16 @@ class UserProfile extends React.Component {
             })}
         </div>
         )
+    }
+
+    render() {
+
+        let boards = (this.props.boards) ? this.props.boards : []; 
+        
+        
+
+        
+        
         let list = (<div class="gridContainer">{
             boards.map(board => {
 
@@ -47,7 +52,7 @@ class UserProfile extends React.Component {
                     <div className="grid">
                     <div className="boardWrapper">
                         <div className="boardImg" >
-                            <span>{boardImg}</span>
+                            <span>{this.getImages(board)}</span>
                         </div>
                         <div className="boardText"></div>
                         <div className="boardTitle">
