@@ -111,6 +111,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 93vh;
 }
 
 
@@ -245,11 +246,9 @@
   width: 315px;
   font-size: 16px;
   margin: 0;
-
-   border: 2px dashed #dcdcdc;
+  border: 2px dashed #dcdcdc;
   display: flex;
-    background: #EFEFEF;
-
+  background: #EFEFEF;
   align-items: center;
   text-align: center;
   justify-content: center;

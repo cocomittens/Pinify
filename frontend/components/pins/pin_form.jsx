@@ -69,7 +69,6 @@ class Pin extends React.Component {
         
 
         let previewImg;
-        debugger
         if (this.state.imageFile) {
             previewImg = <img className="previewImg" src={`${this.state.imageUrl}`}/>
         } else {
@@ -90,7 +89,7 @@ class Pin extends React.Component {
             </div>)
         }
 
-        debugger
+        
 
         let pinForm = (
             

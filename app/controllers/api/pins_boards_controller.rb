@@ -16,6 +16,10 @@ class Api::PinsBoardsController < ApplicationController
         @pins_boards = PinsBoard.all
     end
 
+    def destroy
+        @pins_board = PinsBoard.find(params[:id])
+        
+
     private
     def pins_board_params
         params.fetch(:pins_board, {}).permit(:board_id, :pin_id)
