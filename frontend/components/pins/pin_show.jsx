@@ -14,16 +14,20 @@ class PinShow extends React.Component {
     }
 
     render() {
-        let photo = (this.props.pin) ? ( <img src={this.props.pin.photoUrl} /> ) : null;
+        let photo = null, title = null;
         let redirect = (this.state.deleted) ? (<Redirect to="/" /> ): null;
+        
+
+        if (this.props.pin) {
+            photo = (<img src={this.props.pin.photoUrl} />);
+            title = (this.props.pin.title)
+        } 
         this.props.fetchPin(this.props.pinId);
         return (
             <div className="pinShowPage">
                 <GreetingContainer />
-
-            
-
                     <div className="containerContainer">
+                    <Link to="/"> <button class="switchBtn"><i class="fas fa-chevron-left"></i> Home</button></Link>
 
                         <div className="formContainer">
 
@@ -38,7 +42,7 @@ class PinShow extends React.Component {
                         </div>
 
                                 <div class="pinShowContent">
-                                        <h1> title goes here</h1>
+                                        <h1> {title}</h1>
                                     </div>
 
                                 

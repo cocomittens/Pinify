@@ -53,7 +53,12 @@ class EditPinForm extends React.Component {
     }
 
     render() {
-        let photo = (this.props.pin) ? (<div className="editPinImgContainer"><img class="pinShowPhoto" src={this.props.pin.photoUrl} /></div>) : null;
+        let photo = null, pinId = null;
+        if (this.props.pin) {
+            photo = (<div className="editPinImgContainer"><img class="pinShowPhoto" src={this.props.pin.photoUrl} /></div>);
+            pinId = this.props.pin.id;
+        } 
+ 
         return (
             <div id="editPinForm">
                 <GreetingContainer />
@@ -86,7 +91,14 @@ class EditPinForm extends React.Component {
                                 {photo}
                                 </div>
                                 <div className="buttonsContainer"><Link to="/"><button onClick={this.handleDelete}>Delete</button></Link>
-                                <button onClick={this.handleSubmit}>Save</button></div>
+                                
+                                
+                                <div className="rightEditBtns">
+                                        <Link to={`pin/${pinId}`}><button>Cancel</button></Link>
+                                    <button onClick={this.handleSubmit}>Save</button></div>
+
+                                
+                                </div>
                               
                             </form>
                          
