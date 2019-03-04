@@ -366,3 +366,51 @@
   display: flex;
   align-items: flex-start;
 }
+
+.pinShowPage .containerContainer {  display: flex;
+  justify-content: center;
+}
+
+.pinShowPage .formContainer {
+  width: 800px;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.pinShowPage .buttonsContainer button {
+  width: 80px;
+  
+}
+
+.leftPinShowPage a {
+  width: 100%;
+}
+
+.leftPinShowPage {
+  display: flex;
+  margin: 0;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+
+.pinShowPage .buttonsContainer {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+.leftPinShowPage .pinShowPhoto {
+  margin: 0;
+}
+
+.pinShowPage .formContainer {
+  padding: 0;
+}
+
+.pinShowContent h1 {
+  font-size: 24px;
+  margin-top: 100px;
+}

@@ -20,12 +20,36 @@ class PinShow extends React.Component {
         return (
             <div className="pinShowPage">
                 <GreetingContainer />
-                <div className="pinShowPhoto">
-                {photo}
-                </div>
-                <Link to={`/pin/${this.props.pinId}/edit`}>
-                <div class="buttonsContainer"><button>Edit</button></div>
-                </Link>
+
+            
+
+                    <div className="containerContainer">
+
+                        <div className="formContainer">
+
+                        <div className="leftPinShowPage">
+                        <Link to={`/pin/${this.props.pinId}/edit`}>
+                                <i className="dropbtn fas fa-edit fa-lg"></i>
+
+                        </Link>
+                            <div className="pinShowPhoto">
+                                {photo}
+                            </div>
+                        </div>
+
+                                <div class="pinShowContent">
+                                        <h1> title goes here</h1>
+                                    </div>
+
+                                
+
+                        </div>
+                    </div>
+
+
+
+               
+                
                 <Link to="/pin/new"><div className="addPinBtnContainer"><button className="addPinBtn"><span>+</span></button></div></Link>
                 {redirect}
             </div>
