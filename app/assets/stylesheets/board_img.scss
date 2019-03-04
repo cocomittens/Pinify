@@ -8,7 +8,7 @@
 .gridContainer {
     margin: 0;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .boardImg .pinWrapper {
@@ -19,7 +19,7 @@
   border-radius: 0;
   cursor: pointer;
   position:relative;
-
+  width: 95px;
 }
 
 .boardImg img {
@@ -32,14 +32,14 @@
 }
 
 .boardImg{
-          overflow: hidden;
+    overflow: hidden;
     height: 200px;
      
 }
 
-.boardImg div {
- display: flex;
-    flex-wrap: wrap;
+.pinWrapperContainer {
+    display: flex;
     justify-content: center;
     align-content: space-between;
+    flex-wrap: wrap;
 }

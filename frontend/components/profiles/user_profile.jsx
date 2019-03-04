@@ -28,7 +28,7 @@ class UserProfile extends React.Component {
         
       
         let firstBoardPins = boards[0] ? boards[0].pins : [];
-        let boardImg = (<div>
+        let boardImg = (<div class="pinWrapperContainer">
             {firstBoardPins.map(pin => {
 
                 return (
