@@ -18,9 +18,9 @@ class Splash extends React.Component {
                     
                 let title = pin.title ? pin.title : null;
                     return (
-                        <Link to={`pin/${pin.id}`}>
+                        <Link key={pin.id} to={`pin/${pin.id}`}>
                         <div className="pinWrapper" key={pin.id}>
-                        <img src={pin.photoUrl} className="pinImg" />
+                                <img  src={pin.photoUrl} className="pinImg" />
                         <div className="pinText"></div>
                             <div className="pinTitle">
                             <span>{title}</span>
