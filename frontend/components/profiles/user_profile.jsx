@@ -51,9 +51,10 @@ class UserProfile extends React.Component {
             {
                 boards.map(board =>  {
                 return (board.pins.map(pin => {
-                    
+                
                 let title = pin.title ? pin.title : null;
                 return (
+                   
                     <div className="pinWrapper" key={pin.id}>
                         <img src={pin} className="pinImg" />
                         <div className="pinText"></div>
@@ -61,6 +62,7 @@ class UserProfile extends React.Component {
                             <span>{title}</span>
                         </div>
                     </div>
+                  
                 )
               }))
             })
