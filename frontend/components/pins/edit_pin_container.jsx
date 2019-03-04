@@ -30,25 +30,76 @@ class EditPinForm extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
 
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {description: ""}
+    }
+
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const board = Object.assign({}, this.state);
+        this.props.createBoard(board);
+    }
+
+    updateDescription(e) {
+        this.setState({ description: e.target.value })
+    }
+
     handleDelete() {
         this.props.deletePin(this.props.pin.id);
         this.setState({ deleted: true })
     }
 
     render() {
-        let photo = (this.props.pin) ? (<div className="editPinImgContainer"><img class="editPinImg" src={this.props.pin.photoUrl} /></div>) : null;
+        let photo = (this.props.pin) ? (<div className="editPinImgContainer"><img class="pinShowPhoto" src={this.props.pin.photoUrl} /></div>) : null;
         return (
-            <div>
+            <div id="editPinForm">
                 <GreetingContainer />
-            
-            <div className="editPinForm">
-                
-                <div className="editPinContent">
-                {photo}
-                        <div className="buttonsContainer"><Link to="/"><button onClick={this.handleDelete}>Delete</button></Link></div>
+
+
+                <div className="boardForm">
+
+                    <div className="containerContainer">
+
+                        <div className="formContainer">
+                            {this.state.errors}
+                            <div className="headingsContainer">
+                                <h1>Edit pin</h1>
+                            </div>
+                            {/* <ul className="sessionErrors">{this.props.errors.map((error, idx) => {
+                            return (<li key={idx}>{error}</li>)
+                        })}</ul> */}
+                           
+                            <form onSubmit={this.handleSubmit}>
+                               <div class="editPinContent">
+                               <div class="leftEditPinForm">
+                                <label><div className="descriptionWrapper"><span>Description</span>
+                                    <textarea
+                                        value={this.state.updateDescription}
+                                 
+                                            onChange={this.updateDescription.bind(this)}
+                                        placeholder="Description"
+                                            /></div></label></div>
+
+                                {photo}
+                                </div>
+                                <div className="buttonsContainer"><Link to="/"><button onClick={this.handleDelete}>Delete</button></Link>
+                                <button onClick={this.handleSubmit}>Save</button></div>
+                              
+                            </form>
+                         
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </div>
+
+
+
+</div>
+                
+            
+    
         );
     }
 }

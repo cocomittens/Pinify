@@ -25,7 +25,7 @@ class BoardForm extends React.Component {
     render() {
        
         return (
-            <div id="boardForm">
+            <div className="boardForm">
 
                 <div className="containerContainer">
                     

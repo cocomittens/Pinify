@@ -305,3 +305,64 @@
 .editPinImgContainer {
   margin-bottom: 30px;
 }
+
+#editPinForm .buttonsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#editPinForm .buttonsContainer button {
+  width: 64px;
+  height: 38px;
+  border-radius: 10px;
+}
+
+#editPinForm .formContainer {
+  min-width: 900px;
+}
+
+#editPinForm label {
+  width: 500px;
+}
+
+#editPinForm .headingsContainer{
+  width: 100%;
+}
+
+#editPinForm .editPinContent {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+
+#editPinForm img {
+  max-width: 300px;
+  height: auto;
+}
+
+#editPinForm textarea {
+   width: 330px;
+   height: 90px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    font-size: 16px;
+    padding: 3px 10px;
+    font-weight: lighter;
+    margin: 5px 0;
+}
+
+.editPinContent label span {
+  font-family: Helvetica;
+  font-size: 14px;
+}
+
+.editPinContent label {
+  height:auto;
+}
+
+.descriptionWrapper {
+  display: flex;
+  align-items: flex-start;
+}

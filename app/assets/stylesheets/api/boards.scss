@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#boardForm .containerContainer {
+.boardForm .containerContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,7 @@
     ),
 }
 
-#boardForm button {
+.boardForm button {
     width: 75px;
     display: flex;
     justify-content: center;
@@ -25,7 +25,7 @@
     border: none;
 }
 
-#boardForm h1 {
+.boardForm h1 {
     font-size: 24px;
     font-weight: normal;
     padding: 10px;
@@ -33,12 +33,12 @@
     
 }
 
-#boardForm .formContainer {
+.boardForm .formContainer {
     padding: 0;
     width: 540px;
 }
 
-#boardForm label {
+.boardForm label {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -48,32 +48,32 @@
     padding: 20px 10px;
 }
 
-#boardForm label span{
+.boardForm label span{
     font-size: 14px;
 }
 
-#boardForm input {
+.boardForm input {
     width: 350px;
 }
 
-#boardForm .headingsContainer {
+.boardForm .headingsContainer {
     width: 100%;
     border-bottom: 1px solid #efefef;
     margin-bottom: 0;
 }
 
-#boardForm form {
+.boardForm form {
     width: 100%;
     height: 100%;
     margin: 0;
 }
 
-#boardForm .buttonsContainer {
+.boardForm .buttonsContainer {
     display: flex;
     justify-content: flex-end;
 }
 
-#boardForm {
+.boardForm {
     color: #333;
 }
 
