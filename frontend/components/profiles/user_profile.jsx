@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 
 class UserProfile extends React.Component {
     componentDidMount(){
-        this.props.fetchBoards(this.props.id)
+        this.props.fetchPins(1);
+        this.props.fetchBoards(this.props.id);
+
     }
 
     constructor(props) {
@@ -21,12 +23,32 @@ class UserProfile extends React.Component {
     };
 
     render() {
+
         let boards = (this.props.boards) ? this.props.boards : []; 
-        let list = (<div className="grid">{
-            boards.map(board => {
+        
+      
+        let firstBoardPins = boards[0] ? boards[0].pins : [];
+        let boardImg = (<div>
+            {firstBoardPins.map(pin => {
+
                 return (
+                    <div className="pinWrapper" key={pin.id}>
+                        <img src={pin} className="pinImg" />
+                        <div className="pinText"></div>
+                    </div>
+                )
+            })}
+        </div>
+        )
+        let list = (<div class="gridContainer">{
+            boards.map(board => {
+
+                return (
+                    <div className="grid">
                     <div className="boardWrapper">
-                        <img className="boardImg" />
+                        <div className="boardImg" >
+                            <span>{boardImg}</span>
+                        </div>
                         <div className="boardText"></div>
                         <div className="boardTitle">
                             {board.title}
@@ -34,11 +56,11 @@ class UserProfile extends React.Component {
                         <div className="numPins">
                             {board.pins.length} Pins
                          </div>
-                    </div>
+                    </div></div>
                 )
             })
-        }
-        </div>)
+        }</div>)
+        
         return (
             <div>
                 <GreetingContainer />
@@ -78,7 +100,7 @@ class UserProfile extends React.Component {
                 </div>
                     </div>
                 <div className="profileContent">
-                
+                      
                             {list}
                 
                     </div>

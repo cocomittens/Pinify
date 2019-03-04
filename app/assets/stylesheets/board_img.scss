@@ -1,0 +1,45 @@
+.profileContent .grid {
+	column-width: 95px;
+    width: 320px;
+    height: auto;
+    margin: 0;
+}
+
+.gridContainer {
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.boardImg .pinWrapper {
+    margin: 0;
+  padding: 0;
+  padding-bottom: 0;
+  display: inline-block;
+  border-radius: 0;
+  cursor: pointer;
+  position:relative;
+
+}
+
+.boardImg img {
+  
+    border-radius: 0;
+     display: block;
+  width: 95px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.boardImg{
+          overflow: hidden;
+    height: 200px;
+     
+}
+
+.boardImg div {
+ display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-between;
+}

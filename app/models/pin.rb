@@ -16,4 +16,6 @@ class Pin < ApplicationRecord
     has_many :pins_boards
     has_many :boards, :through => :pins_boards
     has_one_attached :photo
+
+    attr_writer :photoUrl
 end

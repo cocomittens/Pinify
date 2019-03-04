@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchBoards } from '../../actions/board_pin_actions';
+import { fetchBoards, fetchPins } from '../../actions/board_pin_actions';
 import UserProfile from './user_profile';
 
 const msp = (state, ownProps) => {
@@ -17,7 +17,8 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
     return {
-        fetchBoards: (userId) => dispatch(fetchBoards(userId))
+        fetchBoards: (userId) => dispatch(fetchBoards(userId)),
+        fetchPins: (boardId) => dispatch(fetchPins(boardId))
     }
 }
 
