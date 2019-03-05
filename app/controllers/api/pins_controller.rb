@@ -1,8 +1,6 @@
 class Api::PinsController < ApplicationController
     def index
         @pins = Pin.all
-        
-        
     end
 
     def create
@@ -44,6 +42,6 @@ class Api::PinsController < ApplicationController
 
     private
     def pin_params
-        params.fetch(:pin, {}).permit(:author_id, :title, :link_url, :photo, :board_id)
+        params.fetch(:pin, {}).permit(:author_id, :title, :description, :link_url, :photo, :board_id)
     end
 end

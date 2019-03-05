@@ -20,6 +20,7 @@ class Pin extends React.Component {
         const fd = new FormData();
         fd.append('pin[author_id]', this.state.author_id);
         fd.append('pin[title]', this.state.title);
+        fd.append('pin[description]', this.state.description);
         fd.append('pin[link_url]', this.state.link_url);
         fd.append('pin[photo]', this.state.photoFile);
         fd.append('pin[board_id]', this.state.board_id)
@@ -48,6 +49,10 @@ class Pin extends React.Component {
     }
     updateTitle(e) {
         this.setState({title: e.target.value});
+    }
+
+    updateDescription(e) {
+        this.setState({ description: e.target.value })
     }
 
     updateLink(e) {
@@ -93,8 +98,6 @@ class Pin extends React.Component {
         
 
         let pinForm = (
-            
-
                 <div id="rightCreateForm">
                     <div id="rightTopCreateForm">
                         <div className="buttonsContainer">
@@ -110,7 +113,10 @@ class Pin extends React.Component {
                         />
 
                         <textarea
-                            placeholder="Say more about this pin"></textarea>
+                            value={this.state.description}
+                            onChange={this.updateDescription.bind(this)}
+                            placeholder="Say more about this pin">
+                        </textarea>
                     </div>
                     <div>
 

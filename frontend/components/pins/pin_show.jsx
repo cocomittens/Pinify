@@ -14,13 +14,15 @@ class PinShow extends React.Component {
     }
 
     render() {
-        let photo = null, title = null;
+        let photo = null, title = null, description = null, linkUrl = null;
         let redirect = (this.state.deleted) ? (<Redirect to="/" /> ): null;
         
 
         if (this.props.pin) {
             photo = (<img src={this.props.pin.photoUrl} />);
-            title = (this.props.pin.title)
+            title = (this.props.pin.title);
+            description = (this.props.pin.description);
+            linkUrl = (this.props.pin.link_url)
         } 
         this.props.fetchPin(this.props.pinId);
         return (
@@ -43,6 +45,8 @@ class PinShow extends React.Component {
 
                                 <div class="pinShowContent">
                                         <h1> {title}</h1>
+                                        <p> {description} </p>
+                                        <p> {linkUrl} </p>
                                     </div>
 
                                 

@@ -19,7 +19,8 @@ const mdp = dispatch => {
         fetchPin: id => dispatch(fetchPin(id)),
         action: pin => dispatch(updatePin(pin)),
         fetchBoards: userId => dispatch(fetchBoards(userId)),
-        deletePin: pinId => dispatch(deletePin(pinId)) 
+        deletePin: pinId => dispatch(deletePin(pinId)),
+        updatePin: pin => dispatch(updatePin(pin))
     }
 }
 
@@ -33,23 +34,28 @@ class EditPinForm extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {description: ""}
+        this.state = {title: "", description: "", link_url: ""}
     }
-
 
     handleSubmit(e) {
         e.preventDefault();
-        const board = Object.assign({}, this.state);
-        this.props.createBoard(board);
+        this.props.updatePin(this.state);
+    }
+
+    updateTitle(e) {
+        this.setState({ title: e.target.value })
     }
 
     updateDescription(e) {
         this.setState({ description: e.target.value })
     }
 
+    updateLink(e) {
+        this.setState({ link_url: e.target.value })
+    }
+
     handleDelete() {
         this.props.deletePin(this.props.pin.id);
-        this.setState({ deleted: true })
     }
 
     render() {
@@ -62,12 +68,8 @@ class EditPinForm extends React.Component {
         return (
             <div id="editPinForm">
                 <GreetingContainer />
-
-
                 <div className="boardForm">
-
                     <div className="containerContainer">
-
                         <div className="formContainer">
                             {this.state.errors}
                             <div className="headingsContainer">
@@ -76,55 +78,42 @@ class EditPinForm extends React.Component {
                             {/* <ul className="sessionErrors">{this.props.errors.map((error, idx) => {
                             return (<li key={idx}>{error}</li>)
                         })}</ul> */}
-                           
                             <form onSubmit={this.handleSubmit}>
                                <div class="editPinContent">
-                               <div class="leftEditPinForm">
-                                        <label><span>Title </span>
-                                   <input
-                                                type="text"
-                                            ></input>
-                               </label>
-                                <label><div className="descriptionWrapper"><span>Description</span>
-                                
-                                    <textarea
-                                        value={this.state.updateDescription}
-                                 
-                                            onChange={this.updateDescription.bind(this)}
-                                        placeholder="Tell us about this pin..."
-                                            /></div></label>
-                                        <label><span>Website</span>
-                                   <input
+                                <div class="leftEditPinForm">
+                                        <label><span>Title</span>
+                                        <input
                                                 type="text"
                                             ></input>
                                         </label>
-                                            
+                                        <label>
+                                            <div className="descriptionWrapper"><span>Description</span>
+                                                <textarea
+                                                    value={this.state.updateDescription}
+                                                    onChange={this.updateDescription.bind(this)}
+                                                    placeholder="Tell us about this pin..."
+                                                />
                                             </div>
-
-                                {photo}
+                                        </label>
+                                        <label><span>Website</span>
+                                        <input
+                                                type="text"
+                                            ></input>
+                                        </label>
+                                    </div>
+                                    {photo}
                                 </div>
-                                <div className="buttonsContainer"><Link to="/"><button onClick={this.handleDelete}>Delete</button></Link>
-                                
-                                
-                                <div className="rightEditBtns">
+                                <div className="buttonsContainer">
+                                    <Link to="/"><button onClick={this.handleDelete}>Delete</button></Link>
+                                    <div className="rightEditBtns">
                                         <Link to={`pin/${pinId}`}><button>Cancel</button></Link>
-                                    <button onClick={this.handleSubmit}>Save</button></div>
-
-                                
+                                        <button type="submit" onClick={this.handleSubmit}>Save</button></div>
                                 </div>
-                              
                             </form>
-                         
                         </div>
                     </div>
                 </div>
-
-
-
-</div>
-                
-            
-    
+        </div>
         );
     }
 }
