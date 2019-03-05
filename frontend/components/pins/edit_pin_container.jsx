@@ -71,7 +71,7 @@ class EditPinForm extends React.Component {
                         <div className="formContainer">
                             {this.state.errors}
                             <div className="headingsContainer">
-                                <h1>Edit pin</h1>
+                                <h1>Edit this pin</h1>
                             </div>
                             {/* <ul className="sessionErrors">{this.props.errors.map((error, idx) => {
                             return (<li key={idx}>{error}</li>)
@@ -80,13 +80,26 @@ class EditPinForm extends React.Component {
                             <form onSubmit={this.handleSubmit}>
                                <div class="editPinContent">
                                <div class="leftEditPinForm">
+                                        <label><span>Title </span>
+                                   <input
+                                                type="text"
+                                            ></input>
+                               </label>
                                 <label><div className="descriptionWrapper"><span>Description</span>
+                                
                                     <textarea
                                         value={this.state.updateDescription}
                                  
                                             onChange={this.updateDescription.bind(this)}
-                                        placeholder="Description"
-                                            /></div></label></div>
+                                        placeholder="Tell us about this pin..."
+                                            /></div></label>
+                                        <label><span>Website</span>
+                                   <input
+                                                type="text"
+                                            ></input>
+                                        </label>
+                                            
+                                            </div>
 
                                 {photo}
                                 </div>

@@ -270,9 +270,10 @@
   margin-top: 50px;
 }
 
-.pinShowPhoto img{
-  max-width: 600px;
-  height: auto;
+#editPinForm .pinShowPhoto {
+  width: 300px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .grid a {
@@ -292,15 +293,12 @@
   justify-content: center;
 }
 
-.editPinForm button {
-  width: 40px;
+#editPinForm button {
+  width: 80px;
   height: 40px;
+  font-weight: normal;
 }
 
-.editPinImg {
-  width: 600px;
-  height: auto;
-}
 
 .editPinImgContainer {
   margin-bottom: 30px;
@@ -339,34 +337,47 @@
   height: auto;
 }
 
-#editPinForm img {
-  max-width: 300px;
-  height: auto;
+#editPinForm textarea {
+   height: 70px;
+   
 }
 
-#editPinForm textarea {
+#editPinForm textarea, #editPinForm input {
    width: 330px;
-   height: 90px;
+  
     border-radius: 5px;
     border: 1px solid #999;
     font-size: 16px;
-    padding: 3px 10px;
+    padding: 10px;
     font-weight: lighter;
     margin: 5px 0;
+    
 }
 
 .editPinContent label span {
-  font-family: Helvetica;
+font-family: Helvetica;
   font-size: 14px;
-}
+  margin: 0;
 
+}
+  
+
+
+
+.editPinContent .descriptionWrapper span {
+  margin-top: 10px;
+}
 .editPinContent label {
   height:auto;
 }
 
-.descriptionWrapper {
+#editPinForm .descriptionWrapper {
   display: flex;
   align-items: flex-start;
+ margin: 0;
+ justify-content: space-between;
+ width: 100%;
+ 
 }
 
 .pinShowPage .containerContainer {  display: flex;
@@ -462,4 +473,9 @@
 
 #editPinForm .rightEditBtns button {
   margin-left: 15px;
+}
+
+.leftPinShowPage .pinShowPhoto img {
+  width: 300px;
+  object-fit: cover;
 }
