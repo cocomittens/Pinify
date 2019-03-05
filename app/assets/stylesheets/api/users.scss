@@ -1,7 +1,7 @@
 // Place all the styles related to the Api::Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+/* User profile */
 .userProfileContainer {
     display: flex;
     justify-content: center;
@@ -72,7 +72,6 @@
 .profileHeaderBottom {
     height: 0;
 }
-
 
 .profileHeader .active {
     color: #333;

@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* Pins */
-
 .grid {
 	column-width: 260px;
 	column-gap: 5px;
@@ -21,24 +20,6 @@
   position:relative;
 }
 
-.pinWrapper:hover, .pinText {
-  opacity: 1;
-  border-radius: 10px;
-  
-}
-
-
-
-.pinImg {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin: 0 auto;
-}
-
-
-
 .pinWrapper:hover .pinText {
   content: '';
   top: 0;
@@ -51,7 +32,7 @@
   background: #aaa;
   opacity: 0.4;
   border-radius: 10px;
-    transition: .5s ease;
+  transition: .5s ease;
 }
 
 .pinTitle {
@@ -62,7 +43,13 @@
   justify-content: space-between;
 }
 
-
+.pinImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 0 auto;
+}
 
 @media screen and (max-width: 750px) { 
   .grid { column-gap: 0px; }
@@ -70,6 +57,25 @@
 }
 
 /* Add pin button */
+.addPinBtnContainer {
+   display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 15px;
+  right: 25px;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 1px 0px 1px rgba(204,204,204,.8);
+  -moz-box-shadow: 0px 1px 0px 1px rgba(204,204,204,.8);
+  box-shadow: 0px 1px 0px 1px rgba(204,204,204,.8);
+}
+
+.addPinBtnContainer:hover{
+  background-color: #eee;
+}
+
 .addPinBtn {
   background: none;
   font-size: 28px;
@@ -84,27 +90,15 @@
   color: #454545;
 }
 
-.addPinBtnContainer {
-   display:flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  position: fixed;
-  bottom: 15px;
-  right: 25px;
-
-  border-radius: 50%;
-  -webkit-box-shadow: 0px 1px 0px 1px rgba(204,204,204,.8);
-  -moz-box-shadow: 0px 1px 0px 1px rgba(204,204,204,.8);
-  box-shadow: 0px 1px 0px 1px rgba(204,204,204,.8);
-}
-
-.addPinBtnContainer:hover{
-  background-color: #eee;
-}
-
 /* Create Pin Form */
+
+#createPinForm {
+  justify-content: space-between;
+  width: 880px;
+  height: 100%;
+  align-content: flex-start;
+  margin-top: 0;
+}
 
 .pinFormContainer {
   background: #EFEFEF;
@@ -113,7 +107,6 @@
   align-items: center;
   min-height: 93vh;
 }
-
 
 .pinFormContainer .containerContainer {
   background: #EFEFEF;
@@ -147,15 +140,6 @@
   border-radius: 8px;
 }
 
-#createPinForm {
-  justify-content: space-between;
-  width: 880px;
-  height: 100%;
-  align-content: flex-start;
-  margin-top: 0;
-  
-}
-
 #rightCreateForm input, 
 #rightCreateForm textarea {
   color: #8E8E8E;
@@ -166,7 +150,6 @@
 #rightCreateForm textarea::placeholder{
    color: #8E8E8E;
 }
-
 
 #createPinForm textarea {
   border: none;
@@ -189,7 +172,10 @@
 #rightTopCreateForm {
   width: 100%;
   margin: 0;
+}
 
+#rightCreateForm #chooseBoard::placeholder {
+  color: #333;
 }
 
 #createTitle {
@@ -260,9 +246,7 @@
   width: 200px;
 }
 
-#rightCreateForm #chooseBoard::placeholder {
-  color: #333;
-}
+/* Edit Pin form */
 
 .pinShowPhoto {
   display: flex;
@@ -293,13 +277,6 @@
   justify-content: center;
 }
 
-#editPinForm button {
-  width: 80px;
-  height: 40px;
-  font-weight: normal;
-}
-
-
 .editPinImgContainer {
   margin-bottom: 30px;
 }
@@ -316,6 +293,7 @@
   width: 64px;
   height: 38px;
   border-radius: 10px;
+  font-weight: normal;
 }
 
 #editPinForm .formContainer {
@@ -338,32 +316,25 @@
 }
 
 #editPinForm textarea {
-   height: 70px;
-   
+  height: 70px;
 }
 
 #editPinForm textarea, #editPinForm input {
-   width: 330px;
-  
-    border-radius: 5px;
-    border: 1px solid #999;
-    font-size: 16px;
-    padding: 10px;
-    font-weight: lighter;
-    margin: 5px 0;
-    
+  width: 330px;
+  border-radius: 5px;
+  border: 1px solid #999;
+  font-size: 16px;
+  padding: 10px;
+  font-weight: lighter;
+  margin: 5px 0;
 }
 
 .editPinContent label span {
-font-family: Helvetica;
+  font-family: Helvetica;
   font-size: 14px;
   margin: 0;
-
 }
   
-
-
-
 .editPinContent .descriptionWrapper span {
   margin-top: 10px;
 }
@@ -380,11 +351,11 @@ font-family: Helvetica;
  
 }
 
+/* Pin show page */
 .pinShowPage .containerContainer {  display: flex;
   justify-content: center;
   background: #EFEFEF;
   min-height: 93vh;
- 
 }
 
 .pinShowPage .formContainer {
@@ -401,7 +372,6 @@ font-family: Helvetica;
 
 .pinShowPage .buttonsContainer button {
   width: 80px;
-  
 }
 
 .leftPinShowPage a {
@@ -414,7 +384,6 @@ font-family: Helvetica;
   align-items: flex-start;
   flex-wrap: wrap;
 }
-
 
 .pinShowPage .buttonsContainer {
   display: flex;
@@ -432,7 +401,6 @@ font-family: Helvetica;
 
 .pinShowContent {
   width: 300px;
-  
 }
 
 .pinShowContent h1 {

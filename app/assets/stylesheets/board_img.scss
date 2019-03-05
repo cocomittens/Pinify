@@ -1,3 +1,5 @@
+/* Image of pins on board view of user profile */
+
 .profileContent .gridContainer .grid {
 	column-width: 95px;
     width: 320px;
@@ -11,12 +13,10 @@
 }
 
 #userPinGrid {
-   
 	column-width: 260px;
     width: 90%;
     height: auto;
     margin: 0;
-
 }
 
 .gridContainer {
@@ -27,28 +27,53 @@
 
 .boardImg .pinWrapper {
     margin: 0;
-  padding: 0;
-  padding-bottom: 0;
-  display: inline-block;
-  border-radius: 0;
-  cursor: pointer;
-  position:relative;
-  width: 95px;
+    padding: 0;
+    padding-bottom: 0;
+    display: inline-block;
+    border-radius: 0;
+    cursor: pointer;
+    position:relative;
+    width: 95px;
 }
 
 .boardImg img {
-  
     border-radius: 0;
-     display: block;
-  width: 95px;
-  height: auto;
-  margin: 0 auto;
+    display: block;
+    width: 92px;
+    margin: 1px !important;
+    height: 100px;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.pinWrapperContainer .pinWrapper:nth-child(1) img {
+    border-top-left-radius: 10px;
+}
+
+.pinWrapperContainer .pinWrapper:nth-child(3) img {
+    border-top-right-radius: 10px;
+}
+
+.pinWrapperContainer .pinWrapper:nth-child(4) img {
+    border-bottom-left-radius: 10px;
+}
+
+.pinWrapperContainer .pinWrapper:nth-child(6) img {
+    border-bottom-right-radius: 10px;
+}
+
+.pinWrapperContainer .pinWrapper:nth-child(2) img,
+.pinWrapperContainer .pinWrapper:nth-child(5) img {
+    margin-top: -30px !important;
+}
+
+.pinWrapperContainer .pinWrapper:nth-child(5) img {
+    height: 130px;
 }
 
 .boardImg{
     overflow: hidden;
     height: 200px;
-     
 }
 
 .pinWrapperContainer {
@@ -56,4 +81,12 @@
     justify-content: center;
     align-content: space-between;
     flex-wrap: wrap;
+}
+
+.boardTitle, .numPins {
+    margin-left: 10px;
+}
+
+.boardTitle {
+    margin-top: 10px;
 }
