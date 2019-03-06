@@ -18,7 +18,6 @@ class UserProfile extends React.Component {
             pinList: null,
             hovered: false
         };
-
         this.addHovered = this.addHovered.bind(this);
         this.removeHovered = this.removeHovered.bind(this);
         this.renderBoards = this.renderBoards.bind(this);
@@ -176,6 +175,7 @@ class UserProfile extends React.Component {
                             {content}
                     </div>
                 </div>
+                <div className="addPinBtnContainer"><Link to="/pin/new"><button className="addPinBtn"><span>+</span></button></Link></div>
             </div>
         )
     }

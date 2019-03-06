@@ -34,13 +34,12 @@ class PinShow extends React.Component {
                         <div className="formContainer">
 
                         <div className="leftPinShowPage">
+                        <div className="pinShowEditBtn">
                         <Link to={`/pin/${this.props.pinId}/edit`}>
-                                <i className="dropbtn fas fa-edit fa-lg"></i>
+                                <i className="fas fa-edit fa-lg"></i>
 
-                        </Link>
-                            <div className="pinShowPhoto">
+                                </Link></div>
                                 {photo}
-                            </div>
                         </div>
 
                                 <div class="pinShowContent">

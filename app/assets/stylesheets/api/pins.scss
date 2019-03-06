@@ -432,6 +432,20 @@
 }
 
 /* Pin show page */
+.pinShowEditBtn:hover i {
+  background: #EFEFEF;
+  border-radius: 50%;
+}
+.pinShowEditBtn {
+  margin: 0;
+}
+
+.pinShowEditBtn i {
+  color: #8E8E8E;
+  padding: 14px;
+  margin: 0;
+}
+
 .pinShowPage .containerContainer {  display: flex;
   justify-content: center;
   background: #EFEFEF;
@@ -523,7 +537,10 @@
   margin-left: 15px;
 }
 
-.leftPinShowPage .pinShowPhoto img {
-  width: 300px;
-  object-fit: cover;
+.leftPinShowPage {width: 500px;}
+
+.leftPinShowPage img {
+  object-fit: contain;
+ object-position: left top;
 }
+
