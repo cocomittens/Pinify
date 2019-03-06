@@ -171,10 +171,13 @@ class UserProfile extends React.Component {
                 </div>
 
                 <div className="profileHeaderBottom">
-                    <span onClick={this.showBoards.bind(this)} className="headerLinkText active">Boards</span>
-                    <span onClick={this.showPins.bind(this)} className="headerLinkText">Pins</span>
-
-                
+                    <span 
+                        onClick={this.showBoards.bind(this)} 
+                        className={this.state.currentPage === 'boards' ? "headerLinkText active" : "headerLinkText"}
+                    > Boards </span>
+                    <span onClick={this.showPins.bind(this)} 
+                        className={this.state.currentPage === 'pins' ? "headerLinkText active" : "headerLinkText"}
+                    > Pins</span>
                 </div>
                     </div>
                 <div className="profileContent">
