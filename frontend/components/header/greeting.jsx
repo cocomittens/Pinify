@@ -2,11 +2,21 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
 class Greeting extends React.Component {
+    componentDidMount() {
+        if (this.props.match.path === "/") {
+            this.setState({currentPage: 'home'})
+        } else {
+            this.setState({currentPage: 'profile'})
+        }
+    }
+
     constructor(props) {
         super(props)
         this.toggleClass = this.toggleClass.bind(this);
+        
         this.state = {
             active: false,
+            currentPage: null
         };
     }
 
@@ -26,9 +36,19 @@ class Greeting extends React.Component {
                 <Link to="/"><i className="fab fa-pinterest logo fa-2x"></i></Link>
             </div>
             <div id="rightnav">
-                    <Link to="/"><h1 className="home active">Home</h1></Link>
+                    <Link to="/"><h1 
+                        className={this.state.currentPage === 'home' ? "home active" : "home"}>
+                            Home
+                        </h1>
+                    </Link>
                 <div id="nameContainer">
-                        <Link to={`/users/${user.username}`}><h1><span className="circle">{name.slice(0, 1).toUpperCase()}</span><span className="headerLinkText">{name}</span></h1></Link>
+                        <Link to={`/users/${user.username}`}><h1
+                            
+                        >
+                        <span className="circle">{name.slice(0, 1).toUpperCase()}</span>
+                            <span className={this.state.currentPage === 'profile' ? "headerLinkText active" : "headerLinkText"}>{name}</span>
+                        </h1>
+                        </Link>
                 </div>
                 
                 <div className="dropdown">

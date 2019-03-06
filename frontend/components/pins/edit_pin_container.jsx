@@ -73,7 +73,7 @@ class EditPinForm extends React.Component {
     }
 
     render() {
-        debugger
+        
         if (!this.props.pin || !this.state) return null;
         let photo = null, pinId = null;
         if (this.props.pin) {
