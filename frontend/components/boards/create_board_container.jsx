@@ -4,13 +4,14 @@ import BoardForm from './board_form';
 
 const msp = state => {
     return {
-        userId: Object.values(state.entities.users)[0].id
+        userId: Object.values(state.entities.users)[0].id,
+        formType: "Create"
     }
 }
 
 const mdp = dispatch => {
     return {
-        createBoard: board => dispatch(createBoard(board))
+        action: board => dispatch(createBoard(board))
     }
 }
 

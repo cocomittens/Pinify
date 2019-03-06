@@ -14,8 +14,15 @@ class UserProfile extends React.Component {
         this.toggleClass = this.toggleClass.bind(this);
         this.state = {
             active: false,
-            currentPage: 'boards'
+            currentPage: 'boards',
+            pinList: null,
+            hovered: false
         };
+
+        this.addHovered = this.addHovered.bind(this);
+        this.removeHovered = this.removeHovered.bind(this);
+        this.renderBoards = this.renderBoards.bind(this);
+        this.renderPins = this.renderPins.bind(this);
     }
 
     toggleClass() {
@@ -32,11 +39,14 @@ class UserProfile extends React.Component {
     }
 
     getImages(board) {
-       return (<div className="pinWrapperContainer">
-            {board.pins.map(pin => {
+        const { pins } = this.props;
+        if (Object.keys(pins).length === 0) return null;
+
+        return (<div className="pinWrapperContainer">
+            {board.pin_ids.map(pin_id => {
                 return (
-                    <div className="pinWrapper" key={pin.id}>
-                        <img src={pin} className="pinImg" />
+                    <div className="pinWrapper" key={pin_id}>
+                        <img src={pins[pin_id].photoUrl} className="pinImg" />
                         <div className="pinText"></div>
                     </div>
                 )
@@ -45,53 +55,82 @@ class UserProfile extends React.Component {
         )
     }
 
-    render() {
-        let boards = (this.props.boards) ? this.props.boards : []; 
-        let pinList = (<div className="grid" id="userPinGrid">
-            {
-                boards.map(board =>  {
-                return (board.pins.map(pin => {
-                
-                let title = pin.title ? pin.title : null;
-                return (
-                   
-                    <div className="pinWrapper" key={pin.id}>
-                        <img src={pin} className="pinImg" />
-                        <div className="pinText"></div>
-                        <div className="pinTitle">
-                            <span>{title}</span>
-                        </div>
-                    </div>
-                  
-                )
-              }))
-            })
-            }
-        </div>
-    );
+    addHovered(id) {
+        this.setState({ hovered: id })
+    }
+
+    removeHovered() {
+        this.setState({ hovered: false })
+    }
+
+    renderBoards() {
+        let boards = (this.props.boards) ? this.props.boards : [];
+
         let boardList = (<div class="gridContainer">{
             boards.map(board => {
 
                 return (
-                    
+
                     <div className="grid">
-                    <Link to={`/board/${board.id}`}>
-                    <div className="boardWrapper">
-                        <div className="boardImg" >
-                            <span>{this.getImages(board)}</span>
-                        </div>
-                        <div className="boardText"></div>
-                        <div className="boardTitle">
-                            {board.title}
-                        </div>
-                        <div className="numPins">
-                            {board.pins.length} Pins
-                         </div>
+                        <Link to={`/board/${board.id}`}>
+                            <div
+                                className="boardWrapper"
+                                onMouseOver={() => this.addHovered(board.id)}
+                                onMouseLeave={this.removeHovered}
+                            >
+                                <div className="boardImg" >
+                                    <span>{this.getImages(board)}</span>
+                                </div>
+                                <div className="boardText"></div>
+                                <div className="boardLinks">
+                                    <div className="leftBoardLinks">
+                                        <div className="boardTitle">
+                                            {board.title}
+                                        </div>
+                                        <div className="numPins">
+                                            {board.pins.length} Pins
+                            </div>
+                                    </div>
+                                    <div className={this.state.hovered === board.id ? "rightBoardLinks" : "rightBoardLinks hidden"}>
+                                        <Link to={`/board/${board.id}/edit`}>
+                                            <i className="fas fa-edit fa-lg"></i>
+                                        </Link>
+                                    </div>
+                                </div>
                             </div></Link></div>
                 )
             })
         }</div>)
-        let content = (this.state.currentPage === 'boards') ? boardList : pinList;
+
+        return boardList;
+    }
+
+    renderPins() {
+        const pins = Object.values(this.props.pins);
+        let pinList = (
+            <div className="grid" id="userPinGrid">
+            {
+                pins.map(pin => {
+                    let title = pin.title ? pin.title : null;
+                    return (
+                        <div className="pinWrapper" key={pin.id}>
+                            <img src={pin.photoUrl} className="pinImg" />
+                            <div className="pinText"></div>
+                            <div className="pinTitle">
+                                <span>{title}</span>
+                            </div>
+                        </div>
+
+                    )
+                })}
+            </div>
+        );
+        return pinList;
+    }
+
+    render() {
+             
+        let content = (this.state.currentPage === 'boards') ? this.renderBoards() : this.renderPins();
 
         
         return (

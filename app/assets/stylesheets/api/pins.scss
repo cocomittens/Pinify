@@ -97,7 +97,8 @@
   width: 880px;
   height: 100%;
   align-content: flex-start;
-  margin-top: 0;
+  margin: 0;
+  flex-wrap: nowrap;
 }
 
 .pinFormContainer {
@@ -125,9 +126,11 @@
 }
 
 .pinFormContainer .buttonsContainer {
+  display: flex;
   justify-content: flex-end;
   margin-top: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  margin-left: 20px;
 }
 
 .pinFormContainer .buttonsContainer button {
@@ -138,7 +141,19 @@
   font-weight: normal;
   border: none;
   border-radius: 8px;
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
 }
+.pinFormContainer .buttonsContainer button i,
+.pinFormContainer .buttonsContainer button span {
+  margin: 0;
+}
+
+.pinFormContainer .buttonsContainer button span {
+  margin-left: 8px; 
+}
+
 
 #rightCreateForm input, 
 #rightCreateForm textarea {
@@ -149,6 +164,7 @@
 #rightCreateForm input::placeholder,
 #rightCreateForm textarea::placeholder{
    color: #8E8E8E;
+  
 }
 
 #createPinForm textarea {
@@ -165,13 +181,19 @@
   height: 100%;
   justify-content: flex-start;
   align-content: space-between;
-  margin-top: 0;
-  margin-right: 30px;
+   margin: 0;
+   margin-right: 40px;
 }
 
 #rightTopCreateForm {
   width: 100%;
   margin: 0;
+
+}
+
+#rightCreateForm #chooseBoard {
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 #rightCreateForm #chooseBoard::placeholder {
@@ -188,7 +210,9 @@
   display: flex;
   align-items: center;
   height: 100%;
+  margin: 0;
   margin-left: 30px;
+  margin-top: 7px;
 }
 
 #leftCreateForm .fileContainer {
@@ -203,6 +227,7 @@
   background: #EFEFEF;
   border: 3px dashed #DADADA;
   margin: 0;
+  
 }
 
 #leftCreateForm .previewImg {
@@ -245,6 +270,58 @@
 .inputfile + label p {
   width: 200px;
 }
+
+.boardNamesWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  margin: 0 !important;
+}
+
+.boardNames {
+  list-style: none;
+  width: 460px;
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  font-size: 16px;
+  font-weight: bold;
+  flex-wrap: wrap;
+  padding-right: 8px;
+
+}
+
+.boardNames li {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+
+  margin: 0;
+}
+
+.boardNames li span {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.boardNames li span i {
+  margin: 0;
+  margin-right: 10px;
+  color: #E60023;
+}
+
+.boardNames li:hover {
+  background: #EFEFEF;
+  cursor: pointer;
+}
+
+.createBoardLi {
+  border-top: 1px solid #EFEFEF;
+}
+
 
 /* Edit Pin form */
 

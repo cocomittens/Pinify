@@ -12,7 +12,7 @@
 
 .profileHeader {
     height: 250px;
-    width: 45%;
+    width: 65%;
     display: flex;
     align-items: space-between;
     flex-wrap: wrap;
@@ -113,7 +113,7 @@
     position:relative;
 }
 
-.boardWrapper:hover, .boardText {
+.boardWrapper:hover .boardText {
     opacity: 1;
     border-radius: 10px;
 }
@@ -139,6 +139,7 @@
     opacity: 0.4;
     border-radius: 10px;
     transition: .5s ease;
+
 }
 
 .boardTitle {
@@ -151,4 +152,25 @@
 @media screen and (max-width: 750px) { 
     .userProfileContainer .grid { column-gap: 0px; }
     .boardWrapper{ width: 100%; }
+}
+
+.rightBoardLinks {
+    // display: none;
+    z-index: 100000;
+    margin-right: 10px;
+}
+
+// .boardWrapper:hover .rightBoardLinks {
+//     display:block;
+// }
+
+.hidden {
+    visibility: hidden;
+}
+
+.boardLinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px 0;
 }

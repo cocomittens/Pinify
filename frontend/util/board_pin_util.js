@@ -43,13 +43,11 @@ export const createBoard = board => {
     })
 }
 
-export const updatePin = formData => {
+export const updatePin = pin => {
     return $.ajax({
         method: 'PATCH',
         url: `api/pins/${pin.id}`,
-        data: formData,
-        contentType: false,
-        processData: false
+        data: { pin }
     })
 }
 

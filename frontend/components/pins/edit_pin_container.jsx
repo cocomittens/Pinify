@@ -8,6 +8,7 @@ const msp = (state, ownParams) => {
     let userId = Object.values(state.entities.users)[0].id;
     return {
         pin: state.entities.pins[ownParams.match.params.pinId],
+        pinId: ownParams.match.params.pinId,
         formType: 'Edit Pin',
         boards: Object.values(state.entities.boards),
         userId
@@ -26,20 +27,33 @@ const mdp = dispatch => {
 
 class EditPinForm extends React.Component {
     componentDidMount() {
-        this.props.fetchPin(this.props.match.params.pinId)
-        this.props.fetchBoards(this.props.userId);
+        Promise.all([
+            this.props.fetchPin(this.props.match.params.pinId),
+            this.props.fetchBoards(this.props.userId)
+        ]);
+    }
+    
+    constructor(props) {
+        super(props);
+
+        // this.state = {id: null, title: "", description: "", link_url: ""}
+        this.state = this.props.pin;
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
     }
 
-    constructor(props) {
-        super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {title: "", description: "", link_url: ""}
+    componentDidUpdate(prevProps) {
+        if (!prevProps.pin && this.props.pin) {
+            this.setState(this.props.pin);
+        }
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.updatePin(this.state);
+        this.setState({id: this.props.pinId});
+        this.props.action(this.state);
+        let path = `/`;
+        this.props.history.push(path);
     }
 
     updateTitle(e) {
@@ -59,6 +73,8 @@ class EditPinForm extends React.Component {
     }
 
     render() {
+        debugger
+        if (!this.props.pin || !this.state) return null;
         let photo = null, pinId = null;
         if (this.props.pin) {
             photo = (<div className="editPinImgContainer"><img class="pinShowPhoto" src={this.props.pin.photoUrl} /></div>);
@@ -71,7 +87,7 @@ class EditPinForm extends React.Component {
                 <div className="boardForm">
                     <div className="containerContainer">
                         <div className="formContainer">
-                            {this.state.errors}
+                            {/* {this.state.errors} */}
                             <div className="headingsContainer">
                                 <h1>Edit this pin</h1>
                             </div>
@@ -83,13 +99,15 @@ class EditPinForm extends React.Component {
                                 <div class="leftEditPinForm">
                                         <label><span>Title</span>
                                         <input
-                                                type="text"
-                                            ></input>
+                                            type="text"
+                                            value={this.state.title}
+                                            onChange={this.updateTitle.bind(this)}
+                                        />
                                         </label>
                                         <label>
                                             <div className="descriptionWrapper"><span>Description</span>
                                                 <textarea
-                                                    value={this.state.updateDescription}
+                                                    value={this.state.description}
                                                     onChange={this.updateDescription.bind(this)}
                                                     placeholder="Tell us about this pin..."
                                                 />
@@ -97,6 +115,7 @@ class EditPinForm extends React.Component {
                                         </label>
                                         <label><span>Website</span>
                                         <input
+                                            value={this.state.link_url}
                                                 type="text"
                                             ></input>
                                         </label>

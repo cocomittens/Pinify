@@ -17,11 +17,15 @@
 class User < ApplicationRecord
     validates :username, :email, :session_token, presence: true, uniqueness: true
     validates :password, length: { minimum: 6, allow_nil: true }
-
+    
     has_many :boards,
         primary_key: :id,
         foreign_key: :author_id,
         class_name: :Board
+
+    has_many :pins,
+        through: :boards,
+        source: :pins
 
     before_validation :ensure_session_token
 

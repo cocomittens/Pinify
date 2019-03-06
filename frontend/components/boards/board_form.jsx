@@ -13,9 +13,13 @@ class BoardForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        
-        const board = Object.assign({}, this.state);
-        this.props.createBoard(board);
+        let board;
+        if (this.props.formType=="Create") {
+            board = this.state;
+        } else {
+            board = Object.assign({}, this.state, {id: this.props.boardId});
+        }
+        this.props.action(board);
     }
 
     updateTitle(e) {
@@ -32,7 +36,7 @@ class BoardForm extends React.Component {
                     <div className="formContainer">
                         {this.state.errors}
                         <div className="headingsContainer">
-                            <h1>Create board</h1>
+                            <h1>{this.props.formType} board</h1>
                         </div>
                         {/* <ul className="sessionErrors">{this.props.errors.map((error, idx) => {
                             return (<li key={idx}>{error}</li>)
@@ -48,7 +52,7 @@ class BoardForm extends React.Component {
                                 /></label>
                  
                             <div className="buttonsContainer">
-                                <button type="submit">Create</button>
+                                <button type="submit">{this.props.formType}</button>
                             </div>
                         </form>
                     </div>

@@ -67,11 +67,13 @@ class Pin extends React.Component {
 
     render() {
         let boardNames = (
-        <ul>
+            <div class="boardNamesWrapper">
+        <ul class="boardNames">
         {this.props.boards.map(board => {
-            return <li>{board.title}</li>
+            return <li><span>{board.title}</span></li>
         })}
-            </ul>)
+                    <li className="createBoardLi"><span><i class="fas fa-plus-circle fa-2x"></i> Create Board</span></li>
+                </ul></div>)
         
 
         let previewImg;
@@ -101,7 +103,7 @@ class Pin extends React.Component {
                 <div id="rightCreateForm">
                     <div id="rightTopCreateForm">
                         <div className="buttonsContainer">
-                            <button onClick={this.handleSubmit}>Save</button>
+                        <button onClick={this.handleSubmit}><i class="createPinSaveBtn fas fa-thumbtack"></i> <span>Save</span></button>
                         </div>
 
                         <input

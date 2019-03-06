@@ -89,6 +89,7 @@ export const createBoard = board => dispatch => {
 }
 
 export const updatePin = pin => dispatch => {
+    debugger
     return BPApiUtil.updatePin(pin)
         .then(pin => dispatch(receivePin(pin)), errors => dispatch(receiveBPErrors(errors)))
 }

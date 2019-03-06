@@ -11,7 +11,8 @@ const msp = (state, ownProps) => {
         id: user.id,
         firstName: user.first_name,
         lastName: user.last_name,
-        boards: Object.values(state.entities.boards)
+        boards: Object.values(state.entities.boards),
+        pins: state.entities.pins
     })
 }
 
