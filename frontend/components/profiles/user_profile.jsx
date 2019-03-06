@@ -1,6 +1,24 @@
 import React from 'react';
 import GreetingContainer from '../header/greeting_container';
-import { Link } from 'react-router-dom';
+import EditBoardContainer from '../boards/edit_board_container';
+import { Link, Redirect } from 'react-router-dom';
+import Modal from 'react-modal';
+
+
+Modal.setAppElement(document.getElementById('root'));
+
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
+
+
 
 class UserProfile extends React.Component {
     componentDidMount(){
@@ -19,12 +37,33 @@ class UserProfile extends React.Component {
             active: false,
             currentPage: 'boards',
             pinList: null,
-            hovered: false
+            hovered: false,
+            modalIsOpen: false,
+            redirect: null
         };
         this.addHovered = this.addHovered.bind(this);
         this.removeHovered = this.removeHovered.bind(this);
         this.renderBoards = this.renderBoards.bind(this);
         this.renderPins = this.renderPins.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+
+    }
+
+    openModal() {
+        this.setState({ modalIsOpen: true });
+    }
+
+   
+    closeModal() {
+        this.setState({ modalIsOpen: false });
+    }
+
+    renderRedirect(id) {
+        if (!this.state.hovered) {
+            this.setState({ redirect: <Redirect to={`/board/${id}`}></Redirect> })
+
+        }
     }
 
     toggleClass() {
@@ -75,14 +114,15 @@ class UserProfile extends React.Component {
             boards.map(board => {
 
                 return (
-
                     <div className="grid">
-                        <Link to={`/board/${board.id}`}>
+                        
                             <div
                                 className="boardWrapper"
                                 onMouseOver={() => this.addHovered(board.id)}
                                 onMouseLeave={this.removeHovered}
+                                onClick={() => this.renderRedirect(board.id)}
                             >
+                            {this.state.redirect}
                                 <div className="boardImg" >
                                     <span>{this.getImages(board)}</span>
                                 </div>
@@ -96,13 +136,35 @@ class UserProfile extends React.Component {
                                             {board.pins.length} Pins
                             </div>
                                     </div>
-                                    <div className={this.state.hovered === board.id ? "rightBoardLinks" : "rightBoardLinks hidden"}>
-                                        <Link to={`/board/${board.id}/edit`}>
+                                <div onClick={this.openModal} className={this.state.hovered === board.id ? "rightBoardLinks" : "rightBoardLinks hidden"}>
                                             <i className="fas fa-edit fa-lg"></i>
-                                        </Link>
+                                            
+                                         
+
                                     </div>
+
+                                <Modal
+                                    isOpen={this.state.modalIsOpen}
+                                    onAfterOpen={this.afterOpenModal}
+                                    onRequestClose={this.closeModal}
+                                    shouldCloseOnOverlayClick={true}
+                                    style={customStyles}
+                                    
+                                    animationType={"slide"}
+                                    isVisible={this.state.ModalVisibleStatus}
+                                    contentLabel="Board edit form"
+                                >
+
+                                    <EditBoardContainer />
+
+
+
+                                </Modal>  
+
                                 </div>
-                            </div></Link></div>
+                            </div>
+                          
+                            </div>
                 )
             })
         }</div>)
@@ -152,9 +214,13 @@ class UserProfile extends React.Component {
                         ? (
                             <ul className='dropdown-content'>
                                 <Link to="/pin/new">Create pin</Link>
-                                <Link to="/board/new">Create board</Link>
+                                            <a onClick={this.openModal}>Create board</a>
+                                  
                             </ul>
+                            
                         ) : (null)}
+
+                        
                     </div>
         
                     <div className="dropdown">
@@ -174,10 +240,10 @@ class UserProfile extends React.Component {
                     <span 
                         onClick={this.showBoards.bind(this)} 
                         className={this.state.currentPage === 'boards' ? "headerLinkText active" : "headerLinkText"}
-                    > Boards </span>
-                    <span onClick={this.showPins.bind(this)} 
+                    >Boards</span>
+                            <span onClick={this.showPins.bind(this)} 
                         className={this.state.currentPage === 'pins' ? "headerLinkText active" : "headerLinkText"}
-                    > Pins</span>
+                    >Pins</span>
                 </div>
                     </div>
                 <div className="profileContent">

@@ -25,7 +25,6 @@ const App = () => (
         <ProtectedRoute path="/users/:username" component={UserProfileContainer} />
         <ProtectedRoute path="/board/new" component={CreateBoardContainer} />
         <ProtectedRoute path="/board/:boardId/edit" component={EditBoardContainer} />
-
         <ProtectedRoute path="/board/:boardId" component={BoardShowContainer} />
         <ProtectedRoute path="/pin/:pinId" component={PinShowContainer} />
         <Redirect to="/" />

@@ -4,18 +4,17 @@
 
 .boardForm {
     color: #333;
+   
 }
+
+
 
 .boardForm .containerContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
-    background: linear-gradient(
-      rgba(0, 0, 0, 0.75), 
-      rgba(0, 0, 0, 0.75)
-    ),
+    
 }
 
 .boardForm .formContainer {
