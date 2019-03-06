@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 
 class UserProfile extends React.Component {
     componentDidMount(){
-        this.props.fetchPins(1);
-        this.props.fetchBoards(this.props.id);
+        this.props.fetchBoards(this.props.user.id);
+        this.props.user.pin_ids.forEach(pinId => {
+            return this.props.fetchPin(pinId);
+        });
+      
         this.getImages = this.getImages.bind(this);
     }
 
@@ -40,10 +43,13 @@ class UserProfile extends React.Component {
     getImages(board) {
         const { pins } = this.props;
         if (Object.keys(pins).length === 0) return null;
-
+        if (board.pin_ids.length === 0) return null;
+        
         return (<div className="pinWrapperContainer">
-            {board.pin_ids.map(pin_id => {
+            {board.pin_ids.map(pin_id => {  
+                if (!pins[pin_id]) return null;              
                 return (
+                    
                     <div className="pinWrapper" key={pin_id}>
                         <img src={pins[pin_id].photoUrl} className="pinImg" />
                         <div className="pinText"></div>

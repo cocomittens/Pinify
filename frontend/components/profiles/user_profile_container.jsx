@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchBoards, fetchPins } from '../../actions/board_pin_actions';
+import { fetchBoards, fetchPins, fetchPin } from '../../actions/board_pin_actions';
 import UserProfile from './user_profile';
 
 const msp = (state, ownProps) => {
@@ -8,6 +8,7 @@ const msp = (state, ownProps) => {
     return ({
         errors: state.errors,
         username: ownProps.match.params.username,
+        user,
         id: user.id,
         firstName: user.first_name,
         lastName: user.last_name,
@@ -19,7 +20,8 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
     return {
         fetchBoards: (userId) => dispatch(fetchBoards(userId)),
-        fetchPins: (boardId) => dispatch(fetchPins(boardId))
+        fetchPins: (boardId) => dispatch(fetchPins(boardId)),
+        fetchPin: (pinId) => dispatch(fetchPin(pinId))
     }
 }
 
