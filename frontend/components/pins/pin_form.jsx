@@ -3,6 +3,7 @@ import GreetingContainer from '../header/greeting_container';
 
 class Pin extends React.Component {
     componentWillMount() {
+        
         this.props.fetchBoards(this.props.userId)
     }
 
@@ -11,8 +12,7 @@ class Pin extends React.Component {
         this.state = props.pin;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
-        this.updateBoard = this.updateBoard.bind(this);
-        this.toggleBoardList = this.toggleBoardList.bind(this);
+        
     }
 
     handleSubmit(e) {
@@ -34,6 +34,7 @@ class Pin extends React.Component {
         
         const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
+        
 
         fileReader.onloadend = () => {
             this.setState({ photoFile: file, photoUrl: fileReader.result,
@@ -58,14 +59,10 @@ class Pin extends React.Component {
         this.setState({link_url: e.target.value})
     }
 
-    updateBoard(id) {
-        this.setState({board_id: id});
-        this.toggleBoardList();
-    }
-
     toggleBoardList() {
         let status = !this.state.showBoardList;
-        this.setState({showBoardList: status});
+        this.setState({showBoardList: status})
+        
     }
 
     render() {
@@ -73,7 +70,7 @@ class Pin extends React.Component {
             <div class="boardNamesWrapper">
         <ul class="boardNames">
         {this.props.boards.map(board => {
-            return <li onClick={() => this.updateBoard(board.id)}><span>{board.title}</span></li>
+            return <li><span>{board.title}</span></li>
         })}
                     <li className="createBoardLi"><span><i class="fas fa-plus-circle fa-2x"></i> Create Board</span></li>
                 </ul></div>)
@@ -99,6 +96,8 @@ class Pin extends React.Component {
                 
             </div>)
         }
+
+        
 
         let pinForm = (
                 <div id="rightCreateForm">
