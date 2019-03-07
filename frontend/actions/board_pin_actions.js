@@ -1,6 +1,7 @@
 import * as BPApiUtil from '../util/board_pin_util';
 
 export const RECEIVE_PINS = 'RECEIVE_PINS';
+export const RECEIVE_PINS_NO_REPLACE = 'RECEIVE_PINS_NO_REPLACE';
 export const RECEIVE_BOARDS = 'RECEIVE_BOARDS';
 export const RECEIVE_PIN = 'RECEIVE_PIN';
 export const RECEIVE_BOARD = 'RECEIVE_BOARD';
@@ -12,6 +13,13 @@ export const RECEIVE_BP_ERRORS = 'RECEIVE_BP_ERRORS';
 const receivePins = pins => {
     return {
         type: RECEIVE_PINS,
+        pins
+    }
+}
+
+const receivePinsNoReplace = pins => {
+    return {
+        type: RECEIVE_PINS_NO_REPLACE,
         pins
     }
 }
@@ -60,6 +68,11 @@ const receiveBPErrors = errors => {
 export const fetchPins = boardId => dispatch => {
     return BPApiUtil.fetchPins(boardId)
         .then(pins => dispatch(receivePins(pins)), errors => dispatch(receiveBPErrors(errors)))
+}
+
+export const fetchPinsNoReplace = boardId => dispatch => {
+    return BPApiUtil.fetchPins(boardId)
+        .then(pins => dispatch(receivePinsNoReplace(pins)), errors => dispatch(receiveBPErrors(errors)))
 }
 
 export const fetchBoards = userId => dispatch => {

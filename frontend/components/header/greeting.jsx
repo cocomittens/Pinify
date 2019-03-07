@@ -28,7 +28,8 @@ class Greeting extends React.Component {
     render() {
         let user = this.props.currentUser;
         let name;
-        name = (user.first_name.length > 0) ? user.first_name : user.username;
+        
+        name = (user.first_name) ? user.first_name : user.username;
     
         return (
             <header>

@@ -1,4 +1,4 @@
-import { RECEIVE_PIN, RECEIVE_PINS, REMOVE_PIN } from '../actions/board_pin_actions';
+import { RECEIVE_PIN, RECEIVE_PINS, REMOVE_PIN, RECEIVE_PINS_NO_REPLACE } from '../actions/board_pin_actions';
 import { merge } from 'lodash';
 
 const pinsReducer = (state = {}, action) => {
@@ -6,6 +6,9 @@ const pinsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_PINS:
             return action.pins;
+        case RECEIVE_PINS_NO_REPLACE:
+        
+            return merge({}, state, action.pins);
         case RECEIVE_PIN:
             return merge({}, state, action.pin);
         case REMOVE_PIN:

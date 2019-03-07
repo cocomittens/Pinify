@@ -35,6 +35,14 @@
   border-radius: 10px;
   transition: .5s ease;
   border-radius: 10px;
+ 
+}
+
+.pinDropbtn {
+  background: #fff;
+  font-size: 16px;
+      font-family: 'Helvetica 35 Thin', sans-serif;
+
 }
 
 
@@ -549,7 +557,63 @@
  object-position: left top;
 }
 
-.pinDropdown, .pinDropbtn {
+.pinDropdown, .pinDropbtn, .pinDropdownContent {
   z-index: 9999999;
   position: relative;
+}
+
+
+.pinDropdownContent {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  
+}
+
+.pinDropdownContent li {
+  list-style-type: none;
+  background: #fff;
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.pinDropdownContent li:hover {
+  background: #EFEFEF;
+
+}
+
+.pinDropdown {
+  width: 100%;
+  top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pinDropbtn {
+  padding: 10px;
+  background: #EFEFEF;
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hoverBtns, .pinDropdown {
+  display: flex;
+  justify-content: center;
+}
+
+.saveBtn {
+  color: #fff;
+  font-size: 16px;
+  padding: 10px;
+  background: #E60023;
+  width: 25%;
+    border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+      border: none;
+  outline: none;
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import GreetingContainer from '../header/greeting_container';
 import EditBoardContainer from '../boards/edit_board_container';
+import CreateBoardContainer from '../boards/create_board_container';
+
 import { Link, Redirect } from 'react-router-dom';
 import Modal from 'react-modal';
 
@@ -23,18 +25,31 @@ const customStyles = {
     }
 };
 
-
-
 class UserProfile extends React.Component {
     componentDidMount(){
-        this.props.fetchBoards(this.props.user.id);
-        this.props.user.pin_ids.forEach(pinId => {
-            return this.props.fetchPin(pinId);
-        });
-      
-        this.getImages = this.getImages.bind(this);
+        
+        this.props.fetchUser(this.props.username);
     }
 
+    componentDidUpdate(prev) {
+        
+        if(this.props.boards.length === 0) {
+            this.props.fetchBoards(this.props.user.username);
+        } else {
+            if(Object.values(this.props.pins).length === 0) {
+
+                this.props.boards.forEach(board => {
+                    this.props.fetchPinsNoReplace(board.id)
+                })
+            } 
+                
+            
+            }
+        }
+        
+        
+    
+   
     constructor(props) {
         super(props)
         this.toggleClass = this.toggleClass.bind(this);
@@ -45,6 +60,7 @@ class UserProfile extends React.Component {
             hovered: false,
             editHovered: false,
             modalIsOpen: false,
+            createModalIsOpen: false,
             redirect: null
         };
         this.addHovered = this.addHovered.bind(this);
@@ -55,21 +71,40 @@ class UserProfile extends React.Component {
         this.renderPins = this.renderPins.bind(this);
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.getImages = this.getImages.bind(this);
+
+        this.openCreateModal = this.openCreateModal.bind(this);
+        this.closeCreateModal = this.closeCreateModal.bind(this);
     }
 
     openModal() {
-        this.setState({ modalIsOpen: true });
+        
+        this.setState({ modalIsOpen: true,
+        editHovered: true,
+    
+            hovered: false });
     }
 
-   
     closeModal() {
-        this.setState({ modalIsOpen: false});
+        this.setState({ modalIsOpen: false,
+        editHovered: true });
+        console.log(this.state);
+    }
+
+    openCreateModal() {
+        this.setState({ createModalIsOpen: true });
+    }
+
+    closeCreateModal() {
+        this.setState({ createModalIsOpen: false });
     }
 
     renderRedirect(id) {
         debugger
-        if (!this.state.editHovered) {
-            this.setState({ redirect: <Redirect to={`/board/${id}`}></Redirect> })
+        if (!this.state.editHovered && !this.state.modalIsOpen) {
+            this.props.history.push(`/board/${id}`);
+        } else {
+            this.setState({hovered: false})
         }
     }
 
@@ -91,7 +126,7 @@ class UserProfile extends React.Component {
         if (Object.keys(pins).length === 0) return null;
         if (board.pin_ids.length === 0) return null;
         
-        return (<div className="pinWrapperContainer">
+        return (<div key={board.id} className="pinWrapperContainer">
             {board.pin_ids.map(pin_id => {  
                 if (!pins[pin_id]) return null;              
                 return (
@@ -123,13 +158,15 @@ class UserProfile extends React.Component {
     }
 
     renderBoards() {
-        let boards = (this.props.boards) ? this.props.boards : [];
-
-        let boardList = (<div class="gridContainer">{
+        let boards;
+        boards = (this.props.boards) ? this.props.boards : [];
+   
+        let boardList;
+        boardList = (<div className="gridContainer">{
             boards.map(board => {
 
                 return (
-                    <div className="grid">
+                    <div className="grid" key={board.id}>
                         
                             <div
                                 className="boardWrapper"
@@ -137,7 +174,6 @@ class UserProfile extends React.Component {
                                 onMouseLeave={this.removeHovered}
                                 onClick={() => this.renderRedirect(board.id)}
                             >
-                            {this.state.redirect}
                                 <div className="boardImg" >
                                     <span>{this.getImages(board)}</span>
                                 </div>
@@ -159,8 +195,6 @@ class UserProfile extends React.Component {
                                 >
                                             <i className="fas fa-edit fa-lg"></i>
                                             
-                                         
-
                                     </div>
 
                                 <Modal
@@ -177,8 +211,6 @@ class UserProfile extends React.Component {
 
                                     <EditBoardContainer />
 
-
-
                                 </Modal>  
 
                                 </div>
@@ -193,6 +225,8 @@ class UserProfile extends React.Component {
     }
 
     renderPins() {
+      
+
         const pins = Object.values(this.props.pins);
         let pinList = (
             <div className="grid" id="userPinGrid">
@@ -217,9 +251,11 @@ class UserProfile extends React.Component {
     }
 
     render() {
-             
+        
+        if (!this.props.user) return null;  
+        
         let content = (this.state.currentPage === 'boards') ? this.renderBoards() : this.renderPins();
-
+        
         
         return (
             <div>
@@ -234,10 +270,25 @@ class UserProfile extends React.Component {
                         ? (
                             <ul className='dropdown-content'>
                                 <Link to="/pin/new">Create pin</Link>
-                                            <a onClick={this.openModal}>Create board</a>
-                                  
+                                <a onClick={this.openCreateModal}>Create board</a>
+                                            <Modal
+                                                isOpen={this.state.createModalIsOpen}
+                                                onRequestClose={this.closeCreateModal}
+                                                shouldCloseOnOverlayClick={true}
+                                                style={customStyles}
+
+                                                animationType={"slide"}
+                                                isVisible={this.state.ModalVisibleStatus}
+                                                contentLabel="Board edit form"
+                                            >
+
+                                                <CreateBoardContainer />
+
+
+                                            </Modal>
+
                             </ul>
-                            
+                                 
                         ) : (null)}
 
                         
@@ -253,7 +304,7 @@ class UserProfile extends React.Component {
                     </div>
 
                 <div className="profileHeaderMid">
-                    <h1>{this.props.firstName} {this.props.lastName}</h1>
+                    <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
                 </div>
 
                 <div className="profileHeaderBottom">

@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
+        @user = User.find_by(username: params[:id])
     end
 
     def update
@@ -28,6 +28,6 @@ class Api::UsersController < ApplicationController
 
     private
     def user_params
-        params.fetch(:user, {}).permit(:username, :email, :password, :first_name, :last_name, boards: [])
+        params.fetch(:user, {}).permit(:username, :email, :password, :first_name, :last_name)
     end
 end
