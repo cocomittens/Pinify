@@ -33,12 +33,14 @@ class UserProfile extends React.Component {
 
     componentDidUpdate(prev) {
         
-        if(this.props.boards.length === 0) {
+        if (this.props.boards.length === 0 && Object.values(this.props.user.boards).length > 0) {
             this.props.fetchBoards(this.props.user.username);
         } else {
-            if(Object.values(this.props.pins).length === 0) {
+            if(Object.values(this.props.pins).length === 0 && 
+            
+            Object.values(this.props.user.pins).length > 0) {
 
-                this.props.boards.forEach(board => {
+                this.props.user.boards.forEach(board => {
                     this.props.fetchPinsNoReplace(board.id)
                 })
             } 
