@@ -83,7 +83,6 @@ class EditPinForm extends React.Component {
  
         return (
             <div id="editPinForm">
-                <GreetingContainer />
                 <div className="boardForm">
                     <div className="containerContainer">
                         <div className="formContainer">

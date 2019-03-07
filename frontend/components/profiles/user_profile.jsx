@@ -14,7 +14,12 @@ const customStyles = {
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        padding: 0
+    },
+    
+    overlay: {
+        zIndex: 9999999
     }
 };
 
@@ -38,16 +43,18 @@ class UserProfile extends React.Component {
             currentPage: 'boards',
             pinList: null,
             hovered: false,
+            editHovered: false,
             modalIsOpen: false,
             redirect: null
         };
         this.addHovered = this.addHovered.bind(this);
         this.removeHovered = this.removeHovered.bind(this);
         this.renderBoards = this.renderBoards.bind(this);
+        this.addEditHovered = this.addEditHovered.bind(this);
+        this.removeEditHovered = this.removeEditHovered.bind(this);
         this.renderPins = this.renderPins.bind(this);
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
-
     }
 
     openModal() {
@@ -56,13 +63,13 @@ class UserProfile extends React.Component {
 
    
     closeModal() {
-        this.setState({ modalIsOpen: false });
+        this.setState({ modalIsOpen: false});
     }
 
     renderRedirect(id) {
-        if (!this.state.hovered) {
+        debugger
+        if (!this.state.editHovered) {
             this.setState({ redirect: <Redirect to={`/board/${id}`}></Redirect> })
-
         }
     }
 
@@ -107,6 +114,14 @@ class UserProfile extends React.Component {
         this.setState({ hovered: false })
     }
 
+    addEditHovered() {
+        this.setState({editHovered: true})
+    }
+
+    removeEditHovered() {
+        this.setState({editHovered: false})
+    }
+
     renderBoards() {
         let boards = (this.props.boards) ? this.props.boards : [];
 
@@ -136,7 +151,12 @@ class UserProfile extends React.Component {
                                             {board.pins.length} Pins
                             </div>
                                     </div>
-                                <div onClick={this.openModal} className={this.state.hovered === board.id ? "rightBoardLinks" : "rightBoardLinks hidden"}>
+                                <div 
+                                    onMouseOver={this.addEditHovered}
+                                    onMouseLeave={this.removeEditHovered}
+                                    onClick={this.openModal} 
+                                    className={this.state.hovered === board.id ? "rightBoardLinks" : "rightBoardLinks hidden"}
+                                >
                                             <i className="fas fa-edit fa-lg"></i>
                                             
                                          

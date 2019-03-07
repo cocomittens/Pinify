@@ -16,15 +16,16 @@
   padding-bottom: 10px;
   display: inline-block;
   border-radius: 10px;
-  cursor: pointer;
+  cursor: zoom-in;
   position:relative;
+  z-index: 0;
 }
 
 .pinWrapper:hover .pinText {
   content: '';
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 0;
   width: 100%;
   height: 100%;
   display: block;
@@ -33,7 +34,9 @@
   opacity: 0.4;
   border-radius: 10px;
   transition: .5s ease;
+  border-radius: 10px;
 }
+
 
 .pinTitle {
   margin-top: 5px;
@@ -199,7 +202,7 @@
   margin-top: 10px;
 }
 
-#rightCreateForm #chooseBoard::placeholder {
+#rightCreateForm #chooseBoard::placeholder, #rightCreateForm #chooseBoard {
   color: #333;
 }
 
@@ -255,7 +258,7 @@
 }
 
 .inputfile + label {
-  cursor: pointer; /* "hand" cursor */
+  cursor: pointer;
   height: 430px;
   width: 315px;
   font-size: 16px;
@@ -335,7 +338,7 @@
 }
 
 #editPinForm .pinShowPhoto {
-  width: 300px;
+  width: 230px;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -386,6 +389,9 @@
 
 #editPinForm .headingsContainer{
   width: 100%;
+  margin: 0;
+  padding: 0;
+
 }
 
 #editPinForm .editPinContent {
@@ -410,7 +416,6 @@
 }
 
 .editPinContent label span {
-  font-family: 'Helvetica 35 Thin';
   font-size: 14px;
   margin: 0;
 }
@@ -544,3 +549,7 @@
  object-position: left top;
 }
 
+.pinDropdown, .pinDropbtn {
+  z-index: 9999999;
+  position: relative;
+}

@@ -8,7 +8,7 @@ const msp = state => {
     
     return {
         pin: {title: "", description: "", link_url: "", author_id: userId, board_id: 1, photoFile: null, photoUrl: null, 
-            imageUrl: null, imageFile: null, showBoardList: false},
+            imageUrl: null, imageFile: null, showBoardList: false, boardName: null},
         formType: 'Create Pin',
         boards: Object.values(state.entities.boards),
         userId

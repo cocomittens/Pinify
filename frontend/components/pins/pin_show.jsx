@@ -1,22 +1,50 @@
 import React from 'react';
 import GreetingContainer from '../header/greeting_container';
+import EditPinContainer from './edit_pin_container';
+import Modal from 'react-modal';
 import { Link, Redirect } from 'react-router-dom';
+
+Modal.setAppElement(document.getElementById('root'));
+
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        padding: 0
+    },
+    overlay: {
+        zIndex: 9999
+    }
+};
 
 class PinShow extends React.Component {
     componentDidMount() {
         this.props.fetchPin(this.props.pinId);
-        
     }
 
     constructor(props) {
         super(props);
-        this.state = {deleted: false}
+        this.state = {deleted: false,
+        modalIsOpen: false};
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
+
+    openModal() {
+        this.setState({ modalIsOpen: true });
+    }
+
+    closeModal() {
+        this.setState({ modalIsOpen: false });
     }
 
     render() {
         let photo = null, title = null, description = null, linkUrl = null;
         let redirect = (this.state.deleted) ? (<Redirect to="/" /> ): null;
-        
 
         if (this.props.pin) {
             photo = (<img src={this.props.pin.photoUrl} />);
@@ -34,11 +62,29 @@ class PinShow extends React.Component {
                         <div className="formContainer">
 
                         <div className="leftPinShowPage">
-                        <div className="pinShowEditBtn">
-                        <Link to={`/pin/${this.props.pinId}/edit`}>
+                        <div onClick={this.openModal} className="pinShowEditBtn">
+
                                 <i className="fas fa-edit fa-lg"></i>
 
-                                </Link></div>
+                                </div>
+                            <Modal
+                                isOpen={this.state.modalIsOpen}
+                                onAfterOpen={this.afterOpenModal}
+                                onRequestClose={this.closeModal}
+                                shouldCloseOnOverlayClick={true}
+                                style={customStyles}
+
+                                animationType={"slide"}
+                                isVisible={this.state.ModalVisibleStatus}
+                                contentLabel="Board edit form"
+                            >
+
+                                <EditPinContainer />
+
+
+
+                            </Modal>  
+
                                 {photo}
                         </div>
 
@@ -47,8 +93,6 @@ class PinShow extends React.Component {
                                         <p> {description} </p>
                                         <p> {linkUrl} </p>
                                     </div>
-
-                                
 
                         </div>
                     </div>

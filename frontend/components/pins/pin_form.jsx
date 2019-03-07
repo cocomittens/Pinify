@@ -12,7 +12,7 @@ class Pin extends React.Component {
         this.state = props.pin;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
-        
+        this.updateBoardInfo = this.updateBoardInfo.bind(this);
     }
 
     handleSubmit(e) {
@@ -61,8 +61,12 @@ class Pin extends React.Component {
 
     toggleBoardList() {
         let status = !this.state.showBoardList;
-        this.setState({showBoardList: status})
-        
+        this.setState({showBoardList: status})  
+    }
+
+    updateBoardInfo(board_id, boardName) {
+        this.setState({board_id, boardName});
+        this.toggleBoardList();
     }
 
     render() {
@@ -70,7 +74,7 @@ class Pin extends React.Component {
             <div class="boardNamesWrapper">
         <ul class="boardNames">
         {this.props.boards.map(board => {
-            return <li><span>{board.title}</span></li>
+            return <li onClick={() => this.updateBoardInfo(board.id, board.title)}><span>{board.title}</span></li>
         })}
                     <li className="createBoardLi"><span><i class="fas fa-plus-circle fa-2x"></i> Create Board</span></li>
                 </ul></div>)
@@ -131,6 +135,7 @@ class Pin extends React.Component {
                         <input
                             id="chooseBoard"
                             type="text"
+                            value={this.state.boardName}
                             onClick={this.toggleBoardList.bind(this)}
                             placeholder="Choose a board (required)"
                         />
