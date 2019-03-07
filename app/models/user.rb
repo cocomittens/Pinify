@@ -27,6 +27,16 @@ class User < ApplicationRecord
         through: :boards,
         source: :pins
 
+    has_many :followers,
+        primary_key: :id,
+        foreign_key: :follower_id,
+        class_name: :Follow
+
+    has_many :follows,
+        primary_key: :id,
+        foreign_key: :followed_id,
+        class_name: :Follow
+
     before_validation :ensure_session_token
 
     attr_reader :password

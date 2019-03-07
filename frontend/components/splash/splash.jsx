@@ -50,28 +50,29 @@ class Splash extends React.Component {
                     
                 let title = pin.title ? pin.title : null;
                     return (
-                        
+                        <div>    
                         <div onMouseOver={() => this.addHovered(pin.id)}
                             onMouseLeave={this.removeHovered}
                         className="pinWrapper"
                         key={pin.id}>
                                 
-                           
-                            <div className="hoverBtns">
-                                <div
-                                    className={this.state.hovered === pin.id ? "pinDropdown" : "pinDropdown hidden"}
-                                ><button
-                                    onClick={() => this.toggleClass(pin.id)}
+                                <div className="hoverBtns">
+                                    <div
+                                        onMouseOver={() => this.addHovered(pin.id)}
+                                        className={this.state.hovered === pin.id ? "pinDropdown" : "pinDropdown hidden"}
+                                    ><button
+                                        onClick={() => this.toggleClass(pin.id)}
                                         className="pinDropbtn">{firstBoard}</button><button
-                                          
-                                            className="saveBtn">Save</button>
-                                    <ul class={this.state.active === pin.id ? "pinDropdownContent" : "pinDropdownContent hidden"}>
-                                        {this.props.boards.map(board => {
-                                            return <li><span>{board.title}</span></li>
-                                        })}
-                                    </ul>
 
-                                </div></div>
+                                            className="saveBtn">Save</button>
+                                        <ul class={this.state.active === pin.id ? "pinDropdownContent" : "pinDropdownContent hidden"}>
+                                            {this.props.boards.map(board => {
+                                                return <li><span>{board.title}</span></li>
+                                            })}
+                                        </ul>
+
+                                    </div></div>
+                        
                                 <Link to={`pin/${pin.id}`}>
                             <div className="pinText"></div>
                             <div className="pinInfo">
@@ -84,7 +85,7 @@ class Splash extends React.Component {
                             </Link>
                         </div>
                                 
-                              
+                        </div>
                 
                     
                     )

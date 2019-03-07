@@ -21,6 +21,10 @@
   z-index: 0;
 }
 
+.pinWrapper:hover {
+  margin-top: 0;
+}
+
 .pinWrapper:hover .pinText {
   content: '';
   top: 0;
@@ -46,6 +50,8 @@
 }
 
 
+
+
 .pinTitle {
   margin-top: 5px;
    margin-left: 10px;
@@ -55,12 +61,14 @@
 }
 
 .pinImg {
-  display: block;
+  display: flex;
   width: 100%;
   height: auto;
   border-radius: 10px;
   margin: 0 auto;
 }
+
+
 
 @media screen and (max-width: 750px) { 
   .grid { column-gap: 0px; }
@@ -559,7 +567,6 @@
 
 .pinDropdown, .pinDropbtn, .pinDropdownContent {
   z-index: 9999999;
-  position: relative;
 }
 
 
@@ -580,14 +587,17 @@
 
 .pinDropdownContent li:hover {
   background: #EFEFEF;
-
 }
+
+
 
 .pinDropdown {
   width: 100%;
-  top: 50px;
+  transform: translateY(10px);
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
+  
 }
 
 .pinDropbtn {
@@ -600,6 +610,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 
 .hoverBtns, .pinDropdown {
   display: flex;
@@ -616,4 +627,5 @@
   border-bottom-right-radius: 10px;
       border: none;
   outline: none;
+
 }
