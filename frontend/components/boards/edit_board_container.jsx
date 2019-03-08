@@ -6,9 +6,10 @@ import { withRouter } from 'react-router-dom';
 
 const msp = (state, ownProps) => {
     return {
+        session: state.session,
         userId: state.session.id,
         boardId: ownProps.match.params.boardId,
-        board: Object.values(state.entities.boards).slice(-1)[0],
+        board: Object.values(state.entities.boards)[0],
         formType: "Edit"
     }
 }
@@ -33,6 +34,7 @@ class EditBoardForm extends React.Component{
                 title={this.props.title}
                 boardId={this.props.boardId}
                 formType={this.props.formType}
+                session={this.props.session}
             ></BoardForm>
         )
     }
