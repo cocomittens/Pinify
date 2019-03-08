@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class Follows extends React.Component {
     componentDidMount() {
-        this.props.fetchUser(this.props.currentUser.username)
+        this.props.fetchUser("fluffy")
     }
 
     componentDidUpdate(prev) {
