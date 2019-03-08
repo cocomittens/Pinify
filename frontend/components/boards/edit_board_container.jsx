@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 const msp = (state, ownProps) => {
     return {
-        userId: Object.values(state.entities.users)[0].id,
+        userId: state.session.id,
         boardId: ownProps.match.params.boardId,
         board: Object.values(state.entities.boards).slice(-1)[0],
         formType: "Edit"
