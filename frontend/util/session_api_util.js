@@ -35,3 +35,11 @@ export const fetchUser = username => {
         url: `api/users/${username}`
     })
 };
+
+export const addFollow = follow => {
+    return $.ajax({
+        method: 'POST',
+        url: 'api/follows',
+        data: { follow }
+    })
+}

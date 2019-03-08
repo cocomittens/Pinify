@@ -5,6 +5,7 @@ import CreateBoardContainer from '../boards/create_board_container';
 
 import { Link, Redirect } from 'react-router-dom';
 import Modal from 'react-modal';
+import { addFollow } from '../../util/session_api_util';
 
 
 Modal.setAppElement(document.getElementById('root'));
@@ -68,6 +69,13 @@ class UserProfile extends React.Component {
         this.getImages = this.getImages.bind(this);
         this.openCreateModal = this.openCreateModal.bind(this);
         this.closeCreateModal = this.closeCreateModal.bind(this);
+        this.addFollow = this.addFollow.bind(this);
+    }
+
+    addFollow(follower, followed) {
+        let follow = {follower_id: follower,
+            followed_id: followed};
+        this.props.addFollow(follow);
     }
 
     openModal() {
@@ -150,7 +158,7 @@ class UserProfile extends React.Component {
     renderBoards() {
         let boards;
         boards = (this.props.boards) ? this.props.boards : [];
-   
+        
         let boardList;
         boardList = (
         <div className="gridContainer">{
@@ -275,6 +283,10 @@ class UserProfile extends React.Component {
                 <div className="profileHeaderMid">
                     <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
                     <p>{followers} followers · {follows} following</p>
+                    <div class="buttonsContainer">
+                            <button onClick={() => addFollow(this.props.currentUserId, this.props.user.id)}>Follow</button>
+                    </div>
+
                 </div>
 
                 <div className="profileHeaderBottom">

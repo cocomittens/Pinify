@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :boards, only: [:create, :update, :destroy]
     resources :pins, only: [:show, :create, :update, :destroy]
     resources :pins_boards, only: [:new, :create, :index, :destroy]
+    resources :follows, only: [:new, :create, :index, :destroy]
   end
  
 end
