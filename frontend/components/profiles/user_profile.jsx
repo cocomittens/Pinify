@@ -5,7 +5,6 @@ import CreateBoardContainer from '../boards/create_board_container';
 
 import { Link, Redirect } from 'react-router-dom';
 import Modal from 'react-modal';
-import { addFollow } from '../../util/session_api_util';
 
 
 Modal.setAppElement(document.getElementById('root'));
@@ -72,16 +71,16 @@ class UserProfile extends React.Component {
         this.addFollow = this.addFollow.bind(this);
     }
 
-    addFollow(follower, followed) {
-        let follow = {follower_id: follower,
-            followed_id: followed};
+    addFollow(follow) {
+        
+        
         this.props.addFollow(follow);
     }
 
     openModal() {
         this.setState({ modalIsOpen: true,
             editHovered: true,
-            hovered: false 
+            hovered: false
         });
     }
 
@@ -282,9 +281,9 @@ class UserProfile extends React.Component {
 
                 <div className="profileHeaderMid">
                     <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
-                    <p>{followers} followers · {follows} following</p>
+                            <p>{follows} followers · {followers} following</p>
                     <div class="buttonsContainer">
-                            <button onClick={() => addFollow(this.props.currentUserId, this.props.user.id)}>Follow</button>
+                            <button onClick={() => this.addFollow({follower_id: this.props.currentUserId, followed_id: this.props.user.id})}>Follow</button>
                     </div>
 
                 </div>

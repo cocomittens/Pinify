@@ -32,6 +32,6 @@ class Api::UsersController < ApplicationController
 
     private
     def user_params
-        params.fetch(:user, {}).permit(:username, :email, :password, :first_name, :last_name, :photo)
+        params.fetch(:user, {}).permit(:username, :email, :password, :first_name, :last_name, :photo, followed: [], followers: [])
     end
 end
