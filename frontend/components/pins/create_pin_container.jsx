@@ -4,7 +4,7 @@ import PinForm from './pin_form';
 import { createPin, fetchBoards } from '../../actions/board_pin_actions';
 
 const msp = state => {
-    let userId = Object.values(state.entities.users)[0].id;
+    let userId = state.session.id;
     
     return {
         pin: {title: "", description: "", link_url: "", author_id: userId, board_id: 1, photoFile: null, photoUrl: null, 

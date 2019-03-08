@@ -3,11 +3,11 @@ import { updateUser } from '../../actions/session_actions';
 import EditProfile from './edit_profile';
 
 const msp = state => {
-    let user = Object.values(state.entities.users)[0];
+    let user = state.session;
     
     return ({
         errors: state.errors,
-        user_info: user
+        user_info: state.session
     })
 }
 
