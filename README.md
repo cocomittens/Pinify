@@ -1,5 +1,4 @@
 # Pinify
 
-Hi, this is the readme for my Pinterest fullstack project.
+[Pinify](https://pinify-app.herokuapp.com) is a site that allows users to create, upload and share images.
 
-Read more about me on the [Wiki](https://github.com/ioqren/PinterestFullstack/wiki).  
