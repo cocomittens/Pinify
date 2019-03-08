@@ -18,7 +18,7 @@ class Greeting extends React.Component {
     
 
     constructor(props) {
-        super(props)
+        super(props);
         this.toggleClass = this.toggleClass.bind(this);
         
         this.state = {
