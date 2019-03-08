@@ -3,16 +3,19 @@ import { withRouter, Link } from 'react-router-dom';
 
 class Greeting extends React.Component {
     componentDidMount() {
-        switch(this.props.match.path) {
-            case "/users":
-                this.setState({ currentPage: 'profile' });
-            case "/following":
-                this.setState({ currentPage: 'following' });
-            default:
-                this.setState({ currentPage: 'home' });
+        
+        if (this.props.match.path === "/") {
+            this.setState({ currentPage: 'home' });
+        } else if (this.props.match.path === "/following") {
+            this.setState({ currentPage: 'following' });
+
+        } else {
+            this.setState({ currentPage: 'profile' });
+
+        }
         }
         
-    }
+    
 
     constructor(props) {
         super(props)
