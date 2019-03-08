@@ -280,11 +280,18 @@ class UserProfile extends React.Component {
                 </div>
 
                 <div className="profileHeaderMid">
+                        <div>
                     <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
                             <p>{follows} followers · {followers} following</p>
-                    <div class="buttonsContainer">
-                            <button onClick={() => this.addFollow({follower_id: this.props.currentUserId, followed_id: this.props.user.id})}>Follow</button>
-                    </div>
+
+                            </div>
+                            <div class="buttonsContainer">
+                                <button className="followBtn" onClick={() => this.addFollow({ follower_id: this.props.currentUserId, followed_id: this.props.user.id })}>Follow</button>
+                            </div>  
+                            
+                            
+                      
+                   
 
                 </div>
 
@@ -305,9 +312,9 @@ class UserProfile extends React.Component {
             <div className="profileContent">
                         {content}
             </div>
-        </div>
+   
         <div className="addPinBtnContainer"><Link to="/pin/new"><button className="addPinBtn"><span>+</span></button></Link></div>
-        </div>
+      </div></div>
         )
     }
 }

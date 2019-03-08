@@ -5,7 +5,7 @@ class BoardForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            author_id: props.userId,
+            author_id: props.session.id,
             title: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,7 +17,8 @@ class BoardForm extends React.Component {
         if (this.props.formType=="Create") {
             board = this.state;
         } else {
-            board = Object.assign({}, this.state, {id: this.props.boardId});
+            board = Object.assign({}, this.state, {id: this.props.boardId,
+            author_id: this.props.session.id});
         }
         this.props.action(board);
     }

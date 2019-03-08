@@ -5,7 +5,8 @@ import BoardForm from './board_form';
 const msp = state => {
     return {
         userId: Object.values(state.entities.users)[0].id,
-        formType: "Create"
+        formType: "Create",
+        session: state.session
     }
 }
 
