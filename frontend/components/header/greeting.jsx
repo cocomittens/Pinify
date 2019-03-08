@@ -3,11 +3,15 @@ import { withRouter, Link } from 'react-router-dom';
 
 class Greeting extends React.Component {
     componentDidMount() {
-        if (this.props.match.path === "/") {
-            this.setState({currentPage: 'home'})
-        } else {
-            this.setState({currentPage: 'profile'})
+        switch(this.props.match.path) {
+            case "/users":
+                this.setState({ currentPage: 'profile' });
+            case "/following":
+                this.setState({ currentPage: 'following' });
+            default:
+                this.setState({ currentPage: 'home' });
         }
+        
     }
 
     constructor(props) {
@@ -40,6 +44,11 @@ class Greeting extends React.Component {
                     <Link to="/"><h1 
                         className={this.state.currentPage === 'home' ? "home active" : "home"}>
                             Home
+                        </h1>
+                    </Link>
+                    <Link to="/following"><h1
+                        className={this.state.currentPage === 'following' ? "home active" : "home"}>
+                        Following
                         </h1>
                     </Link>
                 <div id="nameContainer">

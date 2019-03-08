@@ -10,6 +10,7 @@ import CreateBoardContainer from './boards/create_board_container';
 import BoardShowContainer from './boards/board_show_container';
 import PinShowContainer from './pins/pin_show_container';
 import EditBoardContainer from './boards/edit_board_container';
+import FollowsContainer from './follows/follows_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch, Redirect } from 'react-router-dom'
 
@@ -27,6 +28,7 @@ const App = () => (
         <ProtectedRoute path="/board/:boardId/edit" component={EditBoardContainer} />
         <ProtectedRoute path="/board/:boardId" component={BoardShowContainer} />
         <ProtectedRoute path="/pin/:pinId" component={PinShowContainer} />
+        <ProtectedRoute path="/following" component={FollowsContainer} />
         <Redirect to="/" />
     </Switch>
 );

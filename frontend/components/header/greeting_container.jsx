@@ -4,7 +4,6 @@ import Greeting from './greeting';
 import { withRouter } from 'react-router-dom';
 
 const msp = (state, ownProps) => {
-    
     return {
         currentUser: state.session,
         path: ownProps.location.pathname

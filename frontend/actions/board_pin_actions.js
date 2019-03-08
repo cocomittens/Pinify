@@ -9,10 +9,18 @@ export const REMOVE_PIN = 'REMOVE_PIN';
 export const REMOVE_BOARD = 'REMOVE_BOARD';
 export const RECEIVE_PIN_BOARD = 'RECEIVE_PIN_BOARD';
 export const RECEIVE_BP_ERRORS = 'RECEIVE_BP_ERRORS';
+export const RECEIVE_PINS_BOARD = 'RECEIVE_PINS_BOARD'
 
 const receivePins = pins => {
     return {
         type: RECEIVE_PINS,
+        pins
+    }
+}
+
+const receivePinsBoard = pb => {
+    return {
+        type: RECEIVE_PINS_BOARD,
         pins
     }
 }
@@ -94,6 +102,11 @@ export const fetchBoard = id => dispatch => {
 export const createPin = pin => dispatch => {
     return BPApiUtil.createPin(pin)
         .then(pin => dispatch(receivePin(pin)), errors => dispatch(receiveBPErrors(errors)))
+}
+
+export const createPinsBoard = pins_board => dispatch => {
+    return BPApiUtil.createPinsBoard(pins_board)
+        .then(pins_board => dispatch(receivePinsBoard(pins_board)), errors => dispatch(receiveBPErrors(errors)))
 }
 
 export const createBoard = board => dispatch => {

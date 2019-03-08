@@ -43,6 +43,14 @@ export const createBoard = board => {
     })
 }
 
+export const createPinsBoard = pins_board => {
+    return $.ajax({
+        method: 'POST',
+        url: 'api/pins_boards',
+        data: { pins_board }
+    })
+}
+
 export const updatePin = pin => {
     return $.ajax({
         method: 'PATCH',

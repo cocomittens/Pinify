@@ -27,31 +27,22 @@ const customStyles = {
 
 class UserProfile extends React.Component {
     componentDidMount(){
-        
         this.props.fetchUser(this.props.username);
     }
 
     componentDidUpdate(prev) {
-        
         if (this.props.boards.length === 0 && Object.values(this.props.user.boards).length > 0) {
             this.props.fetchBoards(this.props.user.username);
         } else {
             if(Object.values(this.props.pins).length === 0 && 
-            
             Object.values(this.props.user.pins).length > 0) {
-
                 this.props.user.boards.forEach(board => {
                     this.props.fetchPinsNoReplace(board.id)
                 })
             } 
-                
-            
-            }
         }
+    }
         
-        
-    
-   
     constructor(props) {
         super(props)
         this.toggleClass = this.toggleClass.bind(this);
@@ -74,23 +65,21 @@ class UserProfile extends React.Component {
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.getImages = this.getImages.bind(this);
-
         this.openCreateModal = this.openCreateModal.bind(this);
         this.closeCreateModal = this.closeCreateModal.bind(this);
     }
 
     openModal() {
-        
         this.setState({ modalIsOpen: true,
-        editHovered: true,
-    
-            hovered: false });
+            editHovered: true,
+            hovered: false 
+        });
     }
 
     closeModal() {
         this.setState({ modalIsOpen: false,
-        editHovered: true });
-        console.log(this.state);
+            editHovered: true 
+        });
     }
 
     openCreateModal() {
@@ -102,7 +91,6 @@ class UserProfile extends React.Component {
     }
 
     renderRedirect(id) {
-        debugger
         if (!this.state.editHovered && !this.state.modalIsOpen) {
             this.props.history.push(`/board/${id}`);
         } else {
@@ -127,12 +115,11 @@ class UserProfile extends React.Component {
         const { pins } = this.props;
         if (Object.keys(pins).length === 0) return null;
         if (board.pin_ids.length === 0) return null;
-        
+
         return (<div key={board.id} className="pinWrapperContainer">
             {board.pin_ids.map(pin_id => {  
                 if (!pins[pin_id]) return null;              
                 return (
-                    
                     <div className="pinWrapper" key={pin_id}>
                         <img src={pins[pin_id].photoUrl} className="pinImg" />
                         <div className="pinText"></div>
@@ -164,12 +151,11 @@ class UserProfile extends React.Component {
         boards = (this.props.boards) ? this.props.boards : [];
    
         let boardList;
-        boardList = (<div className="gridContainer">{
+        boardList = (
+        <div className="gridContainer">{
             boards.map(board => {
-
                 return (
                     <div className="grid" key={board.id}>
-                        
                             <div
                                 className="boardWrapper"
                                 onMouseOver={() => this.addHovered(board.id)}
@@ -187,7 +173,7 @@ class UserProfile extends React.Component {
                                         </div>
                                         <div className="numPins">
                                             {board.pins.length} Pins
-                            </div>
+                                        </div>
                                     </div>
                                 <div 
                                     onMouseOver={this.addEditHovered}
@@ -195,9 +181,8 @@ class UserProfile extends React.Component {
                                     onClick={this.openModal} 
                                     className={this.state.hovered === board.id ? "rightBoardLinks" : "rightBoardLinks hidden"}
                                 >
-                                            <i className="fas fa-edit fa-lg"></i>
-                                            
-                                    </div>
+                                    <i className="fas fa-edit fa-lg"></i> 
+                                </div>
 
                                 <Modal
                                     isOpen={this.state.modalIsOpen}
@@ -205,59 +190,51 @@ class UserProfile extends React.Component {
                                     onRequestClose={this.closeModal}
                                     shouldCloseOnOverlayClick={true}
                                     style={customStyles}
-                                    
                                     animationType={"slide"}
                                     isVisible={this.state.ModalVisibleStatus}
                                     contentLabel="Board edit form"
                                 >
-
                                     <EditBoardContainer />
-
                                 </Modal>  
-
-                                </div>
                             </div>
-                          
-                            </div>
+                        </div>
+                    </div>
                 )
             })
-        }</div>)
+        }
+        </div>)
 
         return boardList;
     }
 
     renderPins() {
-      
-
         const pins = Object.values(this.props.pins);
         let pinList = (
             <div className="grid" id="userPinGrid">
-            {
-                pins.map(pin => {
-                    let title = pin.title ? pin.title : null;
-                    return (
-                        <Link to={`/pin/${pin.id}`}>
-                            <div className="pinWrapper" key={pin.id}>
-                                <img src={pin.photoUrl} className="pinImg" />
-                                <div className="pinText"></div>
-                                <div className="pinTitle">
-                                    <span>{title}</span>
-                                </div>
+            { pins.map(pin => {
+                let title = pin.title ? pin.title : null;
+                return (
+                    <Link to={`/pin/${pin.id}`}>
+                        <div className="pinWrapper" key={pin.id}>
+                            <img src={pin.photoUrl} className="pinImg" />
+                            <div className="pinText"></div>
+                            <div className="pinTitle">
+                                <span>{title}</span>
                             </div>
-                        </Link>
-                    )
-                })}
+                        </div>
+                    </Link>
+                )})}
             </div>
         );
         return pinList;
     }
 
     render() {
-        
         if (!this.props.user) return null;  
         
         let content = (this.state.currentPage === 'boards') ? this.renderBoards() : this.renderPins();
-        
+        let followers = (this.props.user.followers) ? this.props.user.followers.length : 0;
+        let follows = (this.props.user.follows) ? this.props.user.follows.length : 0;
         
         return (
             <div>
@@ -267,7 +244,6 @@ class UserProfile extends React.Component {
                 <div className="profileHeaderTop">
                 <div className="dropdown">
                     <i onClick={this.toggleClass} className="dropbtn fas fa-plus fa-lg"></i>
-
                     {this.state.active
                         ? (
                             <ul className='dropdown-content'>
@@ -283,48 +259,43 @@ class UserProfile extends React.Component {
                                                 isVisible={this.state.ModalVisibleStatus}
                                                 contentLabel="Board edit form"
                                             >
-
                                                 <CreateBoardContainer />
-
-
                                             </Modal>
-
-                            </ul>
-                                 
+                            </ul>    
                         ) : (null)}
-
-                        
                     </div>
-        
                     <div className="dropdown">
                         <Link to="/edit">
-                        <i className="dropbtn fas fa-edit fa-lg"></i>
+                            <i className="dropbtn fas fa-edit fa-lg"></i>
                         </Link>
-
-                    </div>
-                            
-                    </div>
+                    </div>    
+                </div>
 
                 <div className="profileHeaderMid">
                     <h1>{this.props.user.first_name} {this.props.user.last_name}</h1>
+                    <p>{followers} followers · {follows} following</p>
                 </div>
 
                 <div className="profileHeaderBottom">
                     <span 
                         onClick={this.showBoards.bind(this)} 
                         className={this.state.currentPage === 'boards' ? "headerLinkText active" : "headerLinkText"}
-                    >Boards</span>
-                            <span onClick={this.showPins.bind(this)} 
+                    >
+                    Boards
+                    </span>
+                    <span onClick={this.showPins.bind(this)} 
                         className={this.state.currentPage === 'pins' ? "headerLinkText active" : "headerLinkText"}
-                    >Pins</span>
+                    >
+                    Pins
+                    </span>
                 </div>
-                    </div>
-                <div className="profileContent">
-                            {content}
-                    </div>
-                </div>
-                <div className="addPinBtnContainer"><Link to="/pin/new"><button className="addPinBtn"><span>+</span></button></Link></div>
             </div>
+            <div className="profileContent">
+                        {content}
+            </div>
+        </div>
+        <div className="addPinBtnContainer"><Link to="/pin/new"><button className="addPinBtn"><span>+</span></button></Link></div>
+        </div>
         )
     }
 }

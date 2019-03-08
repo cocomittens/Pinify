@@ -83,8 +83,13 @@
     margin-top: -20px;
 }
 
-.profileHeaderMid h1 {
+.profileHeaderMid h1, .profileHeaderMid p {
     margin-left: 20px;
+}
+
+.profileHeaderMid p {
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .profileHeaderTop .fas {

@@ -37,6 +37,9 @@ class User < ApplicationRecord
         foreign_key: :followed_id,
         class_name: :Follow
 
+    has_one_attached :photo
+    attr_writer :photoUrl
+
     before_validation :ensure_session_token
 
     attr_reader :password

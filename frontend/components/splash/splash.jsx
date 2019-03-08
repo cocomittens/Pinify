@@ -8,6 +8,11 @@ class Splash extends React.Component {
         this.props.fetchBoards("mittens");
     }
 
+    addPin(board_id, pin_id) {
+        let pins_board = {board_id, pin_id};
+        this.props.createPinsBoard(pins_board)
+    }
+
     addHovered(id) {
         this.setState({ hovered: id,
         })
@@ -38,56 +43,52 @@ class Splash extends React.Component {
         this.removeHovered = this.removeHovered.bind(this);
         this.addActive = this.addActive.bind(this);
         this.toggleClass = this.toggleClass.bind(this);
+        this.addPin = this.addPin.bind(this);
     }
 
     render() {
-        let pins = (this.props.pins) ? this.props.pins : []; 
-         if (this.props.boards.length === 0) return null;
-         
-         let firstBoard = this.props.boards[0].title
+        if (this.props.boards.length === 0) return null;
+        let pins = (this.props.pins) ? this.props.pins : [];    
+        let firstBoard = this.props.boards[0].title;
         let list = (<div className="grid">
                 {pins.map(pin => {
-                    
-                let title = pin.title ? pin.title : null;
+                    let title = pin.title ? pin.title : null;
                     return (
                         <div>    
-                        <div onMouseOver={() => this.addHovered(pin.id)}
-                            onMouseLeave={this.removeHovered}
-                        className="pinWrapper"
-                        key={pin.id}>
-                                
+                            <div onMouseOver={() => this.addHovered(pin.id)}
+                                onMouseLeave={this.removeHovered}
+                                className="pinWrapper"
+                                key={pin.id}
+                            >
                                 <div className="hoverBtns">
                                     <div
                                         onMouseOver={() => this.addHovered(pin.id)}
                                         className={this.state.hovered === pin.id ? "pinDropdown" : "pinDropdown hidden"}
-                                    ><button
-                                        onClick={() => this.toggleClass(pin.id)}
-                                        className="pinDropbtn">{firstBoard}</button><button
-
-                                            className="saveBtn">Save</button>
+                                    >
+                                        <button
+                                            onClick={() => this.toggleClass(pin.id)}
+                                            className="pinDropbtn">{firstBoard}
+                                        </button>
+                                        <button className="saveBtn">Save</button>
                                         <ul class={this.state.active === pin.id ? "pinDropdownContent" : "pinDropdownContent hidden"}>
                                             {this.props.boards.map(board => {
-                                                return <li><span>{board.title}</span></li>
+                                                return <li onClick={() => this.addPin(board.id, pin.id)}><span>{board.title}</span></li>
                                             })}
                                         </ul>
 
-                                    </div></div>
-                        
-                                <Link to={`pin/${pin.id}`}>
+                                    </div>
+                                </div>
+                            <Link to={`pin/${pin.id}`}>
                             <div className="pinText"></div>
                             <div className="pinInfo">
                                 <img src={pin.photoUrl} className="pinImg" />
-                 
                                 <div className="pinTitle">
                                     <span>{title}</span>
                                 </div>
-                               </div>
+                            </div>
                             </Link>
-                        </div>
-                                
-                        </div>
-                
-                    
+                        </div>       
+                    </div>
                     )
                 })}
             </div>
