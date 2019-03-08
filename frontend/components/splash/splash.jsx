@@ -8,9 +8,22 @@ class Splash extends React.Component {
         this.props.fetchBoards("mittens");
     }
 
-    addPin(board_id, pin_id) {
+    addPin(board_id, pin_id, selectedBoard) {
         let pins_board = {board_id, pin_id};
-        this.props.createPinsBoard(pins_board)
+        this.setState({pins_board, active: false, selectedBoard});
+    }
+
+    removePin() {
+        this.setState({pins_board: null, selectedBoard: null})
+    }
+
+    handleSave(pin_id) {
+        let defaultBoardId = this.props.boards[0].id;
+        if(!this.state.pins_board) {
+            let pins_board = { board_id: defaultBoardId, pin_id }
+            setState({pins_board})
+        }
+        this.props.createPinsBoard(this.state.pins_board)
     }
 
     addHovered(id) {
@@ -21,6 +34,7 @@ class Splash extends React.Component {
     removeHovered() {
         this.setState({ hovered: false,
         active: false })
+        this.removePin();
     }
 
     addActive(id) {
@@ -38,18 +52,23 @@ class Splash extends React.Component {
     constructor(props) {
         super(props);
         this.state = ({hovered: false,
-        active: false})
+        active: false,
+        pins_board: null,
+        selectedBoard: null})
         this.addHovered = this.addHovered.bind(this);
         this.removeHovered = this.removeHovered.bind(this);
         this.addActive = this.addActive.bind(this);
         this.toggleClass = this.toggleClass.bind(this);
         this.addPin = this.addPin.bind(this);
+        this.removePin = this.removePin.bind(this);
+        this.handleSave = this.handleSave.bind(this);
     }
 
     render() {
         if (this.props.boards.length === 0) return null;
         let pins = (this.props.pins) ? this.props.pins : [];    
         let firstBoard = this.props.boards[0].title;
+        let currentBoard = (this.state.selectedBoard) ? this.state.selectedBoard : firstBoard;
         let list = (<div className="grid">
                 {pins.map(pin => {
                     let title = pin.title ? pin.title : null;
@@ -59,20 +78,23 @@ class Splash extends React.Component {
                                 onMouseLeave={this.removeHovered}
                                 className="pinWrapper"
                                 key={pin.id}
-                            >
+                            > 
                                 <div className="hoverBtns">
                                     <div
                                         onMouseOver={() => this.addHovered(pin.id)}
+                                    
                                         className={this.state.hovered === pin.id ? "pinDropdown" : "pinDropdown hidden"}
                                     >
                                         <button
                                             onClick={() => this.toggleClass(pin.id)}
-                                            className="pinDropbtn">{firstBoard}
+                                            className={this.state.active ? "pinDropbtn fullLength" : "pinDropbtn"}>{currentBoard}
                                         </button>
-                                        <button className="saveBtn">Save</button>
+                                        <button className={this.state.active ? "saveBtn hidden" : "saveBtn"}
+                                            onClick={() => this.handleSave(pin.id)}
+                                        >Save</button>
                                         <ul class={this.state.active === pin.id ? "pinDropdownContent" : "pinDropdownContent hidden"}>
                                             {this.props.boards.map(board => {
-                                                return <li onClick={() => this.addPin(board.id, pin.id)}><span>{board.title}</span></li>
+                                                return <li onClick={() => this.addPin(board.id, pin.id, board.title)}><span>{board.title}</span></li>
                                             })}
                                         </ul>
 

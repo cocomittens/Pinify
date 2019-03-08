@@ -54,7 +54,8 @@ class UserProfile extends React.Component {
             editHovered: false,
             modalIsOpen: false,
             createModalIsOpen: false,
-            redirect: null
+            redirect: null,
+            currentBoard: null
         };
         this.addHovered = this.addHovered.bind(this);
         this.removeHovered = this.removeHovered.bind(this);
