@@ -1,146 +1,148 @@
 header {
-    padding: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ededed;
-    height: 54px;
- }
-
-header *:hover {
-    cursor: pointer;
- }
-
-button:hover {
-    cursor: pointer;
- }
-
-.logo {
-    color: #E60023;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 29px;
-    margin-left: 10px;
+	padding: 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #ededed;
+	height: 54px;
 }
 
-#leftnav:hover .logo, #nameContainer h1:hover, .home:hover {
-    background-color: #f1f1f1;
-    height: 30px;
+header *:hover {
+	cursor: pointer;
+}
 
+button:hover {
+	cursor: pointer;
+}
+
+.logo {
+	color: #e60023;
+	padding: 10px;
+	border: none;
+	cursor: pointer;
+	border-radius: 50%;
+	font-size: 29px;
+	margin-left: 10px;
+}
+
+#leftnav:hover .logo,
+#nameContainer h1:hover,
+.home:hover {
+	background-color: #f1f1f1;
+	height: 30px;
 }
 
 #nameContainer h1 {
-    padding: 10px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+	padding: 10px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 }
 
-.home:hover, #nameContainer h1:hover {
-    border-radius: 20px;
-    height: 20px;
+.home:hover,
+#nameContainer h1:hover {
+	border-radius: 20px;
+	height: 20px;
 }
 
 #rightnav .active {
-    color: #333;
+	color: #333;
 }
-
 
 #rightnav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-.home{
-    padding: 10px 15px;
-    border-top-left-radius: 50%;
-    border-top-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-    border-bottom-left-radius: 50%;
-    color: #8E8E8E;
-    display: flex;
-    align-items: center;
+.home {
+	padding: 10px 15px;
+	border-top-left-radius: 50%;
+	border-top-right-radius: 50%;
+	border-bottom-left-radius: 50%;
+	border-bottom-left-radius: 50%;
+	color: #8e8e8e;
+	display: flex;
+	align-items: center;
 }
 
 #rightnav a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 #rightnav > * {
-    color: #8E8E8E;
+	color: #8e8e8e;
 }
 
 /* Dropdown Menu */
 .dropbtn {
-    color: #8E8E8E;
-    padding: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 50%;
+	color: #8e8e8e;
+	padding: 16px;
+	border: none;
+	cursor: pointer;
+	border-radius: 50%;
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #f1f1f1;
+	background-color: #f1f1f1;
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
+	position: relative;
+	display: inline-block;
 }
 
 .dropdown-content {
-    position: absolute;
-    border-radius: 5px;
-    left: -150px;
-    background-color: #f9f9f9;
-    width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+	position: absolute;
+	border-radius: 5px;
+	left: -150px;
+	background-color: #f9f9f9;
+	width: 200px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-weight: bold;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	font-weight: bold;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1;
-    cursor: pointer;
-    border-radius: 5px;
+.dropdown-content a:hover {
+	background-color: #f1f1f1;
+	cursor: pointer;
+	border-radius: 5px;
 }
 
 .headerLinkText {
-    color: #8E8E8E;
+	color: #8e8e8e;
 }
 
 .circle {
-    display:inline-block;
-    background: #8E8E8E;
-    color: #fff;
-    border-radius:50%;
-    border:2px solid;
-    margin-right: 7px;
-    font-size:10px;
-    font-weight: lighter;
+	display: inline-block;
+	background: #8e8e8e;
+	color: #fff;
+	border-radius: 50%;
+	border: 2px solid;
+	margin-right: 7px;
+	font-size: 10px;
+	font-weight: lighter;
 }
 
 .circle:before,
 .circle:after {
-    content:'\200B';
-    display:inline-block;
-    line-height:0px;
-    padding-top:50%;
-    padding-bottom:50%;
+	content: '\200B';
+	display: inline-block;
+	line-height: 0px;
+	padding-top: 50%;
+	padding-bottom: 50%;
 }
 
 .circle:before {
-    padding-left:7px;
+	padding-left: 7px;
 }
 .circle:after {
-    padding-right:7px;
+	padding-right: 7px;
 }

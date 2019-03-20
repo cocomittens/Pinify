@@ -1,99 +1,96 @@
 .formContainer .headingsContainer {
-    width: 320px;
-    text-align: center;
+	width: 320px;
+	text-align: center;
 }
 
 .headingsContainer .logo {
-    margin: 0;
+	margin: 0;
 }
 
 .headingsContainer h1 {
-    font-size: 30px;
-    margin-bottom: 15px;
+	font-size: 30px;
+	margin-bottom: 15px;
 }
 
 .headingsContainer h2 {
-    font-size: 16px;
-    font-weight: lighter;
-    margin-bottom: 5px;
+	font-size: 16px;
+	font-weight: lighter;
+	margin-bottom: 5px;
 }
 
 .formContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 400px;
-    background:#fff;
-    flex-direction: column;
-    border-radius: 5px;
-    padding: 20px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 400px;
+	background: #fff;
+	flex-direction: column;
+	border-radius: 5px;
+	padding: 20px 0;
 }
 
 .formContainer * {
-    margin: 10px;
+	margin: 10px;
 }
 
 .formContainer form input {
-    width:253px;
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid #999;
-    font-size: 16px;
-    padding: 3px 10px;
-    font-weight: lighter;
-    margin: 5px 0;
-} 
-
-.formContainer form {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content: center;
+	width: 253px;
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid #999;
+	font-size: 16px;
+	padding: 3px 10px;
+	font-weight: lighter;
+	margin: 5px 0;
 }
 
-
+.formContainer form {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
 
 .sessionErrors {
-    color: #E3780C;
-    margin: 0;
-    padding: 0;
-    width: 300px;
+	color: #e3780c;
+	margin: 0;
+	padding: 0;
+	width: 300px;
 }
 
 .sessionErrors li {
-    font-weight: lighter;
-    margin: 5px;
-    text-align: center;
-    list-style: none;
+	font-weight: lighter;
+	margin: 5px;
+	text-align: center;
+	list-style: none;
 }
 
 .sessionErrors li:first-child {
-    margin-top: 0;
+	margin-top: 0;
 }
 
-
 .buttonsContainer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .buttonsContainer a {
-    margin: 0;
+	margin: 0;
 }
 
-.buttonsContainer button{
-    width: 275px;
-    background-color: #E60023;
-    padding: 10px 20px;
-    font-weight: bold;
-    color: #fff;
-    border-radius: 5px;
-    font-size: 14px;
-    margin: 5px 0;
-    border: none;
+.buttonsContainer button {
+	width: 275px;
+	background-color: #e60023;
+	padding: 10px 20px;
+	font-weight: bold;
+	color: #fff;
+	border-radius: 5px;
+	font-size: 14px;
+	margin: 5px 0;
+	border: none;
 }
 
 .buttonsContainer button:hover {
-    background-color: #AD081B;
+	background-color: #ad081b;
 }

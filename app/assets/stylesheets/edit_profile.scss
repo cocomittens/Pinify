@@ -1,103 +1,103 @@
 /* Edit Profile Form */
 
 #editProfileContainer .containerContainer {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 50px;
-    background-color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding-top: 50px;
+	background-color: #fff;
 }
 
 #editProfileContainer .formContainer {
-    width: 670px;
-    background-color: #fff;
-    align-items: flex-start;
+	width: 670px;
+	background-color: #fff;
+	align-items: flex-start;
 }
 
 #editProfileContainer .headingsContainer {
-    align-self: flex-start;
-    display: flex;
-    justify-content: space-between;
-    width: 650px;
+	align-self: flex-start;
+	display: flex;
+	justify-content: space-between;
+	width: 650px;
 }
 
 #editProfileContainer label {
-    font-weight: lighter;
+	font-weight: lighter;
 }
 
-#headings, #headings > * {
-    text-align: left;
-    width: 300px;
-    margin-left: 0;
+#headings,
+#headings > * {
+	text-align: left;
+	width: 300px;
+	margin-left: 0;
 }
 
 #editProfileContainer .buttonsContainer {
-    width: 70px;
-    margin: 0;
-    margin-right: 60px;
+	width: 70px;
+	margin: 0;
+	margin-right: 60px;
 }
 
-#editProfileContainer #editUsername input{
-    margin-left: 5px;
-    width: 150px;
+#editProfileContainer #editUsername input {
+	margin-left: 5px;
+	width: 150px;
 }
 
 #editForm {
-    display: flex;
-    justify-content: flex-start;
-    margin: 0;
+	display: flex;
+	justify-content: flex-start;
+	margin: 0;
 }
 
 #editForm label {
-    margin:10px 4px;
+	margin: 10px 4px;
 }
 
 #editProfileContainer input {
-    width: 270px;
-    
+	width: 270px;
 }
 
 #doneBtn {
-    width: 70px;
-    height: 40px;
-    font-size: 16px;
-    padding: 0;
-    background: #ededed;
-    color: #8E8E8E;
-    font-weight: 500;
-    border: none;
-    margin-top: 30px;
+	width: 70px;
+	height: 40px;
+	font-size: 16px;
+	padding: 0;
+	background: #ededed;
+	color: #8e8e8e;
+	font-weight: 500;
+	border: none;
+	margin-top: 30px;
 }
 
 #doneBtn:hover {
-    background: #AD081B;
-    color: #fff;
+	background: #ad081b;
+	color: #fff;
 }
 
 #editLocation input {
-    width: 565px;
+	width: 565px;
 }
 
 #editProfileContainer textarea {
-    width: 565px;
-    height: 92px;
-    border-radius: 5px;
-    margin-left: 0;
-    font-size: 16px;
-    font-family: 'Helvetica 35 Thin';
-    font-weight: lighter;
-    padding-left: 15px;
-    padding-top: 15px;
-    border: 1px solid  #8E8E8E;
+	width: 565px;
+	height: 92px;
+	border-radius: 5px;
+	margin-left: 0;
+	font-size: 16px;
+	font-family: 'Helvetica 35 Thin';
+	font-weight: lighter;
+	padding-left: 15px;
+	padding-top: 15px;
+	border: 1px solid #8e8e8e;
 }
 
 .profileHeaderMid {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
 }
 
 .profileHeaderMid button {
-    width: 100px !important;
-    font-size: 16px;
+	width: 100px !important;
+	font-size: 16px;
 }

@@ -12,25 +12,24 @@ import PinShowContainer from './pins/pin_show_container';
 import EditBoardContainer from './boards/edit_board_container';
 import FollowsContainer from './follows/follows_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import { Switch, Redirect } from 'react-router-dom'
-
+import { Switch, Redirect } from 'react-router-dom';
 
 const App = () => (
-    <Switch>
-        <AuthRoute path="/login" component={LoginFormContainer} />
-        <AuthRoute path="/signup" component={SignupFormContainer} />
-        <ProtectedRoute exact path="/" component={SplashContainer} />
-        <ProtectedRoute exact path="/edit" component={EditProfileContainer} />
-        <ProtectedRoute exact path="/pin/new" component={CreatePinContainer} />
-        <ProtectedRoute path="/pin/:pinId/edit" component={EditPinContainer} />
-        <ProtectedRoute path="/users/:username" component={UserProfileContainer} />
-        <ProtectedRoute path="/board/new" component={CreateBoardContainer} />
-        <ProtectedRoute path="/board/:boardId/edit" component={EditBoardContainer} />
-        <ProtectedRoute path="/board/:boardId" component={BoardShowContainer} />
-        <ProtectedRoute path="/pin/:pinId" component={PinShowContainer} />
-        <ProtectedRoute path="/following" component={FollowsContainer} />
-        <Redirect to="/" />
-    </Switch>
+	<Switch>
+		<AuthRoute path="/login" component={LoginFormContainer} />
+		<AuthRoute path="/signup" component={SignupFormContainer} />
+		<ProtectedRoute exact path="/" component={SplashContainer} />
+		<ProtectedRoute exact path="/edit" component={EditProfileContainer} />
+		<ProtectedRoute exact path="/pin/new" component={CreatePinContainer} />
+		<ProtectedRoute path="/pin/:pinId/edit" component={EditPinContainer} />
+		<ProtectedRoute path="/users/:username" component={UserProfileContainer} />
+		<ProtectedRoute path="/board/new" component={CreateBoardContainer} />
+		<ProtectedRoute path="/board/:boardId/edit" component={EditBoardContainer} />
+		<ProtectedRoute path="/board/:boardId" component={BoardShowContainer} />
+		<ProtectedRoute path="/pin/:pinId" component={PinShowContainer} />
+		<ProtectedRoute path="/following" component={FollowsContainer} />
+		<Redirect to="/" />
+	</Switch>
 );
 
 export default App;

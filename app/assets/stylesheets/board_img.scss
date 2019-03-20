@@ -2,91 +2,92 @@
 
 .profileContent .gridContainer .grid {
 	column-width: 95px;
-    width: 320px;
-    height: auto;
-    margin: 0;
+	width: 320px;
+	height: auto;
+	margin: 0;
 }
 
 .profileContent {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 #userPinGrid {
 	column-width: 260px;
-    width: 90%;
-    height: auto;
-    margin: 0;
+	width: 90%;
+	height: auto;
+	margin: 0;
 }
 
 .gridContainer {
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .boardImg .pinWrapper {
-    margin: 0;
-    padding: 0;
-    padding-bottom: 0;
-    display: inline-block;
-    border-radius: 0;
-    cursor: pointer;
-    position:relative;
-    width: 95px;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 0;
+	display: inline-block;
+	border-radius: 0;
+	cursor: pointer;
+	position: relative;
+	width: 95px;
 }
 
 .boardImg img {
-    border-radius: 0;
-    display: block;
-    width: 92px;
-    margin: 1px !important;
-    height: 100px;
-    object-fit: cover;
-    margin: 0 auto;
+	border-radius: 0;
+	display: block;
+	width: 92px;
+	margin: 1px !important;
+	height: 100px;
+	object-fit: cover;
+	margin: 0 auto;
 }
 
 .pinWrapperContainer .pinWrapper:nth-child(1) img {
-    border-top-left-radius: 10px;
+	border-top-left-radius: 10px;
 }
 
 .pinWrapperContainer .pinWrapper:nth-child(3) img {
-    border-top-right-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 .pinWrapperContainer .pinWrapper:nth-child(4) img {
-    border-bottom-left-radius: 10px;
+	border-bottom-left-radius: 10px;
 }
 
 .pinWrapperContainer .pinWrapper:nth-child(6) img {
-    border-bottom-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 
 .pinWrapperContainer .pinWrapper:nth-child(2) img,
 .pinWrapperContainer .pinWrapper:nth-child(5) img {
-    margin-top: -30px !important;
+	margin-top: -30px !important;
 }
 
 .pinWrapperContainer .pinWrapper:nth-child(5) img {
-    height: 130px;
+	height: 130px;
 }
 
-.boardImg{
-    overflow: hidden;
-    height: 200px;
+.boardImg {
+	overflow: hidden;
+	height: 200px;
 }
 
 .pinWrapperContainer {
-    display: flex;
-    justify-content: center;
-    align-content: space-between;
-    flex-wrap: wrap;
+	display: flex;
+	justify-content: center;
+	align-content: space-between;
+	flex-wrap: wrap;
 }
 
-.boardTitle, .numPins {
-    margin-left: 10px;
+.boardTitle,
+.numPins {
+	margin-left: 10px;
 }
 
 .boardTitle {
-    margin-top: 10px;
+	margin-top: 10px;
 }

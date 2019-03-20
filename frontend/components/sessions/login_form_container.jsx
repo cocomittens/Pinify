@@ -4,19 +4,24 @@ import { login, clearErrors } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom';
 
 const msp = (state, ownProps) => {
-    return {
-        errors: state.errors.sessionErrors,
-        formType: 'Log in',
-        path: ownProps.location.pathname
-    }
-}
+	return {
+		errors: state.errors.sessionErrors,
+		formType: 'Log in',
+		path: ownProps.location.pathname,
+	};
+};
 
 const mdp = dispatch => {
-    return {
-        processForm: (user) => dispatch(login(user)),
-        clearErrors: () => dispatch(clearErrors())
-    }
-}
+	return {
+		processForm: user => dispatch(login(user)),
+		clearErrors: () => dispatch(clearErrors()),
+	};
+};
 
-const LoginFormContainer = withRouter(connect(msp, mdp)(SessionForm));
+const LoginFormContainer = withRouter(
+	connect(
+		msp,
+		mdp
+	)(SessionForm)
+);
 export default LoginFormContainer;
