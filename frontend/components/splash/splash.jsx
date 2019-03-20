@@ -7,7 +7,7 @@ class Splash extends React.Component {
 		this.props.fetchPins(1);
 		this.props.fetchPins(2);
 		this.props.fetchPins(3);
-		this.props.fetchBoards('mittens');
+		// this.props.fetchBoards('mittens');
 	}
 
 	addPin(board_id, pin_id, selectedBoard) {
