@@ -9,3 +9,4 @@
 User.create([{username: 'mittens', email: 'mittens@mittens.com', password: '123456', first_name: 'Mittens', last_name: 'Mittens'}])
 Board.create([{id: 1, author_id: 1, title: 'cats'}])
 Pin.create([{id: 1, author_id: 'mittens', board_id: 1, photoUrl: ('/Users/cgripens/Desktop/AppAcademy/pinify/app/assets/images/cat1.png')}])
+PinsBoard.create([{pin_id: 1, board_id: 1}])
