@@ -11,5 +11,5 @@ def seed_image(file_name)
 end
 
 User.create!([{username: 'mittens', email: 'mittens@mittens.com', password: '123456', first_name: 'Mittens', last_name: 'Mittens'}])
-Board.create!([{id: 1, author_id: 1, title: 'cats'}])
+Board.create!([{id: 1, author_id: 1, title: 'Cats'}, {id: 2, author_id: 1, title: 'Bunnies'}, {id: 3, author_id: 1, title: 'Fashion'}])
 # pins = Pin.create!([{id: 1, author_id: 1, board_id: 1, board_ids: [1]}])
