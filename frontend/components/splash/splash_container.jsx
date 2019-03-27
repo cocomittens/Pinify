@@ -5,6 +5,7 @@ import { fetchPins, fetchBoards, createPinsBoard } from '../../actions/board_pin
 const msp = state => {
 	return {
 		userId: state.session.id,
+		username: state.session.username,
 		pins: Object.values(state.entities.pins),
 		boards: Object.values(state.entities.boards),
 	};

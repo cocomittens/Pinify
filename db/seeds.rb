@@ -6,7 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create([{username: 'mittens', email: 'mittens@mittens.com', password: '123456', first_name: 'Mittens', last_name: 'Mittens'}])
-Board.create([{id: 1, author_id: 1, title: 'cats'}])
-Pin.create([{id: 1, author_id: 'mittens', board_id: 1, photoUrl: ('/Users/cgripens/Desktop/AppAcademy/pinify/app/assets/images/cat1.png')}])
-PinsBoard.create([{pin_id: 1, board_id: 1}])
+def seed_image(file_name)
+  File.read(File.join(Rails.root, "public/#{file_name}.png"))
+end
+
+User.create!([{username: 'mittens', email: 'mittens@mittens.com', password: '123456', first_name: 'Mittens', last_name: 'Mittens'}])
+Board.create!([{id: 1, author_id: 1, title: 'cats'}])
+pins = Pin.create!([{id: 1, author_id: 1, board_id: 1, board_ids: [1]}])
