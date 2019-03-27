@@ -12,4 +12,4 @@ end
 
 User.create!([{username: 'mittens', email: 'mittens@mittens.com', password: '123456', first_name: 'Mittens', last_name: 'Mittens'}])
 Board.create!([{id: 1, author_id: 1, title: 'cats'}])
-pins = Pin.create!([{id: 1, author_id: 1, board_id: 1, board_ids: [1]}])
+# pins = Pin.create!([{id: 1, author_id: 1, board_id: 1, board_ids: [1]}])
