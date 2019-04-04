@@ -1,7 +1,12 @@
 # Pinify
-
-Pinify is a site that allows users to create, upload and share images.  
+Pinify is a full stack clone of the popular website Pitnerest.
 
 ## Demo
+[Here](https://pinify-app.herokuapp.com) is a working live demo
 
-[Here](https://pinify-app.herokuapp.com) is a working live demo.
+## Key Features
+
+
+## Technologies Used
+
+## Future Features
