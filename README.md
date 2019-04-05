@@ -7,6 +7,7 @@ Pinify is a full stack clone of the popular website Pitnerest. Users can create 
 ## Key Features
 ### User Authentication
 Upon their first visit to the site, users are presented with a login page. They must sign in or register in order to access site content.  
+
 ![Login Page](https://i.imgur.com/AbnQ3L3.jpg "Login Page")
 
 ### Splash Page
