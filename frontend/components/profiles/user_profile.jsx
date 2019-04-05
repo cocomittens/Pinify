@@ -3,7 +3,7 @@ import GreetingContainer from '../header/greeting_container';
 import EditBoardContainer from '../boards/edit_board_container';
 import CreateBoardContainer from '../boards/create_board_container';
 
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 
 Modal.setAppElement(document.getElementById('root'));
@@ -33,7 +33,8 @@ class UserProfile extends React.Component {
 		if (this.props.boards.length === 0 && Object.values(this.props.user.boards).length > 0) {
 			this.props.fetchBoards(this.props.user.username);
 		} else {
-			if (Object.values(this.props.pins).length === 0 && Object.values(this.props.user.pins).length > 0) {
+
+			if (Object.values(this.props.pins).length !== this.props.user.pins.length) {
 				this.props.user.boards.forEach(board => {
 					this.props.fetchPinsNoReplace(board.id);
 				});
@@ -55,18 +56,20 @@ class UserProfile extends React.Component {
 			redirect: null,
 			currentBoard: null,
 		};
+
+		this.renderPins = this.renderPins.bind(this);
+		this.renderBoards = this.renderBoards.bind(this);
+		this.addFollow = this.addFollow.bind(this);
+		this.getImages = this.getImages.bind(this);
+		
 		this.addHovered = this.addHovered.bind(this);
 		this.removeHovered = this.removeHovered.bind(this);
-		this.renderBoards = this.renderBoards.bind(this);
 		this.addEditHovered = this.addEditHovered.bind(this);
 		this.removeEditHovered = this.removeEditHovered.bind(this);
-		this.renderPins = this.renderPins.bind(this);
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
-		this.getImages = this.getImages.bind(this);
 		this.openCreateModal = this.openCreateModal.bind(this);
 		this.closeCreateModal = this.closeCreateModal.bind(this);
-		this.addFollow = this.addFollow.bind(this);
 	}
 
 	addFollow(follow) {
@@ -112,12 +115,14 @@ class UserProfile extends React.Component {
 
 	getImages(board) {
 		const { pins } = this.props;
+		console.log(pins);
 		if (Object.keys(pins).length === 0) return null;
 		if (board.pin_ids.length === 0) return null;
-
 		return (
 			<div key={board.id} className="pinWrapperContainer">
 				{board.pin_ids.map(pin_id => {
+					console.log(pins[pin_id]);
+
 					if (!pins[pin_id]) return null;
 					return (
 						<div className="pinWrapper" key={pin_id}>
@@ -149,7 +154,7 @@ class UserProfile extends React.Component {
 	renderBoards() {
 		let boards;
 		boards = this.props.boards ? this.props.boards : [];
-
+		console.log(this.props.pins);
 		let boardList;
 		boardList = (
 			<div className="gridContainer">
@@ -194,7 +199,8 @@ class UserProfile extends React.Component {
 										isVisible={this.state.ModalVisibleStatus}
 										contentLabel="Board edit form"
 									>
-										<EditBoardContainer />
+										<EditBoardContainer 
+										boardId={board.id}/>
 									</Modal>
 								</div>
 							</div>
@@ -279,7 +285,7 @@ class UserProfile extends React.Component {
 									{follows} followers · {followers} following
 								</p>
 							</div>
-							<div class="buttonsContainer">
+							<div className="buttonsContainer">
 								<button
 									className="followBtn"
 									onClick={() =>

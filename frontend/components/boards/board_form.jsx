@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class BoardForm extends React.Component {
 	componentDidMount() {
-		this.props.fetchBoard(boardId);
+		if(this.props.formType === 'Edit') {
+			this.props.fetchBoard(this.props.boardId);
+		}
 	}
 
 	constructor(props) {

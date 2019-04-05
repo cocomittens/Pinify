@@ -7,7 +7,6 @@ const pinsReducer = (state = {}, action) => {
         case RECEIVE_PINS:
             return action.pins;
         case RECEIVE_PINS_NO_REPLACE:
-        
             return merge({}, state, action.pins);
         case RECEIVE_PIN:
             return merge({}, state, action.pin);

@@ -7,6 +7,7 @@ const msp = state => {
 		userId: Object.values(state.entities.users)[0].id,
 		formType: 'Create',
 		session: state.session,
+		boardId: 1
 	};
 };
 
