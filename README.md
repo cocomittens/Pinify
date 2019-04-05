@@ -11,11 +11,16 @@ Upon their first visit to the site, users are presented with a login page. They 
 
 ### Splash Page
 Once logged in, users can view a personalized Splash Page.
-![Splash Page](https://i.imgur.com/8gloXDO.jpg "Splash Page")
+![Splash Page](https://i.imgur.com/kTnEeMQ.jpg "Splash Page")
 
 ### User Profile
+![User Profile](https://i.imgur.com/qEQ0A1y.jpg "User Profile")
 
-### Follows Feed
+### Create Pin
+![Create Pin](https://i.imgur.com/PmvFK7Z.png "Create Pin")
+
+### View Pin
+![View Pin](https://i.imgur.com/D2nVmsC.jpg "View Pin")
 
 ## Technologies Used
 
