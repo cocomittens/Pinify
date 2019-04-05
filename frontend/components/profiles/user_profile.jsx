@@ -27,20 +27,26 @@ const customStyles = {
 class UserProfile extends React.Component {
 	componentDidMount() {
 		this.props.fetchUser(this.props.username);
+		this.props.clearPins();
 	}
 
 	componentDidUpdate(prev) {
-		if (this.props.boards.length === 0 && Object.values(this.props.user.boards).length > 0) {
-			this.props.fetchBoards(this.props.user.username);
-		} else {
+		console.log(this.props.boards);
+		if(this.props.user.boards) {
+			console.log(this.props.user);
 
-			if (Object.values(this.props.pins).length !== this.props.user.pins.length) {
-				this.props.user.boards.forEach(board => {
-					this.props.fetchPinsNoReplace(board.id);
-				});
-			}
+		
+		if (this.props.boards.length < this.props.user.boards.length) {
+			this.props.fetchBoards(this.props.user.username);
+		} 
+		if (Object.values(this.props.pins).length < this.props.user.pins.length) {
+			this.props.user.boards.forEach(board => {
+				this.props.fetchPinsNoReplace(board.id);
+			});
 		}
-	}
+		}
+		}
+	
 
 	constructor(props) {
 		super(props);
@@ -115,13 +121,12 @@ class UserProfile extends React.Component {
 
 	getImages(board) {
 		const { pins } = this.props;
-		console.log(pins);
 		if (Object.keys(pins).length === 0) return null;
 		if (board.pin_ids.length === 0) return null;
+
 		return (
 			<div key={board.id} className="pinWrapperContainer">
 				{board.pin_ids.map(pin_id => {
-					console.log(pins[pin_id]);
 
 					if (!pins[pin_id]) return null;
 					return (
@@ -152,13 +157,16 @@ class UserProfile extends React.Component {
 	}
 
 	renderBoards() {
+		if (!this.props.user) return null;
+
 		let boards;
 		boards = this.props.boards ? this.props.boards : [];
-		console.log(this.props.pins);
 		let boardList;
 		boardList = (
 			<div className="gridContainer">
 				{boards.map(board => {
+				
+
 					return (
 						<div className="grid" key={board.id}>
 							<div
@@ -237,7 +245,7 @@ class UserProfile extends React.Component {
 	}
 
 	render() {
-		if (!this.props.user) return null;
+		if (!this.props.user || !this.props.boards || !this.props.pins) return null;
 
 		let content = this.state.currentPage === 'boards' ? this.renderBoards() : this.renderPins();
 		let followers = this.props.user.followers ? this.props.user.followers.length : 0;

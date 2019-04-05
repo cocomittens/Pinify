@@ -7,9 +7,17 @@ export const RECEIVE_PIN = 'RECEIVE_PIN';
 export const RECEIVE_BOARD = 'RECEIVE_BOARD';
 export const REMOVE_PIN = 'REMOVE_PIN';
 export const REMOVE_BOARD = 'REMOVE_BOARD';
+export const CLEAR_PINS = 'CLEAR_PINS';
 export const RECEIVE_PIN_BOARD = 'RECEIVE_PIN_BOARD';
 export const RECEIVE_BP_ERRORS = 'RECEIVE_BP_ERRORS';
 export const RECEIVE_PINS_BOARD = 'RECEIVE_PINS_BOARD';
+
+const clearPinsAction = pins => {
+	return {
+		type: CLEAR_PINS,
+		pins,
+	};
+};
 
 const receivePins = pins => {
 	return {
@@ -71,6 +79,10 @@ const receiveBPErrors = errors => {
 		type: RECEIVE_BP_ERRORS,
 		errors: errors.responseText,
 	};
+};
+
+export const clearPins = () => dispatch => {
+	return dispatch(clearPinsAction());
 };
 
 export const fetchPins = boardId => dispatch => {
