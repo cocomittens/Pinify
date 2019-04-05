@@ -40,3 +40,7 @@ The view pin page contains a higher resolution image, title, and URL. If this is
 - CSS3
 
 ## Future Features
+- User profile pictures
+- Search bar
+- Fix refresh bug
+- Sort by on user profile
