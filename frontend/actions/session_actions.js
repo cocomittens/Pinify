@@ -20,7 +20,7 @@ export const receiveCurrentUser = currentUser => ({
 
 export const receiveUser = user => ({
 	type: RECEIVE_USER,
-	user,
+	user
 });
 
 export const logoutCurrentUser = () => ({

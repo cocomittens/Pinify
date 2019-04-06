@@ -31,21 +31,18 @@ class UserProfile extends React.Component {
 	}
 
 	componentDidUpdate(prev) {
-		console.log(this.props.boards);
-		if(this.props.user.boards) {
-			console.log(this.props.user);
-
-		
-		if (this.props.boards.length < this.props.user.boards.length) {
-			this.props.fetchBoards(this.props.user.username);
-		} 
-		if (Object.values(this.props.pins).length < this.props.user.pins.length) {
-			this.props.user.boards.forEach(board => {
-				this.props.fetchPinsNoReplace(board.id);
-			});
+		let user = this.props.user[0];
+		if(user) {
+			if (!this.props.boards.length) {
+				this.props.fetchBoards(user.username);
+			} 
+			if (!Object.values(this.props.pins).length) {
+				user.pin_ids.forEach(pin_id => {
+					this.props.fetchPin(pin_id);
+				});
+			}
 		}
-		}
-		}
+	}
 	
 
 	constructor(props) {
@@ -165,8 +162,6 @@ class UserProfile extends React.Component {
 		boardList = (
 			<div className="gridContainer">
 				{boards.map(board => {
-				
-
 					return (
 						<div className="grid" key={board.id}>
 							<div
@@ -217,7 +212,6 @@ class UserProfile extends React.Component {
 				})}
 			</div>
 		);
-
 		return boardList;
 	}
 
@@ -245,7 +239,7 @@ class UserProfile extends React.Component {
 	}
 
 	render() {
-		if (!this.props.user || !this.props.boards || !this.props.pins) return null;
+		if (!this.props.user[0] || !this.props.boards || !this.props.pins) return null;
 
 		let content = this.state.currentPage === 'boards' ? this.renderBoards() : this.renderPins();
 		let followers = this.props.user.followers ? this.props.user.followers.length : 0;
@@ -287,7 +281,7 @@ class UserProfile extends React.Component {
 						<div className="profileHeaderMid">
 							<div>
 								<h1>
-									{this.props.user.first_name} {this.props.user.last_name}
+									{this.props.user[0].first_name} {this.props.user[0].last_name}
 								</h1>
 								<p>
 									{follows} followers · {followers} following

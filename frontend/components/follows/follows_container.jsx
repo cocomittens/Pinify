@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import Follows from './follows';
 import { fetchUser } from '../../actions/session_actions';
-import { fetchPinsNoReplace } from '../../actions/board_pin_actions';
+import { fetchPin, fetchBoard } from '../../actions/board_pin_actions';
 import { withRouter } from 'react-router-dom';
 
 const msp = (state, ownProps) => {
 	return {
 		currentUser: state.session,
-		user: state.entities.users,
+		users: Object.values(state.entities.users),
 		pins: state.entities.pins,
 		boards: state.entities.boards,
 	};
@@ -16,7 +16,8 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
 	return {
 		fetchUser: username => dispatch(fetchUser(username)),
-		fetchPinsNoReplace: boardId => dispatch(fetchPinsNoReplace(boardId)),
+		fetchPin: pinId => dispatch(fetchPin(pinId)),
+		fetchBoard: boardId => dispatch(fetchBoard(boardId))
 	};
 };
 

@@ -4,22 +4,23 @@ import { Link } from 'react-router-dom';
 
 class Follows extends React.Component {
 	componentDidMount() {
-		this.props.fetchUser('fluffy');
+		this.props.fetchUser(this.props.currentUser.username);
 	}
 
 	componentDidUpdate(prev) {
-		if (prev.user !== this.props.user) {
-			this.setState({ user: this.props.user });
-		}
-		if (this.props.boards.length === 0 && Object.values(this.props.user.boards).length > 0) {
-			this.props.fetchBoards(this.props.user.username);
-		} else {
-			if (Object.values(this.props.pins).length === 0 && Object.values(this.props.user.pins).length > 0) {
-				this.props.user.boards.forEach(board => {
-					this.props.fetchPinsNoReplace(board.id);
+
+		if(this.props.users.length < 2) {
+			(Object.values(this.props.users[0].follows)).forEach(follow => {
+				this.props.fetchUser(follow.follower_id);
+			})
+		} else if(!Object.values(this.props.pins).length){
+			this.props.users.forEach(follow => {
+				follow.pin_ids.forEach(pin_id => {
+					this.props.fetchPin(pin_id);
 				});
-			}
+			});
 		}
+		
 	}
 
 	addHovered(id) {
@@ -32,7 +33,7 @@ class Follows extends React.Component {
 		this.setState({
 			hovered: false,
 			active: false,
-			user: null,
+			users: [],
 		});
 	}
 
@@ -62,8 +63,8 @@ class Follows extends React.Component {
 	}
 
 	render() {
-		if (!this.props.user.pins) return null;
-		let firstBoard = Object.values(this.props.user.boards)[0].title;
+		if (Object.values(this.props.users).length < 2) return null;
+		let firstBoard = this.props.users[0].boards[0].title;
 		let list = (
 			<div className="grid">
 				{Object.values(this.props.pins).map(pin => {
@@ -92,7 +93,7 @@ class Follows extends React.Component {
 													: 'pinDropdownContent hidden'
 											}
 										>
-											{this.props.user.boards.map(board => {
+											{this.props.users[0].boards.map(board => {
 												return (
 													<li>
 														<span>{board.title}</span>
