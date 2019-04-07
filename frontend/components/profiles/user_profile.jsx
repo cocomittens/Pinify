@@ -293,7 +293,7 @@ class UserProfile extends React.Component {
 									onClick={() =>
 										this.addFollow({
 											follower_id: this.props.currentUserId,
-											followed_id: this.props.user.id,
+											followed_id: this.props.user[0].id,
 										})
 									}
 								>
