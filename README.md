@@ -4,6 +4,15 @@ Pinify is a full stack clone of the popular website Pitnerest. Users can create 
 ## Demo
 [Here](https://pinify-app.herokuapp.com) is a working live demo
 
+## Technologies Used
+- Ruby on Rails
+- PostGreSQL
+- AWS
+- React.js
+- Redux
+- HTML5
+- CSS3
+
 ## Key Features
 ### User Authentication
 Upon their first visit to the site, users are presented with a login page. They must sign in or register in order to access site content.  
@@ -30,14 +39,6 @@ The view pin page contains a higher resolution image, title, and URL. If this is
 
 ![View Pin](https://i.imgur.com/D2nVmsC.jpg "View Pin")
 
-## Technologies Used
-- Ruby on Rails
-- PostGreSQL
-- AWS
-- React.js
-- Redux
-- HTML5
-- CSS3
 
 ## Future Features
 - User profile pictures
