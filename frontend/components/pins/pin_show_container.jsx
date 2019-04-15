@@ -8,7 +8,7 @@ const msp = (state, ownProps) => {
 	return {
 		pinId: ownProps.match.params.pinId,
 		pin: Object.values(state.entities.pins)[0],
-		user: state.entities.users,
+		user: Object.values(state.entities.users),
 		boards: state.entities.users.boards,
 	};
 };

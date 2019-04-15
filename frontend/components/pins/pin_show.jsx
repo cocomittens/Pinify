@@ -54,7 +54,8 @@ class PinShow extends React.Component {
 	}
 
 	render() {
-		if (!this.props.pin || Object.values(this.props.user).length === 0) return null;
+		if (!this.props.pin) return null;
+		if (!this.props.user.length) return null;
 
 		let photo = null,
 			title = null,
@@ -71,11 +72,11 @@ class PinShow extends React.Component {
 		linkUrl = this.props.pin.link_url;
 		name = (
 			<span>
-				{this.props.user.first_name} {this.props.user.last_name}
+				{this.props.user[0].first_name} {this.props.user[0].last_name}
 			</span>
 		);
-		follows = <span>{this.props.user.followers.length} followers</span>;
-		firstBoard = this.props.boards[0].title;
+		follows = <span>{this.props.user[0].followers.length} followers</span>;
+		firstBoard = this.props.user[0].boards[0].title;
 
 		return (
 			<div className="pinShowPage">
@@ -102,7 +103,7 @@ class PinShow extends React.Component {
 									</button>
 									<button className={this.state.active ? 'saveBtn hidden' : 'saveBtn'}>Save</button>
 									<ul class={this.state.active ? 'pinDropdownContent' : 'pinDropdownContent hidden'}>
-										{this.props.boards.map(board => {
+										{this.props.user[0].boards.map(board => {
 											return (
 												<li onClick={() => this.addPin(board.id, pin.id)}>
 													<span>{board.title}</span>
