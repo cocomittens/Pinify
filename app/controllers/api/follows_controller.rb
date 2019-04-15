@@ -12,6 +12,15 @@ class Api::FollowsController < ApplicationController
         end  
     end
 
+    def destroy
+        @follow = Follow.find(params[:id])
+        if @follow.destroy
+            redirect_to '/'
+        else
+            render json: {errors: "Cannot unfollow user"}, status: :unprocessable_entity
+        end
+    end
+
     private
     def follow_params
         params.fetch(:follow, {}).permit(:follower_id, :followed_id)

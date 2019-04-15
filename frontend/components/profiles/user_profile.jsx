@@ -30,7 +30,7 @@ class UserProfile extends React.Component {
 		this.props.clearPins();
 	}
 
-	componentDidUpdate(prev) {
+	componentDidUpdate() {
 		let user = this.props.user[0];
 		if(user) {
 			if (!this.props.boards.length) {
@@ -44,7 +44,6 @@ class UserProfile extends React.Component {
 		}
 	}
 	
-
 	constructor(props) {
 		super(props);
 		this.toggleClass = this.toggleClass.bind(this);
@@ -63,8 +62,9 @@ class UserProfile extends React.Component {
 		this.renderPins = this.renderPins.bind(this);
 		this.renderBoards = this.renderBoards.bind(this);
 		this.addFollow = this.addFollow.bind(this);
+		this.removeFollow = this.removeFollow.bind(this);
 		this.getImages = this.getImages.bind(this);
-		
+		this.renderFollows = this.renderFollows.bind(this);
 		this.addHovered = this.addHovered.bind(this);
 		this.removeHovered = this.removeHovered.bind(this);
 		this.addEditHovered = this.addEditHovered.bind(this);
@@ -77,6 +77,10 @@ class UserProfile extends React.Component {
 
 	addFollow(follow) {
 		this.props.addFollow(follow);
+	}
+
+	removeFollow(id) {
+		this.props.removeFollow(id);
 	}
 
 	openModal() {
@@ -155,7 +159,7 @@ class UserProfile extends React.Component {
 
 	renderBoards() {
 		if (!this.props.user) return null;
-
+		
 		let boards;
 		boards = this.props.boards ? this.props.boards : [];
 		let boardList;
@@ -238,6 +242,28 @@ class UserProfile extends React.Component {
 		return pinList;
 	}
 
+	renderFollows(followed, id) {
+		if(!followed) {
+			return (<button
+				className="followBtn"
+				onClick={() =>
+					this.addFollow({
+						follower_id: this.props.currentUserId,
+						followed_id: this.props.user[0].id,
+					})
+				}
+			>
+				Follow
+								</button>)
+		} else {return (<button className="followBtn" onClick={() => this.removeFollow(id)}>
+				Unfollow
+			</button>);
+		}
+		
+
+			
+	}
+
 	render() {
 		if (!this.props.user[0] || !this.props.boards || !this.props.pins) return null;
 	
@@ -245,6 +271,17 @@ class UserProfile extends React.Component {
 		let followers = this.props.user[0].followers ? this.props.user[0].followers.length : 0;
 		let follows = this.props.user[0].follows ? this.props.user[0].follows.length : 0;
 
+		let followersList = {};
+		this.props.followers.forEach(follow => {
+			followersList[follow.followed_id] = follow.id;
+		})
+		
+		let followedIds = Object.keys(followersList).map(key => parseInt(key));
+		let alreadyFollowed = followedIds.includes(this.props.user[0].id);
+		let followId = followersList[String(this.props.user[0].id)] || null;
+		let followBtn = this.renderFollows(alreadyFollowed, followId);
+
+		console.log(alreadyFollowed)
 		return (
 			<div>
 				<GreetingContainer />
@@ -284,21 +321,12 @@ class UserProfile extends React.Component {
 									{this.props.user[0].first_name} {this.props.user[0].last_name}
 								</h1>
 								<p>
-									{follows} followers · {followers} following
+									{followers} followers · {follows} following
 								</p>
 							</div>
+							
 							<div className="buttonsContainer">
-								<button
-									className="followBtn"
-									onClick={() =>
-										this.addFollow({
-											follower_id: this.props.currentUserId,
-											followed_id: this.props.user[0].id,
-										})
-									}
-								>
-									Follow
-								</button>
+								{followBtn}
 							</div>
 						</div>
 
@@ -306,7 +334,9 @@ class UserProfile extends React.Component {
 							<span
 								onClick={this.showBoards.bind(this)}
 								className={
-									this.state.currentPage === 'boards' ? 'headerLinkText active' : 'headerLinkText'
+									this.state.currentPage === 'boards'
+										? 'headerLinkText active'
+										: 'headerLinkText'
 								}
 							>
 								Boards
@@ -314,7 +344,9 @@ class UserProfile extends React.Component {
 							<span
 								onClick={this.showPins.bind(this)}
 								className={
-									this.state.currentPage === 'pins' ? 'headerLinkText active' : 'headerLinkText'
+									this.state.currentPage === 'pins'
+										? 'headerLinkText active'
+										: 'headerLinkText'
 								}
 							>
 								Pins

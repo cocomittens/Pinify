@@ -7,10 +7,16 @@ export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const RECEIVE_FOLLOW = 'RECEIVE_FOLLOW';
+export const REMOVE_FOLLOW = 'REMOVE_FOLLOW';
 
 export const receiveFollow = follow => ({
 	type: RECEIVE_FOLLOW,
 	follow,
+});
+
+export const removeFollow = id => ({
+	type: REMOVE_FOLLOW,
+	id,
 });
 
 export const receiveCurrentUser = currentUser => ({
@@ -51,6 +57,13 @@ export const fetchUser = username => dispatch => {
 export const addFollow = follow => dispatch => {
 	return APIUtil.addFollow(follow).then(
 		follow => dispatch(receiveFollow(follow)),
+		errors => dispatch(receiveSessionErrors(errors))
+	);
+};
+
+export const deleteFollow = id => dispatch => {
+	return APIUtil.deleteFollow(id).then(
+		follow => dispatch(removeFollow(follow)),
 		errors => dispatch(receiveSessionErrors(errors))
 	);
 };
