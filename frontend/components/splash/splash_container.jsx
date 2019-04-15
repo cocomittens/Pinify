@@ -1,6 +1,6 @@
 import Splash from './splash';
 import { connect } from 'react-redux';
-import { fetchPins, fetchBoards, createPinsBoard } from '../../actions/board_pin_actions';
+import { fetchPinsNoReplace, fetchBoards, createPinsBoard } from '../../actions/board_pin_actions';
 
 const msp = state => {
 	return {
@@ -13,7 +13,7 @@ const msp = state => {
 
 const mdp = dispatch => {
 	return {
-		fetchPins: id => dispatch(fetchPins(id)),
+		fetchPins: id => dispatch(fetchPinsNoReplace(id)),
 		fetchBoards: userId => dispatch(fetchBoards(userId)),
 		createPinsBoard: pb => dispatch(createPinsBoard(pb)),
 	};
