@@ -4,23 +4,20 @@ import { Link } from 'react-router-dom';
 
 class Follows extends React.Component {
 	componentDidMount() {
-		this.props.fetchUser(this.props.currentUser.username);
+		this.props.clearPins();
+		this.props.currentUser.followers.forEach(follow => {
+			this.props.fetchUser(follow.followed_id);
+		})
 	}
 
 	componentDidUpdate(prev) {
-
-		if(this.props.users.length < 2) {
-			(Object.values(this.props.users[0].follows)).forEach(follow => {
-				this.props.fetchUser(follow.follower_id);
+		if(this.props.users.length !== prev.users.length) {
+			this.props.users.forEach(user => {
+				user.pin_ids.forEach(id => {
+					this.props.fetchPin(id);
+				})
 			})
-		} else if(!Object.values(this.props.pins).length){
-			this.props.users.forEach(follow => {
-				follow.pin_ids.forEach(pin_id => {
-					this.props.fetchPin(pin_id);
-				});
-			});
 		}
-		
 	}
 
 	addHovered(id) {
@@ -63,7 +60,7 @@ class Follows extends React.Component {
 	}
 
 	render() {
-		if (Object.values(this.props.users).length < 2) return null;
+		if (!Object.values(this.props.users).length) return null;
 		let firstBoard = this.props.users[0].boards[0].title;
 		let list = (
 			<div className="grid">

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Follows from './follows';
 import { fetchUser } from '../../actions/session_actions';
-import { fetchPin, fetchBoard } from '../../actions/board_pin_actions';
+import { fetchPin, fetchBoard, clearPins } from '../../actions/board_pin_actions';
 import { withRouter } from 'react-router-dom';
 
 const msp = (state, ownProps) => {
@@ -17,7 +17,8 @@ const mdp = dispatch => {
 	return {
 		fetchUser: username => dispatch(fetchUser(username)),
 		fetchPin: pinId => dispatch(fetchPin(pinId)),
-		fetchBoard: boardId => dispatch(fetchBoard(boardId))
+		fetchBoard: boardId => dispatch(fetchBoard(boardId)),
+		clearPins: () => dispatch(clearPins())
 	};
 };
 
