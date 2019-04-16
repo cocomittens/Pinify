@@ -31,7 +31,7 @@ class UserProfile extends React.Component {
 		this.props.fetchUser(this.props.username);
 	}
 
-	componentDidUpdate() {
+	componentDidUpdate(prevProps, prevState) {
 		let user = this.props.user[0];
 		if(user) {
 			if (!this.props.boards.length) {
@@ -42,6 +42,7 @@ class UserProfile extends React.Component {
 					this.props.fetchPin(pin_id);
 				});
 			}
+			if (!(this.state.followed === prevState.followed) && this.state.followed) this.props.fetchUser(user.username);
 		}
 	}
 	
@@ -58,6 +59,7 @@ class UserProfile extends React.Component {
 			createModalIsOpen: false,
 			redirect: null,
 			currentBoard: null,
+			followed: null,
 		};
 
 		this.renderPins = this.renderPins.bind(this);
@@ -78,10 +80,12 @@ class UserProfile extends React.Component {
 
 	addFollow(follow) {
 		this.props.addFollow(follow);
+		this.setState( { followed: true });
 	}
 
 	removeFollow(id) {
 		this.props.removeFollow(id);
+		this.setState({ followed: false });
 	}
 
 	openModal() {
@@ -244,7 +248,8 @@ class UserProfile extends React.Component {
 	}
 
 	renderFollows(followed, id) {
-		if(!followed) {
+		if (this.state.followed === null) this.setState({ followed });
+		if(!this.state.followed) {
 			return (<button
 				className="followBtn"
 				onClick={() =>
@@ -255,9 +260,12 @@ class UserProfile extends React.Component {
 				}
 			>
 				Follow
-								</button>)
-		} else {return (<button className="followBtn" onClick={() => this.removeFollow(id)}>
+			</button>)
+		} else {
+			console.log(id);
+			return (<button className="followBtn" onClick={() => this.removeFollow(id)}>
 				Unfollow
+				
 			</button>);
 		}
 		
@@ -267,22 +275,20 @@ class UserProfile extends React.Component {
 
 	render() {
 		if (!this.props.user[0] || !this.props.boards || !this.props.pins) return null;
-	
 		let content = this.state.currentPage === 'boards' ? this.renderBoards() : this.renderPins();
 		let followers = this.props.user[0].followers ? this.props.user[0].followers.length : 0;
 		let follows = this.props.user[0].follows ? this.props.user[0].follows.length : 0;
+		if (this.state.followed) followers++;
 
 		let followersList = {};
-		this.props.followers.forEach(follow => {
+		this.props.user[0].followers.forEach(follow => {
 			followersList[follow.followed_id] = follow.id;
-		})
-		
+		});
 		let followedIds = Object.keys(followersList).map(key => parseInt(key));
 		let alreadyFollowed = followedIds.includes(this.props.user[0].id);
-		let followId = followersList[String(this.props.user[0].id)] || null;
+		let followId = followersList[this.props.user[0].id] || null;		
 		let followBtn = this.renderFollows(alreadyFollowed, followId);
 
-		console.log(alreadyFollowed)
 		return (
 			<div>
 				<GreetingContainer />
