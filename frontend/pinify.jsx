@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			session: { id: user.id, 
 				username: user.username, 
 				first_name: user.first_name,
-				followers: user.followers
+				followers: user.followers,
+				follows: user.follows
 		}};
 		store = configureStore(preloadedState);
 		delete window.currentUser;

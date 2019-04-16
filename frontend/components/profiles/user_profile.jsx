@@ -42,7 +42,7 @@ class UserProfile extends React.Component {
 					this.props.fetchPin(pin_id);
 				});
 			}
-			if (!(this.state.followed === prevState.followed) && this.state.followed) this.props.fetchUser(user.username);
+			if (!(this.state.followed === prevState.followed)) this.props.fetchUser(user.username);
 		}
 	}
 	
@@ -254,8 +254,8 @@ class UserProfile extends React.Component {
 				className="followBtn"
 				onClick={() =>
 					this.addFollow({
-						follower_id: this.props.currentUserId,
-						followed_id: this.props.user[0].id,
+						followed_id: this.props.currentUserId,
+						follower_id: this.props.user[0].id,
 					})
 				}
 			>
@@ -276,14 +276,13 @@ class UserProfile extends React.Component {
 	render() {
 		if (!this.props.user[0] || !this.props.boards || !this.props.pins) return null;
 		let content = this.state.currentPage === 'boards' ? this.renderBoards() : this.renderPins();
-		let followers = this.props.user[0].followers ? this.props.user[0].followers.length : 0;
 		let follows = this.props.user[0].follows ? this.props.user[0].follows.length : 0;
-		if (this.state.followed) followers++;
-
 		let followersList = {};
 		this.props.user[0].followers.forEach(follow => {
-			followersList[follow.followed_id] = follow.id;
+			followersList[follow.follower_id] = follow.id;
 		});
+		let followers = Object.values(followersList).length;
+		if (this.state.followed) followers++;
 		let followedIds = Object.keys(followersList).map(key => parseInt(key));
 		let alreadyFollowed = followedIds.includes(this.props.user[0].id);
 		let followId = followersList[this.props.user[0].id] || null;		
