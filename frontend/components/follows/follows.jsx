@@ -6,8 +6,8 @@ class Follows extends React.Component {
 	componentDidMount() {
 		this.props.clearPins();
 		this.props.clearUsers();
-		this.props.currentUser.followers.forEach(follow => {
-			this.props.fetchUser(follow.followed_id);
+		this.props.currentUser.follows.forEach(follow => {
+			this.props.fetchUser(follow.follower_id);
 		})
 	}
 
