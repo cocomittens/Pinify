@@ -26,8 +26,8 @@ const customStyles = {
 
 class UserProfile extends React.Component {
 	componentDidMount() {
-		this.props.fetchUser(this.props.username);
 		this.props.clearPins();
+		this.props.fetchUser(this.props.username);
 	}
 
 	componentDidUpdate() {
@@ -265,7 +265,7 @@ class UserProfile extends React.Component {
 	}
 
 	render() {
-		if (!this.props.user[0] || !this.props.boards || !this.props.pins) return null;
+		if (!this.props.user[0] || !this.props.boards || !this.props.pins) this.setState({ state: this.state });
 	
 		let content = this.state.currentPage === 'boards' ? this.renderBoards() : this.renderPins();
 		let followers = this.props.user[0].followers ? this.props.user[0].followers.length : 0;

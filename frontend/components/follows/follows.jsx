@@ -10,8 +10,8 @@ class Follows extends React.Component {
 		})
 	}
 
-	componentDidUpdate(prev) {
-		if(this.props.users.length !== prev.users.length) {
+	componentDidUpdate() {
+		if(!Object.values(this.props.pins).length) {
 			this.props.users.forEach(user => {
 				user.pin_ids.forEach(id => {
 					this.props.fetchPin(id);
@@ -60,7 +60,7 @@ class Follows extends React.Component {
 	}
 
 	render() {
-		if (!Object.values(this.props.users).length) return null;
+		if (!this.props.users.length) this.setState({ state: this.state });;
 		let firstBoard = this.props.users[0].boards[0].title;
 		let list = (
 			<div className="grid">
