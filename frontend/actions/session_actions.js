@@ -2,6 +2,7 @@ import * as APIUtil from '../util/session_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_USER = 'RECEIVE_USER';
+export const CLEAR_USERS = 'CLEAR_USERS';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
@@ -29,6 +30,10 @@ export const receiveUser = user => ({
 	user
 });
 
+export const clearUsersAction = () => ({
+	type: CLEAR_USERS
+})
+
 export const logoutCurrentUser = () => ({
 	type: LOGOUT_CURRENT_USER,
 });
@@ -46,6 +51,10 @@ export const receiveSessionErrors = errors => ({
 export const clearErrors = () => ({
 	type: CLEAR_ERRORS,
 });
+
+export const clearUsers = () => dispatch => {
+	return dispatch(clearUsersAction());
+}
 
 export const fetchUser = username => dispatch => {
 	return APIUtil.fetchUser(username).then(

@@ -27,6 +27,7 @@ const customStyles = {
 class UserProfile extends React.Component {
 	componentDidMount() {
 		this.props.clearPins();
+		this.props.clearUsers();
 		this.props.fetchUser(this.props.username);
 	}
 

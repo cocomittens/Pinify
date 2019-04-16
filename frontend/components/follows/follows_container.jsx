@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Follows from './follows';
-import { fetchUser } from '../../actions/session_actions';
+import { fetchUser, clearUsers } from '../../actions/session_actions';
 import { fetchPin, fetchBoard, clearPins } from '../../actions/board_pin_actions';
 import { withRouter } from 'react-router-dom';
 
@@ -18,7 +18,8 @@ const mdp = dispatch => {
 		fetchUser: username => dispatch(fetchUser(username)),
 		fetchPin: pinId => dispatch(fetchPin(pinId)),
 		fetchBoard: boardId => dispatch(fetchBoard(boardId)),
-		clearPins: () => dispatch(clearPins())
+		clearPins: () => dispatch(clearPins()),
+		clearUsers: () => dispatch(clearUsers())
 	};
 };
 

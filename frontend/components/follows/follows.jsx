@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 class Follows extends React.Component {
 	componentDidMount() {
 		this.props.clearPins();
+		this.props.clearUsers();
 		this.props.currentUser.followers.forEach(follow => {
 			this.props.fetchUser(follow.followed_id);
 		})
