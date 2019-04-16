@@ -60,7 +60,7 @@ class Follows extends React.Component {
 	}
 
 	render() {
-		if (!this.props.users.length) this.setState({ state: this.state });;
+		if (!this.props.users.length) return null;
 		let firstBoard = this.props.users[0].boards[0].title;
 		let list = (
 			<div className="grid">

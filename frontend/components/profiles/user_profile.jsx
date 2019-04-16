@@ -265,7 +265,7 @@ class UserProfile extends React.Component {
 	}
 
 	render() {
-		if (!this.props.user[0] || !this.props.boards || !this.props.pins) this.setState({ state: this.state });
+		if (!this.props.user[0] || !this.props.boards || !this.props.pins) return null;
 	
 		let content = this.state.currentPage === 'boards' ? this.renderBoards() : this.renderPins();
 		let followers = this.props.user[0].followers ? this.props.user[0].followers.length : 0;
