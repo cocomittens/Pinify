@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import PinShow from './pin_show';
-import { fetchPin } from '../../actions/board_pin_actions';
+import { fetchPin, clearPins } from '../../actions/board_pin_actions';
 import { fetchUser } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom';
 
@@ -14,7 +14,11 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = dispatch => {
-	return { fetchPin: pinId => dispatch(fetchPin(pinId)), fetchUser: username => dispatch(fetchUser(username)) };
+	return { 
+		fetchPin: pinId => dispatch(fetchPin(pinId)), 
+		fetchUser: username => dispatch(fetchUser(username)),
+		clearPins: () => dispatch(clearPins())
+	 };
 };
 
 const PinShowContainer = withRouter(

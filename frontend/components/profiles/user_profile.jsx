@@ -80,7 +80,7 @@ class UserProfile extends React.Component {
 
 	addFollow(follow) {
 		this.props.addFollow(follow);
-		this.setState( { followed: true });
+		this.setState({ followed: true });
 	}
 
 	removeFollow(id) {
@@ -131,9 +131,8 @@ class UserProfile extends React.Component {
 		if (board.pin_ids.length === 0) return null;
 
 		return (
-			<div key={board.id} className="pinWrapperContainer">
+			<div key={ board.id } className="pinWrapperContainer">
 				{board.pin_ids.map(pin_id => {
-
 					if (!pins[pin_id]) return null;
 					return (
 						<div className="pinWrapper" key={pin_id}>
@@ -164,7 +163,6 @@ class UserProfile extends React.Component {
 
 	renderBoards() {
 		if (!this.props.user) return null;
-		
 		let boards;
 		boards = this.props.boards ? this.props.boards : [];
 		let boardList;

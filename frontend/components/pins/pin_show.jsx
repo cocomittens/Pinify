@@ -23,12 +23,13 @@ const customStyles = {
 
 class PinShow extends React.Component {
 	componentDidMount() {
+		this.props.clearPins();
 		this.props.fetchPin(this.props.pinId);
 	}
 
-	componentDidUpdate(prev) {
-		if (prev.pin !== this.props.pin) {
-			this.props.fetchUser(this.props.pin.author_id);
+	componentDidUpdate(prevProps) {
+		if (this.props.pin) {
+			if (prevProps.pin !== this.props.pin) this.props.fetchUser(this.props.pin.author_id);
 		}
 	}
 
@@ -56,7 +57,6 @@ class PinShow extends React.Component {
 	render() {
 		if (!this.props.pin) return null;
 		if (!this.props.user.length) return null;
-
 		let photo = null,
 			title = null,
 			description = null,
@@ -65,7 +65,6 @@ class PinShow extends React.Component {
 			firstBoard = null,
 			follows = null;
 		let redirect = this.state.deleted ? <Redirect to="/" /> : null;
-
 		photo = <img src={this.props.pin.photoUrl} />;
 		title = this.props.pin.title;
 		description = this.props.pin.description;
@@ -129,8 +128,8 @@ class PinShow extends React.Component {
 						</div>
 
 						<div class="pinShowContent">
-							<h1> {title}</h1>
-							<p class="pinAuthorName"> {name}</p>
+							<h1> {title} </h1>
+							<p class="pinAuthorName"> {name} </p>
 							<p> {follows} </p>
 							<p> {description} </p>
 							<p> {linkUrl} </p>
