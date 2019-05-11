@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchBoards, fetchBoard, fetchPin, fetchPins, clearPins } from '../../actions/board_pin_actions';
+import { fetchBoards, fetchBoard, fetchPin, fetchPins, fetchPinsNoReplace, clearPins } from '../../actions/board_pin_actions';
 import { fetchUser, clearUsers, addFollow, deleteFollow } from '../../actions/session_actions';
 import UserProfile from './user_profile';
 
@@ -22,7 +22,7 @@ const mdp = dispatch => {
 		fetchBoards: userId => dispatch(fetchBoards(userId)),
 		fetchBoard: boardId => dispatch(fetchBoard(boardId)),
 		fetchPin: pinId => dispatch(fetchPin(pinId)),
-		fetchPins: boardId => dispatch(fetchPins(boardId)),
+		fetchPins: boardId => dispatch(fetchPinsNoReplace(boardId)),
 		fetchUser: username => dispatch(fetchUser(username)),
 		clearUsers: () => dispatch(clearUsers()),
 		addFollow: follow => dispatch(addFollow(follow)),

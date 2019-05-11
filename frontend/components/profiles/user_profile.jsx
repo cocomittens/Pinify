@@ -29,23 +29,21 @@ class UserProfile extends React.Component {
 		this.props.clearPins();
 		this.props.clearUsers();
 		this.props.fetchUser(this.props.username);
+		this.props.fetchBoards(this.props.username).then(res => {
+			let boards = Object.values(res.boards);
+			boards.forEach(board => {
+				this.props.fetchPins(board.id);
+			});
+		});
 	}
 
 	componentDidUpdate(prevProps, prevState) {
 		let user = this.props.user[0];
-		if(user) {
-			if (!this.props.boards.length) {
-				this.props.fetchBoards(user.username);
-			} 
-			if (!Object.values(this.props.pins).length) {
-				user.pin_ids.forEach(pin_id => {
-					this.props.fetchPin(pin_id);
-				});
-			}
+		if (user) {
 			if (!(this.state.followed === prevState.followed)) this.props.fetchUser(user.username);
 		}
 	}
-	
+
 	constructor(props) {
 		super(props);
 		this.toggleClass = this.toggleClass.bind(this);
@@ -60,6 +58,8 @@ class UserProfile extends React.Component {
 			redirect: null,
 			currentBoard: null,
 			followed: null,
+			user: null,
+			boards: null,
 		};
 
 		this.renderPins = this.renderPins.bind(this);
@@ -126,20 +126,32 @@ class UserProfile extends React.Component {
 	}
 
 	getImages(board) {
-		const { pins } = this.props;
+		const pins = this.props.pins;
 		if (Object.keys(pins).length === 0) return null;
-		if (board.pin_ids.length === 0) return null;
-
+		console.log(pins);
+		let pinIds = board.pin_ids;
+		let blanks = 6 - board.pin_ids.length;
+		if (blanks) {
+			for (let i=0; i<blanks; i++) {
+				pinIds.push(null);
+			}
+		};
+		let blankImg =
+			'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXExMQCQxelAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC';
+		
 		return (
-			<div key={ board.id } className="pinWrapperContainer">
-				{board.pin_ids.map(pin_id => {
-					if (!pins[pin_id]) return null;
+			<div key={board.id} className="pinWrapperContainer">
+				{pinIds.map(pin_id => 
+				
+					{
+					
+						let img = pins[pin_id] ? pins[pin_id].photoUrl : blankImg
 					return (
 						<div className="pinWrapper" key={pin_id}>
-							<img src={pins[pin_id].photoUrl} className="pinImg" />
+							<img src={img} className="pinImg" />
 							<div className="pinText" />
 						</div>
-					);
+					)
 				})}
 			</div>
 		);
@@ -162,7 +174,6 @@ class UserProfile extends React.Component {
 	}
 
 	renderBoards() {
-		if (!this.props.user) return null;
 		let boards;
 		boards = this.props.boards ? this.props.boards : [];
 		let boardList;
@@ -209,8 +220,7 @@ class UserProfile extends React.Component {
 										isVisible={this.state.ModalVisibleStatus}
 										contentLabel="Board edit form"
 									>
-										<EditBoardContainer 
-										boardId={board.id}/>
+										<EditBoardContainer boardId={board.id} />
 									</Modal>
 								</div>
 							</div>
@@ -247,28 +257,27 @@ class UserProfile extends React.Component {
 
 	renderFollows(followed, id) {
 		if (this.state.followed === null) this.setState({ followed });
-		if(!this.state.followed) {
-			return (<button
-				className="followBtn"
-				onClick={() =>
-					this.addFollow({
-						followed_id: this.props.currentUserId,
-						follower_id: this.props.user[0].id,
-					})
-				}
-			>
-				Follow
-			</button>)
+		if (!this.state.followed) {
+			return (
+				<button
+					className="followBtn"
+					onClick={() =>
+						this.addFollow({
+							followed_id: this.props.currentUserId,
+							follower_id: this.props.user[0].id,
+						})
+					}
+				>
+					Follow
+				</button>
+			);
 		} else {
-			console.log(id);
-			return (<button className="followBtn" onClick={() => this.removeFollow(id)}>
-				Unfollow
-				
-			</button>);
+			return (
+				<button className="followBtn" onClick={() => this.removeFollow(id)}>
+					Unfollow
+				</button>
+			);
 		}
-		
-
-			
 	}
 
 	render() {
@@ -283,7 +292,7 @@ class UserProfile extends React.Component {
 		if (this.state.followed) followers++;
 		let followedIds = Object.keys(followersList).map(key => parseInt(key));
 		let alreadyFollowed = followedIds.includes(this.props.user[0].id);
-		let followId = followersList[this.props.user[0].id] || null;		
+		let followId = followersList[this.props.user[0].id] || null;
 		let followBtn = this.renderFollows(alreadyFollowed, followId);
 
 		return (
@@ -328,19 +337,15 @@ class UserProfile extends React.Component {
 									{followers} followers · {follows} following
 								</p>
 							</div>
-							
-							<div className="buttonsContainer">
-								{followBtn}
-							</div>
+
+							<div className="buttonsContainer">{followBtn}</div>
 						</div>
 
 						<div className="profileHeaderBottom">
 							<span
 								onClick={this.showBoards.bind(this)}
 								className={
-									this.state.currentPage === 'boards'
-										? 'headerLinkText active'
-										: 'headerLinkText'
+									this.state.currentPage === 'boards' ? 'headerLinkText active' : 'headerLinkText'
 								}
 							>
 								Boards
@@ -348,9 +353,7 @@ class UserProfile extends React.Component {
 							<span
 								onClick={this.showPins.bind(this)}
 								className={
-									this.state.currentPage === 'pins'
-										? 'headerLinkText active'
-										: 'headerLinkText'
+									this.state.currentPage === 'pins' ? 'headerLinkText active' : 'headerLinkText'
 								}
 							>
 								Pins
