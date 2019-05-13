@@ -7,18 +7,14 @@ class Follows extends React.Component {
 		this.props.clearPins();
 		this.props.clearUsers();
 		this.props.currentUser.follows.forEach(follow => {
-			this.props.fetchUser(follow.follower_id);
-		})
-	}
-
-	componentDidUpdate() {
-		if(!Object.values(this.props.pins).length) {
-			this.props.users.forEach(user => {
-				user.pin_ids.forEach(id => {
+			this.props.fetchUser(follow.follower_id)
+				.then(res => {
+				res.user.pin_ids.forEach(id => {
 					this.props.fetchPin(id);
-				})
-			})
-		}
+				});
+			});
+		})
+		
 	}
 
 	addHovered(id) {
