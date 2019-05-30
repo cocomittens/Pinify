@@ -6,10 +6,18 @@ class Splash extends React.Component {
 	componentDidMount() {
 		this.props.clearPins();
 		this.props.clearUsers();
-		this.props.fetchPins(1);
-		this.props.fetchPins(2);
-		this.props.fetchPins(3);
-		this.props.fetchBoards(this.props.username);
+		this.props.fetchBoards('mittens').then(res => {
+			let boards = Object.values(res.boards);
+			boards.forEach(board => {
+				this.props.fetchPins(board.id);
+			});
+		});
+		this.props.fetchBoards('fluffy').then(res => {
+			let boards = Object.values(res.boards);
+			boards.forEach(board => {
+				this.props.fetchPins(board.id);
+			});
+		});
 	}
 
 	addPin(board_id, pin_id, selectedBoard) {
