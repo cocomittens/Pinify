@@ -125,7 +125,7 @@ class Splash extends React.Component {
 
 		let list = (
 			<InfiniteScroll 
-				scrollThreshold={1}
+				scrollThreshold={'0px'}
 				dataLength={this.state.loadedPins.length} //This is important field to render the next data
 				next={this.loadPins}
 				hasMore={this.state.hasMorePins}
