@@ -9,7 +9,7 @@ import { css } from '@emotion/core';
 const override = css`
     display: inline-block;
     margin: 0 auto;
-	background: red;
+	
 `;
 
 class Splash extends React.Component {
