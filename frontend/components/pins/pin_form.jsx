@@ -1,4 +1,5 @@
 import React from 'react';
+import EditBoardContainer from '../boards/edit_board_container';
 import GreetingContainer from '../header/greeting_container';
 
 class Pin extends React.Component {

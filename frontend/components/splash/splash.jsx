@@ -1,6 +1,17 @@
 import React from 'react';
 import GreetingContainer from '../header/greeting_container';
 import { Link } from 'react-router-dom';
+import InfiniteScroll from "react-infinite-scroll-component";
+import { BounceLoader } from 'react-spinners';
+import { css } from '@emotion/core';
+
+
+const override = css`
+    display: inline-block;
+    margin: 0 auto;
+	border-color: red;
+	
+`;
 
 class Splash extends React.Component {
 	componentDidMount() {
@@ -61,7 +72,14 @@ class Splash extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { hovered: false, active: false, pins_board: null, selectedBoard: null };
+		this.state = { hovered: false, 
+			active: false, 
+			pins_board: null, 
+			selectedBoard: null,
+			loadedPins: [],
+			hasMorePins: true,
+			loading: false
+		};
 		this.addHovered = this.addHovered.bind(this);
 		this.removeHovered = this.removeHovered.bind(this);
 		this.addActive = this.addActive.bind(this);
@@ -69,15 +87,62 @@ class Splash extends React.Component {
 		this.addPin = this.addPin.bind(this);
 		this.removePin = this.removePin.bind(this);
 		this.handleSave = this.handleSave.bind(this);
+		this.loadPins = this.loadPins.bind(this);
 	}
+
+	loadPins() {
+		if (this.state.loadedPins.length > this.props.pins.length) {
+
+			this.setState({ hasMorePins: false });
+		} else {
+			this.setState(
+				{ loading: true }, () => {
+				setTimeout(() => {
+				
+					this.setState({ loadedPins: this.state.loadedPins.concat(this.props.pins.slice(this.state.loadedPins.length, this.state.loadedPins.length + 12)) }, () => {
+						this.setState({ loading: false })
+					})
+					}, 2000)
+				}	)
+					
+				}	
+			
+		}
+	
 
 	render() {
 		if (this.props.boards.length === 0) return null;
-		let pins = this.props.pins ? this.props.pins : [];
+		let pins = this.state.loadedPins ? this.state.loadedPins : [];
 		let firstBoard = this.props.boards[0].title;
 		let currentBoard = this.state.selectedBoard ? this.state.selectedBoard : firstBoard;
+
 		let list = (
-			<div className="grid">
+			<InfiniteScroll 
+				
+				dataLength={this.state.loadedPins.length} //This is important field to render the next data
+				next={this.loadPins}
+				hasMore={true}
+				loader={
+					<BounceLoader
+						css={override}
+						sizeUnit={"px"}
+						size={150}
+						color={'#123abc'}
+						loading={this.state.loading}
+					/>
+
+				}
+				endMessage={
+					<p style={{ textAlign: 'center' }}>
+						<b>Yay! You have seen it all</b>
+					</p>
+				}
+				style={{ height: '120vh' }}
+		
+
+
+
+			><div className="grid">
 				{pins.map(pin => {
 					let title = pin.title ? pin.title : null;
 					return (
@@ -135,11 +200,14 @@ class Splash extends React.Component {
 						</div>
 					);
 				})}
-			</div>
+				</div>
+			</InfiniteScroll>
 		);
 
 		return (
-			<div>
+			<div 
+				
+			>
 				<GreetingContainer />
 				{list}
 				<div className="addPinBtnContainer">

@@ -132,20 +132,18 @@ class UserProfile extends React.Component {
 		let pinIds = board.pin_ids;
 		let blanks = 6 - board.pin_ids.length;
 		if (blanks) {
-			for (let i=0; i<blanks; i++) {
+			for (let i = 0; i < blanks; i++) {
 				pinIds.push(null);
 			}
 		};
 		let blankImg =
 			'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXExMQCQxelAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC';
-		
+
 		return (
 			<div key={board.id} className="pinWrapperContainer">
-				{pinIds.map(pin_id => 
-				
-					{
-					
-						let img = pins[pin_id] ? pins[pin_id].photoUrl : blankImg
+				{pinIds.map(pin_id => {
+
+					let img = pins[pin_id] ? pins[pin_id].photoUrl : blankImg
 					return (
 						<div className="pinWrapper" key={pin_id}>
 							<img src={img} className="pinImg" />
