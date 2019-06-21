@@ -9,8 +9,7 @@ import { css } from '@emotion/core';
 const override = css`
     display: inline-block;
     margin: 0 auto;
-	border-color: red;
-	
+	background: red;
 `;
 
 class Splash extends React.Component {
@@ -34,7 +33,7 @@ class Splash extends React.Component {
 			if (this.props.pins) this.loadPins();
 
 
-		}, 2000)
+		}, 1500)
 	}
 
 	addPin(board_id, pin_id, selectedBoard) {
@@ -110,7 +109,7 @@ class Splash extends React.Component {
 					})
 					console.log(this.state);
 
-				}, 200)
+				}, 1500)
 				}	)
 					
 				}	
@@ -147,8 +146,6 @@ class Splash extends React.Component {
 				}
 				initialScrollY={200}
 		
-				
-
 
 			><div className="grid">
 				{pins.map(pin => {
