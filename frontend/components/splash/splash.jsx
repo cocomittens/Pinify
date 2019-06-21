@@ -20,7 +20,7 @@ class Splash extends React.Component {
 		this.props.fetchBoards('mittens').then(res => {
 			let boards = Object.values(res.boards);
 			boards.forEach(board => {
-				this.props.fetchPins(board.id);
+				this.props.fetchPins(board.id)
 			});
 		});
 		this.props.fetchBoards('fluffy').then(res => {
@@ -29,6 +29,12 @@ class Splash extends React.Component {
 				this.props.fetchPins(board.id);
 			});
 		});
+		setTimeout(() => {
+			console.log(this.props.pins);
+			if (this.props.pins) this.loadPins();
+
+
+		}, 2000)
 	}
 
 	addPin(board_id, pin_id, selectedBoard) {
@@ -102,7 +108,9 @@ class Splash extends React.Component {
 					this.setState({ loadedPins: this.state.loadedPins.concat(this.props.pins.slice(this.state.loadedPins.length, this.state.loadedPins.length + 12)) }, () => {
 						this.setState({ loading: false })
 					})
-					}, 2000)
+					console.log(this.state);
+
+				}, 200)
 				}	)
 					
 				}	
@@ -112,16 +120,16 @@ class Splash extends React.Component {
 
 	render() {
 		if (this.props.boards.length === 0) return null;
-		let pins = this.state.loadedPins ? this.state.loadedPins : [];
+		let pins = this.state.loadedPins;
 		let firstBoard = this.props.boards[0].title;
 		let currentBoard = this.state.selectedBoard ? this.state.selectedBoard : firstBoard;
 
 		let list = (
 			<InfiniteScroll 
-				
+				scrollThreshold={.8}
 				dataLength={this.state.loadedPins.length} //This is important field to render the next data
 				next={this.loadPins}
-				hasMore={true}
+				hasMore={this.state.hasMorePins}
 				loader={
 					<BounceLoader
 						css={override}
@@ -137,9 +145,9 @@ class Splash extends React.Component {
 						<b>Yay! You have seen it all</b>
 					</p>
 				}
-				style={{ height: '120vh' }}
+				initialScrollY={200}
 		
-
+				
 
 
 			><div className="grid">
@@ -205,9 +213,8 @@ class Splash extends React.Component {
 		);
 
 		return (
-			<div 
-				
-			>
+			<div>
+
 				<GreetingContainer />
 				{list}
 				<div className="addPinBtnContainer">
