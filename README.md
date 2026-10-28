@@ -2,7 +2,7 @@
 Pinify is a full stack clone of the popular website Pitnerest. Users can create pins, an image with an optional title, description and URL to link to. These pins can be saved to a collection of pins called a "board". Boards are contained on a customizable user profile, which can be followed by other users. Users can view others' pins and save them to their own boards through the splash page, which contains a collection of recommended pins for them, a follows feed, which contains the pins of followed users, and through a user profile directly.
 
 ## Demo
-[Here](https://pinify-app.herokuapp.com) is a working live demo
+[Here](https://pinify-app.herokuapp.com) is a working live demo.
 
 ## Technologies Used
 - Ruby on Rails
