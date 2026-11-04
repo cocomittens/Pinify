@@ -102,6 +102,15 @@
 	font-size: 16px;
 }
 
+.profileHeaderMid .buttonsContainer {
+	column-gap: 10px;
+}
+
+.profileHeaderMid .buttonsContainer button {
+	padding: 10px 5px;
+	white-space: nowrap;
+}
+
 .infinite-scroll-component {
 	text-align: center;
 }
