@@ -173,7 +173,7 @@ class Splash extends React.Component {
 											className={this.state.active ? 'saveBtn hidden' : 'saveBtn'}
 											onClick={() => this.handleSave(pin.id)}
 										>
-											Save
+											Pin
 										</button>
 										<ul
 											class={
