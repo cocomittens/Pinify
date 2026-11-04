@@ -51,7 +51,7 @@ class BoardForm extends React.Component {
 									value={this.state.updateTitle}
 									type="text"
 									onChange={this.updateTitle.bind(this)}
-									placeholder="Name"
+									placeholder="Example: Dinner recipes"
 								/>
 							</label>
 
