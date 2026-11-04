@@ -44,6 +44,8 @@ class User < ApplicationRecord
 
     attr_reader :password
 
+    # Returns nil for both an unknown email and a wrong password, so callers
+    # can't reveal which of the two failed.
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         user && user.is_password?(password) ? user : nil
