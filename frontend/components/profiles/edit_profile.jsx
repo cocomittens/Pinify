@@ -40,7 +40,7 @@ class EditProfile extends React.Component {
 							</div>
 							<div className="buttonsContainer">
 								<button id="doneBtn" onClick={this.handleSubmit}>
-									Done
+									Save
 								</button>
 							</div>
 						</div>
