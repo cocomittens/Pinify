@@ -6,6 +6,7 @@ const msp = (state, ownProps) => {
 	return {
 		errors: state.errors.sessionErrors,
 		formType: 'Sign up',
+		submitLabel: 'Sign up for Pinify',
 		path: ownProps.location.pathname,
 	};
 };
