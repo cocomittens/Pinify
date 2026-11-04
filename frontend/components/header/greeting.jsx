@@ -68,7 +68,7 @@ class Greeting extends React.Component {
 						<i onClick={this.toggleClass} className="dropbtn fas fa-ellipsis-h fa-lg" />
 						{this.state.active ? (
 							<ul className="dropdown-content">
-								<Link to="/edit">Edit settings</Link>
+								<Link to="/edit">Edit profile</Link>
 								<a onClick={this.props.logout}>Logout</a>
 							</ul>
 						) : null}
