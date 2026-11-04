@@ -214,10 +214,10 @@ class Splash extends React.Component {
 
 				<GreetingContainer />
 				{list}
-				<div className="addPinBtnContainer">
+				<div className="addPinBtnContainer addPinBtnContainer--text">
 					<Link to="/pin/new">
 						<button className="addPinBtn">
-							<span>+</span>
+							<span>Create pin</span>
 						</button>
 					</Link>
 				</div>

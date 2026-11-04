@@ -113,6 +113,22 @@
   color: #454545;
 }
 
+/* Add pin button with a text label instead of the "+" icon */
+.addPinBtnContainer--text {
+  width: auto;
+  padding: 0 16px;
+  border-radius: 20px;
+}
+
+.addPinBtnContainer--text .addPinBtn {
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.addPinBtnContainer--text .addPinBtn span {
+  margin-bottom: 0;
+}
+
 /* Create Pin Form */
 
 #createPinForm {
