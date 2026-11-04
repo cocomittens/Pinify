@@ -336,7 +336,12 @@ class UserProfile extends React.Component {
 								</p>
 							</div>
 
-							<div className="buttonsContainer">{followBtn}</div>
+							<div className="buttonsContainer">
+								{followBtn}
+								<Link to="/pin/new">
+									<button className="followBtn">Create pin</button>
+								</Link>
+							</div>
 						</div>
 
 						<div className="profileHeaderBottom">
