@@ -123,7 +123,7 @@ class Pin extends React.Component {
 						value={this.state.title}
 						type="text"
 						onChange={this.updateTitle.bind(this)}
-						placeholder="Add a title"
+						placeholder="Name your pin"
 					/>
 
 					<textarea
