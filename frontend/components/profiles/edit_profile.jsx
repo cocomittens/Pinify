@@ -35,7 +35,7 @@ class EditProfile extends React.Component {
 					<div className="formContainer">
 						<div className="headingsContainer">
 							<div id="headings">
-								<h1>Edit profile</h1>
+								<h1>Your profile</h1>
 								<h2>People on Pinify will get to know you with the info below</h2>
 							</div>
 							<div className="buttonsContainer">
