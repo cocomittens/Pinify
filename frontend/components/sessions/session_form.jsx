@@ -65,7 +65,7 @@ class SessionForm extends React.Component {
 		if (this.props.path === '/login') {
 			demo = (
 				<button id="demo" onClick={this.demoLogin.bind(this)} type="submit">
-					Demo
+					Try demo
 				</button>
 			);
 		} else {
