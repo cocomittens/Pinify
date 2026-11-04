@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
         session[:session_token] = user.session_token
     end
 
+    # Rotates the user's token as well as clearing the cookie, so any other
+    # copy of the old session token can no longer authenticate.
     def logout!()
         @current_user.reset_session_token!
         session[:session_token] = nil
