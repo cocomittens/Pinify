@@ -69,7 +69,7 @@ class Greeting extends React.Component {
 						{this.state.active ? (
 							<ul className="dropdown-content">
 								<Link to="/edit">Edit settings</Link>
-								<a onClick={this.props.logout}>Logout</a>
+								<a onClick={this.props.logout}>Log out</a>
 							</ul>
 						) : null}
 					</div>
