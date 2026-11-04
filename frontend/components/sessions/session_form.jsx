@@ -112,7 +112,7 @@ class SessionForm extends React.Component {
 								placeholder="Password"
 							/>
 							<div className="buttonsContainer">
-								<button type="submit">{this.props.formType}</button>
+								<button type="submit">{this.props.submitLabel || this.props.formType}</button>
 								{demo}
 							</div>
 						</form>
