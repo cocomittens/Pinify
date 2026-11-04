@@ -100,7 +100,7 @@ class PinShow extends React.Component {
 									>
 										{firstBoard}
 									</button>
-									<button className={this.state.active ? 'saveBtn hidden' : 'saveBtn'}>Save</button>
+									<button className={this.state.active ? 'saveBtn hidden' : 'saveBtn'}>Pin</button>
 									<ul class={this.state.active ? 'pinDropdownContent' : 'pinDropdownContent hidden'}>
 										{this.props.user[0].boards.map(board => {
 											return (
