@@ -84,7 +84,7 @@ class Pin extends React.Component {
 					})}
 					<li className="createBoardLi">
 						<span>
-							<i class="fas fa-plus-circle fa-2x" /> Create Board
+							<i class="fas fa-plus-circle fa-2x" /> Create board
 						</span>
 					</li>
 				</ul>
