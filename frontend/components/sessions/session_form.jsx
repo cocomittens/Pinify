@@ -61,13 +61,14 @@ class SessionForm extends React.Component {
 	}
 
 	render() {
-		let demo, username;
+		let demo, username, helper;
 		if (this.props.path === '/login') {
 			demo = (
 				<button id="demo" onClick={this.demoLogin.bind(this)} type="submit">
 					Try demo
 				</button>
 			);
+			helper = <p className="formHelper">Try demo to explore without an account</p>;
 		} else {
 			username = (
 				<input
@@ -116,6 +117,7 @@ class SessionForm extends React.Component {
 								{demo}
 							</div>
 						</form>
+						{helper}
 					</div>
 				</div>
 			</div>
