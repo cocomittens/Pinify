@@ -358,6 +358,9 @@ class UserProfile extends React.Component {
 							</span>
 						</div>
 					</div>
+					{this.state.currentPage === 'boards' ? (
+						<p className="profileHelperText">Select a board to see its pins.</p>
+					) : null}
 					<div className="profileContent">{content}</div>
 
 					<div className="addPinBtnContainer">
