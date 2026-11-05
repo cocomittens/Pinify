@@ -6,6 +6,7 @@ const msp = (state, ownProps) => {
 	return {
 		errors: state.errors.sessionErrors,
 		formType: 'Sign up',
+		submitText: 'Sign up',
 		path: ownProps.location.pathname,
 	};
 };
