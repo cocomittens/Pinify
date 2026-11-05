@@ -56,7 +56,7 @@ class BoardForm extends React.Component {
 							</label>
 
 							<div className="buttonsContainer">
-								<button type="submit">{this.props.formType}</button>
+								<button type="submit">{this.props.formType === 'Edit' ? 'Save' : this.props.formType}</button>
 							</div>
 						</form>
 					</div>
