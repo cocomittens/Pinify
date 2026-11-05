@@ -61,7 +61,7 @@ class SessionForm extends React.Component {
 	}
 
 	render() {
-		let demo, username;
+		let demo, username, helper;
 		if (this.props.path === '/login') {
 			demo = (
 				<button id="demo" onClick={this.demoLogin.bind(this)} type="submit">
@@ -77,6 +77,7 @@ class SessionForm extends React.Component {
 					placeholder="Username"
 				/>
 			);
+			helper = <p className="formHelper">Use at least 6 characters for your password</p>;
 		}
 
 		let switchForm = this.switchFormType();
@@ -116,6 +117,7 @@ class SessionForm extends React.Component {
 								{demo}
 							</div>
 						</form>
+						{helper}
 					</div>
 				</div>
 			</div>
