@@ -128,7 +128,7 @@ class UserProfile extends React.Component {
 	getImages(board) {
 		const pins = this.props.pins;
 		if (Object.keys(pins).length === 0) return null;
-		console.log(pins);
+		console.log('User profile pins:', pins);
 		let pinIds = board.pin_ids;
 		let blanks = 6 - board.pin_ids.length;
 		if (blanks) {
@@ -358,6 +358,9 @@ class UserProfile extends React.Component {
 							</span>
 						</div>
 					</div>
+					{this.state.currentPage === 'boards' ? (
+						<p className="profileHelperText">Select a board to see its pins.</p>
+					) : null}
 					<div className="profileContent">{content}</div>
 
 					<div className="addPinBtnContainer">
