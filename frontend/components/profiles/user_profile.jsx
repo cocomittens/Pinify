@@ -128,7 +128,7 @@ class UserProfile extends React.Component {
 	getImages(board) {
 		const pins = this.props.pins;
 		if (Object.keys(pins).length === 0) return null;
-		console.log(pins);
+		console.log('User profile pins:', pins);
 		let pinIds = board.pin_ids;
 		let blanks = 6 - board.pin_ids.length;
 		if (blanks) {
