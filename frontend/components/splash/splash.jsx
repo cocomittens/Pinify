@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import InfiniteScroll from "react-infinite-scroll-component";
 import { BounceLoader } from 'react-spinners';
 import { css } from '@emotion/core';
+import { t } from '../../util/i18n';
 
 
 const override = css`
@@ -213,7 +214,11 @@ class Splash extends React.Component {
 			<div>
 
 				<GreetingContainer />
-				{list}
+				{this.props.pins.length === 0 ? (
+					<h2 className="emptyTitle">{t('home.emptyTitle')}</h2>
+				) : (
+					list
+				)}
 				<div className="addPinBtnContainer addPinBtnContainer--text">
 					<Link to="/pin/new">
 						<button className="addPinBtn">

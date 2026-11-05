@@ -1,1 +1,4 @@
-{ "dit14186": { "emptyPinsTitle": "No pins saved yet" } }
+{
+  "dit14186": { "emptyPinsTitle": "No pins saved yet" },
+  "home": { "emptyTitle": "No pins yet" }
+}
