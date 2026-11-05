@@ -143,6 +143,7 @@
 .pinFormContainer {
   background: #EFEFEF;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 93vh;
@@ -155,6 +156,13 @@
   display: flex;
     justify-content: center;
     align-items: flex-start;
+}
+
+.pinFormContainer .pinFormHelper {
+  color: #8E8E8E;
+  font-size: 14px;
+  text-align: center;
+  margin: 0 0 17px;
 }
 
 .pinFormContainer .formContainer  {

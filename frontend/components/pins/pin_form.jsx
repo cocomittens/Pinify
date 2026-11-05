@@ -164,6 +164,11 @@ class Pin extends React.Component {
 							</form>{' '}
 						</div>
 					</div>
+					{this.props.formType === 'Create Pin' && (
+						<p className="pinFormHelper">
+							Upload an image and choose a board to save your pin. You can edit the details later.
+						</p>
+					)}
 				</div>
 			</div>
 		);
