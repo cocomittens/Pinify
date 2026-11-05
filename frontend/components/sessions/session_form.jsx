@@ -61,7 +61,7 @@ class SessionForm extends React.Component {
 	}
 
 	render() {
-		let demo, username;
+		let demo, usernameInput;
 		if (this.props.path === '/login') {
 			demo = (
 				<button id="demo" onClick={this.demoLogin.bind(this)} type="submit">
@@ -69,7 +69,7 @@ class SessionForm extends React.Component {
 				</button>
 			);
 		} else {
-			username = (
+			usernameInput = (
 				<input
 					value={this.state.username}
 					type="text"
@@ -98,7 +98,7 @@ class SessionForm extends React.Component {
 						</ul>
 
 						<form onSubmit={this.handleSubmit}>
-							{username}
+							{usernameInput}
 							<input
 								value={this.state.email}
 								type="text"
