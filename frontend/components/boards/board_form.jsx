@@ -47,12 +47,17 @@ class BoardForm extends React.Component {
 						<form onSubmit={this.handleSubmit}>
 							<label>
 								<span>Name</span>
-								<input
-									value={this.state.updateTitle}
-									type="text"
-									onChange={this.updateTitle.bind(this)}
-									placeholder="Name"
-								/>
+								<span className="inputContainer">
+									<input
+										value={this.state.updateTitle}
+										type="text"
+										onChange={this.updateTitle.bind(this)}
+										placeholder="Name"
+									/>
+									{this.props.formType === 'Create' && (
+										<span className="helperText">For example, Recipes or Travel</span>
+									)}
+								</span>
 							</label>
 
 							<div className="buttonsContainer">
